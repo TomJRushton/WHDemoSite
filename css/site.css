@@ -293,6 +293,7 @@ a:hover .title-project{color:var(--navy)}
 @media (max-width:480px){.founder{grid-template-columns:minmax(0,1fr)}.founder .frame{max-width:200px}}
 .founder .frame{aspect-ratio:4/5;background:#E7E5E0}
 .founder p{margin:0 0 12px}
+.founder .inline-link{overflow-wrap:anywhere}
 .principles{list-style:none;margin:0;padding:0;counter-reset:p;border-top:1px solid var(--rule-dark)}
 .principles li{counter-increment:p;display:grid;grid-template-columns:minmax(48px,1fr) minmax(0,5fr) minmax(0,6fr);gap:12px 40px;padding:32px 0;border-bottom:1px solid var(--rule-dark);align-items:baseline}
 .principles li::before{content:"0" counter(p);font-size:14px;color:var(--lime);font-variant-numeric:tabular-nums}
