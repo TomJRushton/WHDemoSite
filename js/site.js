@@ -79,6 +79,7 @@
   if (archive) {
     var form = $('#filters-form'), list = $('#results'), countEl = $('#count'), chips = $('#chips'), clearBtn = $('#clear'), moreWrap = $('#more');
     var PAGE = 18, shown = PAGE;
+    var emptyHeading = $('#empty h2'), emptyHeadingDefault = emptyHeading.textContent;
     var sectorsInUse = D.sectors.filter(function (s) { return D.projects.some(function (p) { return p.sector === s; }); });
     var TYPES = [{ id: 'case-studies', label: 'Case studies', test: function (p) { return p.caseStudy; } },
                  { id: 'experience-list', label: 'Experience list', test: function (p) { return !p.caseStudy; } }];
@@ -140,7 +141,7 @@
       res.sort(function (a, b) { return (b.caseStudy ? 1 : 0) - (a.caseStudy ? 1 : 0); });
       countEl.textContent = res.length + (res.length === 1 ? ' project' : ' projects');
       var tags = [];
-      st.sector.forEach(function (v) { tags.push({ k: 'sector', v: v, l: (sectorsInUse.filter(function (s) { return slugify(s) === v; })[0] || v) }); });
+      st.sector.forEach(function (v) { tags.push({ k: 'sector', v: v, l: (D.sectors.filter(function (s) { return slugify(s) === v; })[0] || v) }); });
       st.type.forEach(function (v) { tags.push({ k: 'type', v: v, l: (TYPES.filter(function (t) { return t.id === v; })[0] || { label: v }).label }); });
       if (st.q) tags.push({ k: 'q', v: st.q, l: '“' + st.q + '”' });
       chips.innerHTML = tags.map(function (t) { return '<span class="chip">' + esc(t.l) + '<button type="button" data-k="' + t.k + '" data-v="' + esc(t.v) + '" aria-label="Remove filter: ' + esc(t.l) + '">×</button></span>'; }).join('');
@@ -149,6 +150,10 @@
       var applyBtn = $('#apply'); if (applyBtn) applyBtn.textContent = 'Show ' + res.length + ' projects';
       if (!res.length) {
         list.innerHTML = '';
+        /* Selected sectors that have no projects at all (e.g. Event Overlay): say "to follow" rather than "no match" */
+        var emptySectors = st.sector.map(function (v) { return D.sectors.filter(function (s) { return slugify(s) === v; })[0]; })
+          .filter(function (s) { return s && !D.projects.some(function (p) { return p.sector === s; }); });
+        emptyHeading.textContent = st.sector.length && emptySectors.length === st.sector.length ? emptySectors.join(' and ') + ' projects to follow' : emptyHeadingDefault;
         $('#empty').hidden = false; moreWrap.hidden = true; return;
       }
       $('#empty').hidden = true;
