@@ -183,11 +183,13 @@ a:hover .title-project{color:var(--navy)}
 .people-contacts p{margin:0}
 .people-contacts a{text-decoration:none;border-bottom:1px solid var(--rule-dark)}
 .people-contacts a:hover{border-bottom-color:var(--lime)}
+/* A11Y-002: at least 24x24px tap targets (inline-block takes the 1.6 line-height) */
+.people-contacts a{display:inline-block}
 
 /* Footer */
 .site-footer{background:var(--ink);color:var(--on-dark-muted);font-size:13px}
 .site-footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 32px;padding-block:32px}
-.site-footer a{color:var(--on-dark)}
+.site-footer a{color:var(--on-dark);display:inline-block;padding-block:2px}
 .demo-note{background:var(--navy-tint);color:var(--ink);font-size:13px;text-align:center;padding:8px var(--margin)}
 
 /* Page header (inner pages) */
