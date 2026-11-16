@@ -226,6 +226,10 @@ a:hover .title-project{color:var(--navy)}
 .results a{text-decoration:none}
 .results .wide{grid-column:span 2}
 @media (max-width:620px){.results .wide{grid-column:auto}}
+/* PERF-002: while site.js has not rendered (html.js-pending, set inline in <head>), keep late regions from moving visible content */
+.js-pending #archive .filters,.js-pending #archive .filter-toggle,.js-pending #archive .status,.js-pending #archive .credit-note{visibility:hidden}
+.js-pending #results{min-height:100svh}
+.js-pending #case-study{min-height:100svh;visibility:hidden}
 .typo-card{border-top:1px solid var(--ink);padding-top:16px;display:flex;flex-direction:column;gap:8px;height:100%}
 .typo-card h3{font-size:22px}
 .typo-card p{margin:0}

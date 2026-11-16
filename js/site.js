@@ -207,6 +207,7 @@
   }
 
   /* ---------- Case study ---------- */
+  var heroPending = false;
   var cs = $('#case-study');
   if (cs) {
     var param = new URLSearchParams(location.search).get('p');
@@ -252,6 +253,13 @@
         if (x.caseStudy) return '<li><a href="' + projectUrl(x) + '"><div class="frame ratio-32">' + img(x.image, x.imageMaxW, '(max-width:620px) 100vw, 33vw', '') + '</div><div class="card-text"><h3 class="title-project">' + esc(x.name) + '</h3>' + creditTag(x) + '</div></a></li>';
         return '<li><div class="typo-card"><h3 class="title-project">' + esc(x.name) + '</h3>' + (x.detail ? '<p class="body-small">' + esc(x.detail.charAt(0).toUpperCase() + x.detail.slice(1)) + '</p>' : '') + creditTag(x) + '</div></li>';
       }
+      /* PERF-002: inset hero images have no reserved height, so stay pending until the hero image is ready */
+      var heroImg = $('.cs-hero img', cs);
+      if (heroImg && !heroImg.complete) {
+        heroPending = true;
+        var release = function () { document.documentElement.classList.remove('js-pending'); };
+        heroImg.addEventListener('load', release); heroImg.addEventListener('error', release); setTimeout(release, 2000);
+      }
       /* Lightbox */
       var lb = $('#lightbox'), lbImg = $('img', lb), lbCap = $('figcaption', lb), lastFocus;
       var openLb = function () { lastFocus = document.activeElement; lbImg.src = 'assets/img/' + p.image + '-' + p.imageMaxW + '.webp'; lbImg.alt = p.name; lbCap.textContent = p.caption; lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false'); $('.close', lb).focus(); document.body.style.overflow = 'hidden'; };
@@ -270,4 +278,7 @@
     var f = $('.frame', el); if (f && !f.innerHTML.trim()) f.innerHTML = img(p.image, p.imageMaxW, el.getAttribute('data-sizes') || '50vw', '');
     var c = $('[data-credit]', el); if (c) c.outerHTML = creditTag(p);
   });
+
+  /* PERF-002: rendering done; release the space and visibility held while the page was pending */
+  if (!heroPending) document.documentElement.classList.remove('js-pending');
 })();
