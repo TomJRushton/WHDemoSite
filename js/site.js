@@ -33,13 +33,28 @@
       window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
     }
     var btn = $('.menu-btn', header);
-    if (btn) btn.addEventListener('click', function () {
-      var open = header.classList.toggle('menu-open');
-      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      btn.textContent = open ? 'Close' : 'Menu';
-      document.body.style.overflow = open ? 'hidden' : '';
-    });
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && header.classList.contains('menu-open')) btn.click(); });
+    if (btn) {
+      btn.addEventListener('click', function () {
+        var open = header.classList.toggle('menu-open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        btn.textContent = open ? 'Close' : 'Menu';
+        document.body.style.overflow = open ? 'hidden' : '';
+      });
+      /* While the menu is open, Tab and Shift+Tab cycle only through the logo, the Menu/Close button and the menu items */
+      var menuFocusables = function () {
+        return $$('a[href], button', header).filter(function (el) { return el.offsetParent !== null || getComputedStyle(el).position === 'fixed'; });
+      };
+      document.addEventListener('keydown', function (e) {
+        if (!header.classList.contains('menu-open')) return;
+        if (e.key === 'Escape') { btn.click(); btn.focus(); return; }
+        if (e.key !== 'Tab') return;
+        var f = menuFocusables(); if (!f.length) return;
+        var first = f[0], last = f[f.length - 1], i = f.indexOf(document.activeElement);
+        if (i < 0) { e.preventDefault(); (e.shiftKey ? last : first).focus(); }
+        else if (e.shiftKey && i === 0) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && i === f.length - 1) { e.preventDefault(); first.focus(); }
+      });
+    }
   }
 
   /* Hero video pause (WCAG 2.2.2) */

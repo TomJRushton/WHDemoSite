@@ -78,7 +78,10 @@ h1,h2,h3{text-wrap:balance}
   .nav a:hover{color:var(--on-dark)}
   .menu-open .nav{display:flex}
   .menu-open .menu-btn{color:var(--on-dark)}
-  .menu-open .logo{visibility:hidden}
+  /* A11Y-001: logo stays visible on the navy menu, using the white-wordmark variant in every header state */
+  .site-header.menu-open .logo .on-dark-logo,.site-header.over-hero.scrolled.menu-open .logo .on-dark-logo{display:block}
+  .site-header.menu-open .logo .on-light-logo,.site-header.over-hero.scrolled.menu-open .logo .on-light-logo{display:none}
+  .site-header.menu-open :focus-visible,.site-header.over-hero.scrolled.menu-open :focus-visible{outline-color:var(--lime)}
 }
 
 /* Hero (home) */
