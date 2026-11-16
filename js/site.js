@@ -197,12 +197,16 @@
     var meta = [['Client', p.client], ['Location', p.location], ['Sector', p.sector], ['Capacity', p.capacity],
                 ['Architect', null], ['Services', null], ['Willis Hazell’s role', null], ['Completion', null]];
     var related = D.projects.filter(function (x) { return x.sector === p.sector && x.slug !== p.slug; }).slice(0, 6);
+    /* Low-resolution images (< 1400px wide) are shown inset beside the title, never stretched full-bleed */
+    var inset = p.imageMaxW < 1400;
+    var heroHtml = '<div class="cs-hero' + (inset ? ' inset' : '') + '"><button type="button" data-lightbox aria-label="View image full screen: ' + esc(p.name) + '"><div class="frame"' + (inset ? ' style="--native:' + p.imageMaxW + 'px"' : '') + '>' +
+        img(p.image, p.imageMaxW, inset ? '(max-width:700px) 100vw, ' + p.imageMaxW + 'px' : '100vw', p.caption.split('. Image')[0], true) + '</div></button>' +
+        '<p class="caption' + (inset ? '' : ' wrap') + '" style="margin-top:10px">' + esc(p.caption) + '</p></div>';
+    var titleHtml = '<div class="cs-title"><div><p class="crumbs"><a href="projects.html">Projects</a> / <a href="projects.html?sector=' + slugify(p.sector) + '">' + esc(p.sector) + '</a></p>' +
+        '<h1 class="heading-page">' + esc(p.name) + '</h1><p class="intro" style="margin-top:16px;max-width:820px">' + esc(p.summary) + '</p></div></div>';
     cs.innerHTML =
-      '<div class="cs-hero"><button type="button" data-lightbox aria-label="View image full screen: ' + esc(p.name) + '"><div class="frame">' +
-        img(p.image, p.imageMaxW, '100vw', p.caption.split('. Image')[0], true) + '</div></button>' +
-        '<p class="caption wrap" style="margin-top:10px">' + esc(p.caption) + '</p></div>' +
-      '<div class="wrap"><div class="cs-title"><div><p class="crumbs"><a href="projects.html">Projects</a> / <a href="projects.html?sector=' + slugify(p.sector) + '">' + esc(p.sector) + '</a></p>' +
-        '<h1 class="heading-page">' + esc(p.name) + '</h1><p class="intro" style="margin-top:16px;max-width:820px">' + esc(p.summary) + '</p></div></div>' +
+      (inset ? '<div class="wrap"><div class="cs-inset">' + titleHtml + heroHtml + '</div>'
+             : heroHtml + '<div class="wrap">' + titleHtml) +
         '<div class="credit-banner" role="note"><span class="credit tbc" style="flex:none">Credit to confirm</span><p>Demo content. Before publication this will state either “Willis Hazell Engineers: [role], [stages]” or that the project was delivered by a team member at a previous practice.</p></div>' +
       '<div class="cs-body"><div><h2 class="label" style="margin-bottom:14px">Project facts</h2><dl class="md">' +
         meta.filter(function (m) { return m[1]; }).map(function (m) { return '<div><dt>' + m[0] + '</dt><dd>' + esc(m[1]) + '</dd></div>'; }).join('') +

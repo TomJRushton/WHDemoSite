@@ -243,6 +243,19 @@ a:hover .title-project{color:var(--navy)}
 .cs-hero .frame{aspect-ratio:21/9;max-height:78svh}
 @media (max-width:700px){.cs-hero .frame{aspect-ratio:4/3}}
 .cs-hero button{all:unset;display:block;cursor:zoom-in;width:100%}
+/* Inset hero for images under 1400px wide (DESIGN-003 proposal) */
+.cs-inset{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,auto);gap:32px clamp(32px,5vw,80px);align-items:end;padding-top:clamp(40px,5vw,72px);margin-bottom:32px}
+.cs-inset .cs-title{padding-block:0 8px}
+.cs-hero.inset .frame{aspect-ratio:auto;max-height:none;width:min(var(--native),48vw);background:none}
+.cs-hero.inset .frame img{height:auto}
+@media (max-width:700px){
+  .cs-inset{grid-template-columns:minmax(0,1fr);padding-top:0;margin-inline:calc(var(--margin) * -1)}
+  .cs-inset .cs-hero{order:-1}
+  .cs-inset .cs-hero .caption{padding-inline:var(--margin)}
+  .cs-inset .cs-title{padding-inline:var(--margin);padding-top:40px}
+  .cs-hero.inset .frame{width:100%;aspect-ratio:4/3}
+  .cs-hero.inset .frame img{height:100%}
+}
 .cs-hero button:focus-visible{outline:2px solid var(--navy);outline-offset:-4px}
 .cs-title{display:flex;flex-wrap:wrap;gap:24px 64px;align-items:flex-end;padding-block:clamp(40px,5vw,72px) 32px}
 .cs-title > div:first-child{flex:999 1 600px}
