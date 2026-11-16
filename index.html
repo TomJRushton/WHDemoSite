@@ -10,7 +10,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&family=Schibsted+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="icon" href="data:,">
 <link rel="stylesheet" href="css/site.css">
-<link rel="preload" as="image" href="assets/img/hero-poster.webp">
+<link rel="preload" as="image" href="assets/img/hero-poster.webp" media="(min-width:701px)">
+<link rel="preload" as="image" href="assets/img/hero-mobile.webp" media="(max-width:700px)">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -35,10 +36,11 @@
 <main id="main">
   <!-- Hero: full-screen drone footage -->
   <section class="hero" aria-label="Introduction">
-    <video autoplay muted loop playsinline preload="metadata" poster="assets/img/hero-poster.webp" aria-hidden="true">
-      <source src="assets/video/hero.mp4" type="video/mp4">
-    </video>
-    <img class="hero-still" src="assets/img/hero-mobile.webp" alt="" aria-hidden="true">
+    <picture class="hero-still" aria-hidden="true">
+      <source media="(min-width:701px)" srcset="assets/img/hero-poster.webp">
+      <img src="assets/img/hero-mobile.webp" alt="">
+    </picture>
+    <video muted loop playsinline preload="none" data-src="assets/video/hero.mp4" aria-hidden="true"></video>
     <div class="wrap hero-inner">
       <div class="hero-copy">
         <h1 class="display-hero">Specialist structural engineering consultancy across the sports, entertainment and leisure sector.</h1>

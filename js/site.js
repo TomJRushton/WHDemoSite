@@ -52,7 +52,13 @@
         ? '<svg aria-hidden="true" width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M3.5 2 12 7 3.5 12Z"/></svg>'
         : '<svg aria-hidden="true" width="14" height="14" viewBox="0 0 14 14" stroke="currentColor" stroke-width="1.6"><path d="M4.5 2v10M9.5 2v10"/></svg>';
     };
-    if (reduced) video.pause();
+    /* Only attach the video where it is shown: wide screens with motion allowed */
+    var wantsVideo = !reduced && window.matchMedia('(min-width:701px)').matches;
+    if (wantsVideo) {
+      video.src = video.getAttribute('data-src');
+      video.addEventListener('playing', function () { video.classList.add('is-playing'); });
+      var pr0 = video.play(); if (pr0 && pr0.catch) pr0.catch(function () {});
+    }
     pause.addEventListener('click', function () { if (video.paused) { var pr = video.play(); if (pr && pr.catch) pr.catch(function () {}); } else video.pause(); });
     video.addEventListener('play', setState); video.addEventListener('pause', setState); setState();
   }
