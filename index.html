@@ -26,8 +26,8 @@
       <a href="projects.html">Projects</a>
       <a href="index.html#services">Services</a>
       <a href="about.html">Who We Are</a>
-      <a href="#" aria-disabled="true">News</a>
-      <a href="#" aria-disabled="true">Careers</a>
+      <a href="news.html">News</a>
+      <a href="careers.html">Careers</a>
       <a href="#contact">Contact</a>
     </nav>
   </div>
@@ -207,6 +207,13 @@
     </div>
   </section>
 
+  <!-- News: three most recent articles, and a careers prompt only while a vacancy is open -->
+  <section class="sec-compact wrap" aria-labelledby="news-home-h" style="padding-top:0">
+    <div class="sec-head rule-top"><h2 class="heading-section" id="news-home-h">News &amp; Insights</h2><a class="tl" href="news.html">All news →</a></div>
+    <ul class="news-trio" id="home-news"></ul>
+    <div class="careers-prompt" id="home-careers" hidden></div>
+  </section>
+
   <!-- Contact -->
   <section id="contact" class="on-dark sec" aria-labelledby="contact-h">
     <div class="wrap contact-band">
@@ -227,6 +234,7 @@
   </div>
 </footer>
 <script src="js/data.js"></script>
+<script src="js/editorial.js"></script>
 <script src="js/site.js"></script>
 </body>
 </html>

@@ -279,6 +279,242 @@
     var c = $('[data-credit]', el); if (c) c.outerHTML = creditTag(p);
   });
 
+  /* ---------- News & Careers (sample editorial collections in js/editorial.js) ---------- */
+  var E = window.WH_EDITORIAL || { articles: [], jobs: [], authors: {}, newsCategories: [] };
+  var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  var fmtDate = function (iso) { var d = String(iso).split('-'); return +d[2] + ' ' + MONTHS[+d[1] - 1] + ' ' + d[0]; };
+  var QS = new URLSearchParams(location.search);
+  /* "Today" for vacancy logic. ?asof=YYYY-MM-DD previews another date (prototype review aid) */
+  var asof = /^\d{4}-\d{2}-\d{2}$/.test(QS.get('asof') || '') ? QS.get('asof') : null;
+  var today = asof || (function () { var n = new Date(); return n.getFullYear() + '-' + ('0' + (n.getMonth() + 1)).slice(-2) + '-' + ('0' + n.getDate()).slice(-2); })();
+  var sampleTag = '<span class="credit tbc">Sample</span>';
+  var articles = E.articles.slice().sort(function (a, b) { return a.date < b.date ? 1 : a.date > b.date ? -1 : 0; });
+  var articleUrl = function (a) { return 'article.html?a=' + encodeURIComponent(a.slug); };
+  var catUrl = function (c) { return 'news.html?category=' + slugify(c); };
+  var jobState = function (j) {
+    if (j.status === 'draft') return 'draft';
+    if (j.status === 'closed') return 'closed';
+    if (!j.publishAt || j.publishAt > today) return 'scheduled';
+    if (j.closing && j.closing < today) return 'expired';
+    return 'open';
+  };
+  var openJobs = E.jobs.filter(function (j) { return jobState(j) === 'open'; })
+    .sort(function (a, b) { return a.closing < b.closing ? -1 : 1; });
+  var jobUrl = function (j) { return 'job.html?r=' + encodeURIComponent(j.slug) + (asof ? '&asof=' + asof : ''); };
+  var articleFrame = function (a, ratio, sizes, eager) {
+    if (a.image) return '<div class="frame ' + ratio + '">' + img(a.image.name, a.image.maxW, sizes, '', eager) + '</div>';
+    return '<div class="frame ' + ratio + ' slot-frame"><span>Image to be supplied</span></div>';
+  };
+  var richText = function (blocks) {
+    return (blocks || []).map(function (b) {
+      if (b[0] === 'h2') return '<h2>' + esc(b[1]) + '</h2>';
+      if (b[0] === 'ph') return '<p class="tbc">' + esc(b[1]) + '</p>';
+      if (b[0] === 'figure') return '<figure class="slot article-figure">' + esc(b[1]) + '</figure>';
+      return '<p>' + esc(b[1]) + '</p>';
+    }).join('');
+  };
+  var setMeta = function (title, desc) {
+    document.title = title + ' — Willis Hazell Engineers';
+    var m = $('meta[name="description"]'); if (m && desc) m.setAttribute('content', desc);
+  };
+  var jsonLd = function (obj) {
+    var s = document.createElement('script'); s.type = 'application/ld+json'; s.textContent = JSON.stringify(obj); document.head.appendChild(s);
+  };
+  var notFound = function (el, crumbHref, crumb, h, text, linkText) {
+    setMeta(h, text);
+    el.innerHTML = '<div class="wrap page-head"><p class="crumbs"><a href="' + crumbHref + '">' + crumb + '</a></p>' +
+      '<h1 class="heading-page">' + h + '</h1><p class="body-small" style="margin:16px 0 8px">' + text + '</p>' +
+      '<a class="tl" href="' + crumbHref + '">' + linkText + ' →</a></div>';
+  };
+
+  /* Home: three most recent articles; careers prompt only while a role is open */
+  var homeNews = $('#home-news');
+  if (homeNews) {
+    homeNews.innerHTML = articles.slice(0, 3).map(function (a) {
+      return '<li><a href="' + articleUrl(a) + '">' + articleFrame(a, 'ratio-32', '(max-width:760px) 100vw, 30vw') +
+        '<div class="card-text"><p class="label">' + esc(a.category) + ' · ' + fmtDate(a.date) + '</p><h3 class="title-project">' + esc(a.title) + '</h3>' + sampleTag + '</div></a></li>';
+    }).join('');
+    var hc = $('#home-careers');
+    if (hc && openJobs.length) {
+      hc.innerHTML = '<p class="label">Careers</p><p class="title-project">We are recruiting: ' + openJobs.map(function (j) { return esc(j.title); }).join(', ') + '.</p><a class="tl" href="careers.html">View vacancies →</a>';
+      hc.hidden = false;
+    }
+  }
+
+  /* News index: featured story, category filter in the query string, show more */
+  var newsList = $('#news-list');
+  if (newsList) {
+    var NEWS_PAGE = 8, newsShown = NEWS_PAGE;
+    var cats = E.newsCategories;
+    var readCat = function () { var c = new URLSearchParams(location.search).get('category'); return cats.filter(function (x) { return slugify(x) === c; })[0] || null; };
+    var newsRow = function (a) {
+      return '<li><a class="news-row" href="' + articleUrl(a) + '">' + articleFrame(a, 'ratio-32', '(max-width:620px) 100vw, 240px') +
+        '<div><p class="label">' + esc(a.category) + ' · <time datetime="' + a.date + '">' + fmtDate(a.date) + '</time></p>' +
+        '<h3 class="title-project">' + esc(a.title) + '</h3><p class="body-small">' + esc(a.summary) + '</p>' + sampleTag + '</div></a></li>';
+    };
+    var renderNews = function () {
+      var cat = readCat();
+      $$('.cats a').forEach(function (l) {
+        var c = new URL(l.href).searchParams.get('category');
+        if ((cat ? slugify(cat) : null) === c) l.setAttribute('aria-current', 'page'); else l.removeAttribute('aria-current');
+      });
+      setMeta(cat ? cat + ' — News' : 'News & Insights', cat ? cat + ' from Willis Hazell Engineers.' : null);
+      var list = cat ? articles.filter(function (a) { return a.category === cat; }) : articles;
+      var feat = !cat ? (list.filter(function (a) { return a.featured; })[0] || list[0]) : null;
+      $('#news-featured').innerHTML = feat ? '<a class="news-feature" href="' + articleUrl(feat) + '">' + articleFrame(feat, 'ratio-32', '(max-width:900px) 100vw, 58vw', true) +
+        '<div><p class="label">Featured · ' + esc(feat.category) + '</p><h2 class="heading-section">' + esc(feat.title) + '</h2>' +
+        '<p class="body-small">' + esc(feat.summary) + '</p><p class="caption"><time datetime="' + feat.date + '">' + fmtDate(feat.date) + '</time> · ' + esc((E.authors[feat.author] || {}).name || '') + '</p>' + sampleTag + '</div></a>' : '';
+      var rest = list.filter(function (a) { return a !== feat; });
+      newsList.innerHTML = rest.slice(0, newsShown).map(newsRow).join('');
+      $('#news-empty').hidden = list.length > 0;
+      $('#news-more').hidden = rest.length <= newsShown;
+      $('#news-more-btn').textContent = 'Show more (' + (rest.length - newsShown) + ' remaining)';
+      $('#news-count').textContent = list.length + (list.length === 1 ? ' article' : ' articles') + (cat ? ' in ' + cat : '');
+    };
+    $('.cats').addEventListener('click', function (e) {
+      var l = e.target.closest('a'); if (!l || e.metaKey || e.ctrlKey || e.shiftKey) return;
+      e.preventDefault(); history.pushState(null, '', l.getAttribute('href')); newsShown = NEWS_PAGE; renderNews();
+    });
+    window.addEventListener('popstate', function () { newsShown = NEWS_PAGE; renderNews(); });
+    $('#news-more-btn').addEventListener('click', function () { newsShown += NEWS_PAGE; renderNews(); });
+    renderNews();
+  }
+
+  /* Article template */
+  var art = $('#article');
+  if (art) {
+    var a = articles.filter(function (x) { return x.slug === QS.get('a'); })[0];
+    if (!a) notFound(art, 'news.html', 'News', 'Article not found', 'This article may have moved or is not yet published.', 'View all news');
+    else {
+      setMeta(a.title, a.summary);
+      var au = E.authors[a.author] || { name: '', url: 'about.html' };
+      var here = location.href.split('#')[0];
+      var relP = (a.relatedProjects || []).map(function (s) { return D.projects.filter(function (p) { return p.slug === s; })[0]; }).filter(Boolean);
+      var relA = articles.filter(function (x) { return x !== a && x.category === a.category; })
+        .concat(articles.filter(function (x) { return x !== a && x.category !== a.category; })).slice(0, 3);
+      art.innerHTML =
+        '<div class="wrap article-head"><p class="crumbs"><a href="news.html">News</a> / <a href="' + catUrl(a.category) + '">' + esc(a.category) + '</a></p>' +
+          '<h1 class="heading-page">' + esc(a.title) + '</h1><p class="intro">' + esc(a.summary) + '</p>' +
+          '<p class="article-meta"><time datetime="' + a.date + '">' + fmtDate(a.date) + '</time><span>By <a class="inline-link" href="' + au.url + '">' + esc(au.name) + '</a></span>' + sampleTag + '</p></div>' +
+        '<div class="wrap article-hero">' + (a.image
+          ? '<figure>' + articleFrame(a, 'ratio-169', '(max-width:1440px) 100vw, 1312px', true) + '<figcaption class="caption">' + esc(a.image.alt) + '. Image from willishazell.com; credit to confirm.</figcaption></figure>'
+          : '<div class="frame ratio-219 slot-frame"><span>Hero image to be supplied</span></div>') + '</div>' +
+        '<div class="wrap article-body"><aside class="article-aside">' +
+          '<div class="author-card"><p class="label">Author</p><p><a class="inline-link" href="' + au.url + '">' + esc(au.name) + '</a><br><span class="body-small">' + esc(au.role || '') + '</span></p></div>' +
+          '<div class="share"><p class="label">Share</p><ul>' +
+            '<li><a href="https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(here) + '" target="_blank" rel="noopener">LinkedIn<span class="visually-hidden"> (opens in a new tab)</span></a></li>' +
+            '<li><a href="mailto:?subject=' + encodeURIComponent(a.title) + '&amp;body=' + encodeURIComponent(here) + '">Email</a></li>' +
+            '<li><button type="button" id="copy-link">Copy link</button> <span class="caption" role="status" id="copy-status"></span></li></ul>' +
+            (a.linkedin ? '<p><a class="inline-link" href="' + esc(a.linkedin) + '">View the LinkedIn post</a></p>' : '') + '</div>' +
+        '</aside><div class="prose article-prose">' + richText(a.body) + '</div></div>' +
+        (relP.length ? '<section class="wrap sec-compact" aria-labelledby="relp-h"><div class="sec-head rule-top"><h2 class="heading-section" id="relp-h">Related projects</h2></div>' +
+          '<ul class="results" style="padding-top:0">' + relP.map(function (p) {
+            return '<li><a href="' + projectUrl(p) + '"><div class="frame ratio-32">' + img(p.image, p.imageMaxW, '(max-width:620px) 100vw, 33vw', '') + '</div><div class="card-text"><h3 class="title-project">' + esc(p.name) + '</h3>' + creditTag(p) + '</div></a></li>';
+          }).join('') + '</ul></section>' : '') +
+        (relA.length ? '<section class="wrap sec-compact" style="padding-top:0" aria-labelledby="rela-h"><div class="sec-head rule-top"><h2 class="heading-section" id="rela-h">More news</h2><a class="tl" href="news.html">All news →</a></div>' +
+          '<ul class="news-list">' + relA.map(function (x) {
+            return '<li><a class="news-row" href="' + articleUrl(x) + '">' + articleFrame(x, 'ratio-32', '(max-width:620px) 100vw, 240px') + '<div><p class="label">' + esc(x.category) + ' · ' + fmtDate(x.date) + '</p><h3 class="title-project">' + esc(x.title) + '</h3>' + sampleTag + '</div></a></li>';
+          }).join('') + '</ul></section>' : '');
+      var copyBtn = $('#copy-link'), copyStatus = $('#copy-status');
+      copyBtn.addEventListener('click', function () {
+        var done = function (ok) { copyStatus.textContent = ok ? 'Link copied' : 'Copy failed: ' + here; };
+        if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(here).then(function () { done(true); }, function () { done(false); });
+        else done(false);
+      });
+      jsonLd({ '@context': 'https://schema.org', '@type': 'NewsArticle', headline: a.title, datePublished: a.date, description: a.summary,
+        author: { '@type': 'Person', name: au.name }, publisher: { '@type': 'Organization', name: 'Willis Hazell Engineers' } });
+    }
+  }
+
+  /* Careers: open vacancies only (published, publication date reached, closing date not passed) */
+  var vacList = $('#vacancies');
+  if (vacList) {
+    vacList.innerHTML = openJobs.map(function (j) {
+      return '<li><a class="vac" href="' + jobUrl(j) + '"><h3 class="title-project">' + esc(j.title) + '</h3>' +
+        '<p class="vac-meta"><span>' + esc(j.location) + '</span><span>' + esc(j.type) + '</span><span>Closes <time datetime="' + j.closing + '">' + fmtDate(j.closing) + '</time></span></p>' +
+        '<p class="body-small">' + esc(j.summary) + '</p><span class="vac-go">View role →</span>' + sampleTag + '</a></li>';
+    }).join('');
+    $('#vac-count').textContent = (openJobs.length ? openJobs.length + (openJobs.length === 1 ? ' open role' : ' open roles') : 'No open roles') + (asof ? ' · previewing ' + fmtDate(asof) : '');
+    $('#vac-empty').hidden = openJobs.length > 0;
+  }
+
+  /* Job details + application form */
+  var jobEl = $('#job');
+  if (jobEl) {
+    var j = E.jobs.filter(function (x) { return x.slug === QS.get('r'); })[0];
+    var js = j ? jobState(j) : null;
+    if (!j || js === 'draft' || js === 'scheduled') notFound(jobEl, 'careers.html', 'Careers', 'Vacancy not found', 'This role is not available. It may not be published yet, or the address may be wrong.', 'View open vacancies');
+    else if (js === 'expired' || js === 'closed') {
+      setMeta(j.title + ' (closed)', 'This vacancy has closed.');
+      jobEl.innerHTML = '<div class="wrap page-head"><p class="crumbs"><a href="careers.html">Careers</a></p><h1 class="heading-page">' + esc(j.title) + '</h1>' +
+        '<p class="intro" style="margin-top:16px">This vacancy has closed' + (j.closing ? ' (closing date ' + fmtDate(j.closing) + ')' : '') + '.</p>' +
+        '<p class="body-small" style="margin:16px 0 8px">Applications are no longer being accepted for this role.</p><a class="tl" href="careers.html">View open vacancies →</a></div>';
+    } else {
+      setMeta(j.title, j.summary);
+      var facts = [['Location', j.location], ['Employment type', j.type], ['Salary', j.salary], ['Closing date', fmtDate(j.closing)]];
+      jobEl.innerHTML =
+        '<div class="wrap page-head"><p class="crumbs"><a href="careers.html">Careers</a></p><h1 class="heading-page">' + esc(j.title) + '</h1>' +
+          '<p class="intro">' + esc(j.summary) + '</p><p style="margin-top:20px">' + sampleTag + '</p></div>' +
+        '<div class="wrap cs-body" style="padding-top:0"><div><h2 class="label" style="margin-bottom:14px">Role details</h2><dl class="md">' +
+          facts.filter(function (f) { return f[1]; }).map(function (f) { return '<div><dt>' + f[0] + '</dt><dd>' + esc(f[1]) + '</dd></div>'; }).join('') +
+          '</dl><p style="margin-top:24px"><a class="btn" href="#apply-h" style="display:inline-flex;align-items:center;text-decoration:none">Apply for this role</a></p></div>' +
+          '<div class="prose"><h2>About the role</h2>' + richText(j.description) +
+          '<h2>Requirements</h2>' + (j.requirements.length ? '<ul class="inputs" style="columns:1">' + j.requirements.map(function (r) { return '<li class="tbc-text">' + esc(r) + '</li>'; }).join('') + '</ul>' : '<p class="tbc">[Requirements to be supplied.]</p>') +
+          '<h2>Benefits</h2>' + (j.benefits ? '<p>' + esc(j.benefits) + '</p>' : '<p class="tbc">[Benefits to be supplied by Willis Hazell.]</p>') +
+          '<h2>How to apply</h2><p>' + esc(j.howToApply) + '</p></div></div>' +
+        '<section class="wrap sec-compact apply" aria-labelledby="apply-h" style="padding-top:0"><div class="rule-top" style="padding-top:28px"><h2 class="heading-section" id="apply-h" tabindex="-1">Apply for this role</h2>' +
+          '<p class="credit-note">Prototype: nothing is sent or stored. In production the form posts to [form service to confirm] and notifies [recipient to confirm]; applications are kept for [retention period to confirm].</p>' +
+          '<div id="apply-wrap"><form id="apply-form" class="form" novalidate>' +
+            '<div class="error-summary" id="err-summary" tabindex="-1" hidden><h3>There is a problem</h3><ul></ul></div>' +
+            field('ap-name', 'Full name', '<input id="ap-name" name="name" type="text" autocomplete="name" required>') +
+            field('ap-email', 'Email', '<input id="ap-email" name="email" type="email" autocomplete="email" required>') +
+            field('ap-phone', 'Phone', '<input id="ap-phone" name="phone" type="tel" autocomplete="tel" required>') +
+            field('ap-role', 'Role', '<input id="ap-role" name="role" type="text" readonly value="' + esc(j.title) + '">') +
+            field('ap-cv', 'CV', '<input id="ap-cv" name="cv" type="file" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" required>', 'PDF or Word document, up to 10MB.') +
+            field('ap-note', 'Cover note (optional)', '<textarea id="ap-note" name="note" rows="6"></textarea>') +
+            '<div class="field" id="f-ap-consent"><label class="check"><input id="ap-consent" name="consent" type="checkbox" required> I agree to Willis Hazell Engineers processing my application under its privacy notice [to follow].</label><p class="field-error" id="ap-consent-err" hidden></p></div>' +
+            '<button class="btn" type="submit">Send application</button>' +
+          '</form></div></div></section>';
+      jsonLd({ '@context': 'https://schema.org', '@type': 'JobPosting', title: j.title, description: j.summary, datePosted: j.publishAt, validThrough: j.closing,
+        employmentType: 'FULL_TIME', hiringOrganization: { '@type': 'Organization', name: 'Willis Hazell Engineers', sameAs: 'https://www.willishazell.com/' } });
+
+      var formEl = $('#apply-form'), summary = $('#err-summary');
+      var MAX = 10 * 1024 * 1024, OK_EXT = /\.(pdf|docx?)$/i;
+      var setErr = function (id, msg) {
+        var input = $('#' + id), e = $('#' + id + '-err');
+        e.textContent = msg || ''; e.hidden = !msg;
+        if (msg) input.setAttribute('aria-invalid', 'true'); else input.removeAttribute('aria-invalid');
+      };
+      formEl.addEventListener('submit', function (ev) {
+        ev.preventDefault();
+        var errs = [];
+        var check = function (id, msg) { setErr(id, msg); if (msg) errs.push([id, msg]); };
+        var v = function (id) { return $('#' + id).value.trim(); };
+        check('ap-name', v('ap-name') ? '' : 'Enter your full name');
+        check('ap-email', !v('ap-email') ? 'Enter your email address' : (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v('ap-email')) ? '' : 'Enter an email address in the correct format, like name@example.com'));
+        check('ap-phone', !v('ap-phone') ? 'Enter your phone number' : (/^[+()\d\s-]{7,}$/.test(v('ap-phone')) ? '' : 'Enter a phone number, like 07700 900 123'));
+        var file = $('#ap-cv').files[0];
+        check('ap-cv', !file ? 'Attach your CV' : !OK_EXT.test(file.name) ? 'Your CV must be a PDF or Word document' : file.size > MAX ? 'Your CV must be 10MB or smaller' : '');
+        check('ap-consent', $('#ap-consent').checked ? '' : 'Confirm that you agree to the privacy notice');
+        if (errs.length) {
+          $('ul', summary).innerHTML = errs.map(function (x) { return '<li><a href="#' + x[0] + '">' + esc(x[1]) + '</a></li>'; }).join('');
+          summary.hidden = false; summary.focus(); return;
+        }
+        summary.hidden = true;
+        $('#apply-wrap').innerHTML = '<div class="success" role="status"><h3 class="title-project" id="ap-done" tabindex="-1">Application received</h3>' +
+          '<p class="body-small">Thank you. In production you would receive a confirmation email at ' + esc(v('ap-email')) + ', and the team would be notified.</p>' +
+          '<p class="caption">Prototype: nothing was sent or stored.</p><a class="tl" href="careers.html">Back to careers →</a></div>';
+        $('#ap-done').focus();
+      });
+      summary.addEventListener('click', function (e) { var l = e.target.closest('a'); if (!l) return; e.preventDefault(); $(l.getAttribute('href')).focus(); });
+    }
+  }
+  function field(id, label, control, hint) {
+    return '<div class="field" id="f-' + id + '"><label for="' + id + '">' + label + '</label>' +
+      (hint ? '<p class="hint" id="' + id + '-hint">' + hint + '</p>' : '') +
+      '<p class="field-error" id="' + id + '-err" hidden></p>' + control.replace('<input ', '<input aria-describedby="' + (hint ? id + '-hint ' : '') + id + '-err" ').replace('<textarea ', '<textarea aria-describedby="' + id + '-err" ') + '</div>';
+  }
+
   /* PERF-002: rendering done; release the space and visibility held while the page was pending */
   if (!heroPending) document.documentElement.classList.remove('js-pending');
 })();
