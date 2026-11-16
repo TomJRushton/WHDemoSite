@@ -189,48 +189,58 @@
   /* ---------- Case study ---------- */
   var cs = $('#case-study');
   if (cs) {
-    var slug = new URLSearchParams(location.search).get('p') || 'racecourse-ground-kop-stand';
+    var param = new URLSearchParams(location.search).get('p');
+    var slug = param || 'racecourse-ground-kop-stand';
     var studies = D.projects.filter(function (p) { return p.caseStudy; });
-    var p = studies.filter(function (x) { return x.slug === slug; })[0] || studies[0];
-    var idx = studies.indexOf(p), next = studies[(idx + 1) % studies.length];
-    document.title = p.name + ' — Willis Hazell Engineers';
-    var meta = [['Client', p.client], ['Location', p.location], ['Sector', p.sector], ['Capacity', p.capacity],
-                ['Architect', null], ['Services', null], ['Willis Hazell’s role', null], ['Completion', null]];
-    var related = D.projects.filter(function (x) { return x.sector === p.sector && x.slug !== p.slug; }).slice(0, 6);
-    /* Low-resolution images (< 1400px wide) are shown inset beside the title, never stretched full-bleed */
-    var inset = p.imageMaxW < 1400;
-    var heroHtml = '<div class="cs-hero' + (inset ? ' inset' : '') + '"><button type="button" data-lightbox aria-label="View image full screen: ' + esc(p.name) + '"><div class="frame"' + (inset ? ' style="--native:' + p.imageMaxW + 'px"' : '') + '>' +
-        img(p.image, p.imageMaxW, inset ? '(max-width:700px) 100vw, ' + p.imageMaxW + 'px' : '100vw', p.caption.split('. Image')[0], true) + '</div></button>' +
-        '<p class="caption' + (inset ? '' : ' wrap') + '" style="margin-top:10px">' + esc(p.caption) + '</p></div>';
-    var titleHtml = '<div class="cs-title"><div><p class="crumbs"><a href="projects.html">Projects</a> / <a href="projects.html?sector=' + slugify(p.sector) + '">' + esc(p.sector) + '</a></p>' +
-        '<h1 class="heading-page">' + esc(p.name) + '</h1><p class="intro" style="margin-top:16px;max-width:820px">' + esc(p.summary) + '</p></div></div>';
-    cs.innerHTML =
-      (inset ? '<div class="wrap"><div class="cs-inset">' + titleHtml + heroHtml + '</div>'
-             : heroHtml + '<div class="wrap">' + titleHtml) +
-        '<div class="credit-banner" role="note"><span class="credit tbc" style="flex:none">Credit to confirm</span><p>Demo content. Before publication this will state either “Willis Hazell Engineers: [role], [stages]” or that the project was delivered by a team member at a previous practice.</p></div>' +
-      '<div class="cs-body"><div><h2 class="label" style="margin-bottom:14px">Project facts</h2><dl class="md">' +
-        meta.filter(function (m) { return m[1]; }).map(function (m) { return '<div><dt>' + m[0] + '</dt><dd>' + esc(m[1]) + '</dd></div>'; }).join('') +
-        '</dl><p class="caption" style="margin-top:12px">Architect, services, role and completion are hidden until supplied.</p></div>' +
-        '<div class="prose"><h2>Key inputs</h2><ul class="inputs">' + p.keyInputs.map(function (k) { return '<li>' + esc(k) + '</li>'; }).join('') + '</ul>' +
-        '<h2>The engineering challenge</h2><p class="tbc">[To be written with the project team: the site, structure and constraints that made this project demanding.]</p>' +
-        '<h2>Our contribution</h2><p class="tbc">[To be written with the project team: what Willis Hazell designed, decided or changed, with figures where possible.]</p>' +
-        '<h2>Gallery</h2><div class="gallery-slots"><div class="slot">Construction photograph</div><div class="slot">Structural detail</div><div class="slot">Completed interior</div></div>' +
-        '<p class="caption" style="margin-top:10px">Gallery images to be supplied with usage rights.</p></div></div>' +
-      (related.length ? '<section class="sec-compact" aria-labelledby="rel-h"><div class="sec-head rule-top"><h2 id="rel-h" class="heading-section">More ' + esc(p.sector.toLowerCase()) + '</h2><a class="tl" href="projects.html?sector=' + slugify(p.sector) + '">All ' + esc(p.sector.toLowerCase()) + ' →</a></div>' +
-        '<ul class="results" style="padding-top:0">' + related.map(card2).join('') + '</ul></section>' : '') +
-      '<a class="next-project" href="' + projectUrl(next) + '"><span class="label">Next case study</span><span class="heading-section">' + esc(next.name) + ' →</span></a></div>';
-    function card2(x) {
-      if (x.caseStudy) return '<li><a href="' + projectUrl(x) + '"><div class="frame ratio-32">' + img(x.image, x.imageMaxW, '(max-width:620px) 100vw, 33vw', '') + '</div><div class="card-text"><h3 class="title-project">' + esc(x.name) + '</h3>' + creditTag(x) + '</div></a></li>';
-      return '<li><div class="typo-card"><h3 class="title-project">' + esc(x.name) + '</h3>' + (x.detail ? '<p class="body-small">' + esc(x.detail.charAt(0).toUpperCase() + x.detail.slice(1)) + '</p>' : '') + creditTag(x) + '</div></li>';
+    var p = studies.filter(function (x) { return x.slug === slug; })[0] || (param ? null : studies[0]);
+    if (!p) {
+      /* A ?p= value that matches no case study: show a not-found state, no lightbox */
+      document.title = 'Project not found — Willis Hazell Engineers';
+      cs.innerHTML = '<div class="wrap page-head"><p class="crumbs"><a href="projects.html">Projects</a></p>' +
+        '<h1 class="heading-page">Project not found</h1>' +
+        '<p class="body-small" style="margin:16px 0 8px">This case study may have moved or is not yet published.</p>' +
+        '<a class="tl" href="projects.html">View all projects →</a></div>';
+    } else {
+      var idx = studies.indexOf(p), next = studies[(idx + 1) % studies.length];
+      document.title = p.name + ' — Willis Hazell Engineers';
+      var meta = [['Client', p.client], ['Location', p.location], ['Sector', p.sector], ['Capacity', p.capacity],
+                  ['Architect', null], ['Services', null], ['Willis Hazell’s role', null], ['Completion', null]];
+      var related = D.projects.filter(function (x) { return x.sector === p.sector && x.slug !== p.slug; }).slice(0, 6);
+      /* Low-resolution images (< 1400px wide) are shown inset beside the title, never stretched full-bleed */
+      var inset = p.imageMaxW < 1400;
+      var heroHtml = '<div class="cs-hero' + (inset ? ' inset' : '') + '"><button type="button" data-lightbox aria-label="View image full screen: ' + esc(p.name) + '"><div class="frame"' + (inset ? ' style="--native:' + p.imageMaxW + 'px"' : '') + '>' +
+          img(p.image, p.imageMaxW, inset ? '(max-width:700px) 100vw, ' + p.imageMaxW + 'px' : '100vw', p.caption.split('. Image')[0], true) + '</div></button>' +
+          '<p class="caption' + (inset ? '' : ' wrap') + '" style="margin-top:10px">' + esc(p.caption) + '</p></div>';
+      var titleHtml = '<div class="cs-title"><div><p class="crumbs"><a href="projects.html">Projects</a> / <a href="projects.html?sector=' + slugify(p.sector) + '">' + esc(p.sector) + '</a></p>' +
+          '<h1 class="heading-page">' + esc(p.name) + '</h1><p class="intro" style="margin-top:16px;max-width:820px">' + esc(p.summary) + '</p></div></div>';
+      cs.innerHTML =
+        (inset ? '<div class="wrap"><div class="cs-inset">' + titleHtml + heroHtml + '</div>'
+               : heroHtml + '<div class="wrap">' + titleHtml) +
+          '<div class="credit-banner" role="note"><span class="credit tbc" style="flex:none">Credit to confirm</span><p>Demo content. Before publication this will state either “Willis Hazell Engineers: [role], [stages]” or that the project was delivered by a team member at a previous practice.</p></div>' +
+        '<div class="cs-body"><div><h2 class="label" style="margin-bottom:14px">Project facts</h2><dl class="md">' +
+          meta.filter(function (m) { return m[1]; }).map(function (m) { return '<div><dt>' + m[0] + '</dt><dd>' + esc(m[1]) + '</dd></div>'; }).join('') +
+          '</dl><p class="caption" style="margin-top:12px">Architect, services, role and completion are hidden until supplied.</p></div>' +
+          '<div class="prose"><h2>Key inputs</h2><ul class="inputs">' + p.keyInputs.map(function (k) { return '<li>' + esc(k) + '</li>'; }).join('') + '</ul>' +
+          '<h2>The engineering challenge</h2><p class="tbc">[To be written with the project team: the site, structure and constraints that made this project demanding.]</p>' +
+          '<h2>Our contribution</h2><p class="tbc">[To be written with the project team: what Willis Hazell designed, decided or changed, with figures where possible.]</p>' +
+          '<h2>Gallery</h2><div class="gallery-slots"><div class="slot">Construction photograph</div><div class="slot">Structural detail</div><div class="slot">Completed interior</div></div>' +
+          '<p class="caption" style="margin-top:10px">Gallery images to be supplied with usage rights.</p></div></div>' +
+        (related.length ? '<section class="sec-compact" aria-labelledby="rel-h"><div class="sec-head rule-top"><h2 id="rel-h" class="heading-section">More ' + esc(p.sector.toLowerCase()) + '</h2><a class="tl" href="projects.html?sector=' + slugify(p.sector) + '">All ' + esc(p.sector.toLowerCase()) + ' →</a></div>' +
+          '<ul class="results" style="padding-top:0">' + related.map(card2).join('') + '</ul></section>' : '') +
+        '<a class="next-project" href="' + projectUrl(next) + '"><span class="label">Next case study</span><span class="heading-section">' + esc(next.name) + ' →</span></a></div>';
+      function card2(x) {
+        if (x.caseStudy) return '<li><a href="' + projectUrl(x) + '"><div class="frame ratio-32">' + img(x.image, x.imageMaxW, '(max-width:620px) 100vw, 33vw', '') + '</div><div class="card-text"><h3 class="title-project">' + esc(x.name) + '</h3>' + creditTag(x) + '</div></a></li>';
+        return '<li><div class="typo-card"><h3 class="title-project">' + esc(x.name) + '</h3>' + (x.detail ? '<p class="body-small">' + esc(x.detail.charAt(0).toUpperCase() + x.detail.slice(1)) + '</p>' : '') + creditTag(x) + '</div></li>';
+      }
+      /* Lightbox */
+      var lb = $('#lightbox'), lbImg = $('img', lb), lbCap = $('figcaption', lb), lastFocus;
+      var openLb = function () { lastFocus = document.activeElement; lbImg.src = 'assets/img/' + p.image + '-' + p.imageMaxW + '.webp'; lbImg.alt = p.name; lbCap.textContent = p.caption; lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false'); $('.close', lb).focus(); document.body.style.overflow = 'hidden'; };
+      var closeLb = function () { lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; if (lastFocus) lastFocus.focus(); };
+      $('[data-lightbox]', cs).addEventListener('click', openLb);
+      $('.close', lb).addEventListener('click', closeLb);
+      lb.addEventListener('click', function (e) { if (e.target === lb) closeLb(); });
+      document.addEventListener('keydown', function (e) { if (!lb.classList.contains('open')) return; if (e.key === 'Escape') closeLb(); if (e.key === 'Tab') { e.preventDefault(); $('.close', lb).focus(); } });
     }
-    /* Lightbox */
-    var lb = $('#lightbox'), lbImg = $('img', lb), lbCap = $('figcaption', lb), lastFocus;
-    var openLb = function () { lastFocus = document.activeElement; lbImg.src = 'assets/img/' + p.image + '-' + p.imageMaxW + '.webp'; lbImg.alt = p.name; lbCap.textContent = p.caption; lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false'); $('.close', lb).focus(); document.body.style.overflow = 'hidden'; };
-    var closeLb = function () { lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; if (lastFocus) lastFocus.focus(); };
-    $('[data-lightbox]', cs).addEventListener('click', openLb);
-    $('.close', lb).addEventListener('click', closeLb);
-    lb.addEventListener('click', function (e) { if (e.target === lb) closeLb(); });
-    document.addEventListener('keydown', function (e) { if (!lb.classList.contains('open')) return; if (e.key === 'Escape') closeLb(); if (e.key === 'Tab') { e.preventDefault(); $('.close', lb).focus(); } });
   }
 
   /* Featured cards on home, from data */
