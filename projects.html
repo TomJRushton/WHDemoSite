@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Projects — Willis Hazell Engineers</title>
+<meta name="description" content="Stadia, arenas, training grounds and leisure projects by Willis Hazell Engineers and our team.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&family=Schibsted+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="logo" href="index.html" aria-label="Willis Hazell Engineers, home">
+      <img class="on-light-logo" src="assets/img/logo-on-light.svg" alt="" width="180" height="41">
+      <img class="on-dark-logo" src="assets/img/logo.svg" alt="" width="180" height="41">
+    </a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="projects.html" aria-current="page">Projects</a>
+      <a href="index.html#services">Services</a>
+      <a href="about.html">Who We Are</a>
+      <a href="#" aria-disabled="true">News</a>
+      <a href="#" aria-disabled="true">Careers</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap" id="archive">
+    <div class="page-head">
+      <h1 class="heading-page">Projects</h1>
+      <p class="intro">Stadia, arenas, training grounds and leisure venues, from single stands to whole-stadium redevelopments. Case studies first, then the wider experience of our team.</p>
+    </div>
+
+    <button class="btn secondary filter-toggle" id="filter-toggle" type="button" aria-expanded="false" aria-controls="filters">Filter<span id="filter-count"></span></button>
+
+    <div class="filters" id="filters">
+      <div class="sheet-head"><h2 class="title-project">Filter projects</h2><button class="btn secondary" type="button" id="sheet-close">Close</button></div>
+      <form id="filters-form" role="search" aria-label="Filter projects">
+        <fieldset class="sector"><legend class="label">Sector</legend><div class="opts" id="opt-sector"></div></fieldset>
+        <fieldset><legend class="label">Show</legend><div class="opts" id="opt-type"></div></fieldset>
+        <div class="search"><label class="label" for="q">Search</label><input id="q" name="q" type="search" placeholder="Venue, client or city" autocomplete="off"></div>
+      </form>
+      <div class="sheet-foot"><button class="btn" type="button" id="apply">Show projects</button></div>
+    </div>
+
+    <div class="status">
+      <p class="count" id="count" aria-live="polite" tabindex="-1"></p>
+      <div id="chips" style="display:flex;flex-wrap:wrap;gap:8px"></div>
+      <button class="clear" id="clear" type="button" hidden>Clear all</button>
+    </div>
+
+    <ul class="results" id="results"></ul>
+    <div class="empty" id="empty" hidden>
+      <h2 class="title-project">No projects match these filters</h2>
+      <p class="body-small">Try removing a filter or searching for a venue name.</p>
+      <p><button class="btn secondary" id="empty-clear" type="button">Clear all filters</button></p>
+      <p class="body-small">Can’t find a comparable project? <a class="inline-link" href="index.html#contact">Talk to us</a>.</p>
+    </div>
+    <div class="more" id="more" hidden><button class="btn secondary" id="more-btn" type="button">Show more</button></div>
+    <p class="caption" style="padding-bottom:64px;max-width:680px">The current website does not say which projects were delivered by Willis Hazell and which by team members at previous practices. Every project is marked “Credit to confirm” until the directors confirm it. Service filters will be added once each project’s services are recorded.</p>
+  </div>
+</main>
+
+<p class="demo-note">Demo prototype. Content from willishazell.com; project credits, figures and imagery to be confirmed.</p>
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© Willis Hazell Engineers · [Registered company details]</span>
+    <span><a href="https://www.linkedin.com/company/willis-hazell-engineers/">LinkedIn</a> · Privacy · Cookies · Accessibility</span>
+  </div>
+</footer>
+<script src="js/data.js"></script>
+<script src="js/site.js"></script>
+</body>
+</html>
