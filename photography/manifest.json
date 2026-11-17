@@ -34,7 +34,7 @@
      "phase": "completed (Lansdown Stand)",
      "role": "hero",
      "confidence": "high",
-     "alt": "Ashton Gate Development: hero (completed (Lansdown Stand))"
+     "alt": "The pitch and red-seated stands at Ashton Gate, Bristol, under a white roof truss"
     },
     {
      "file": "ashton-gate-interior-01",
@@ -55,7 +55,7 @@
      "phase": "completed (Lansdown/West Stand)",
      "role": "interior",
      "confidence": "high",
-     "alt": "Ashton Gate Development: interior (completed (Lansdown/West Stand))"
+     "alt": "The two-tier Lansdown Stand at Ashton Gate, Bristol, seen across the pitch"
     },
     {
      "file": "ashton-gate-exterior-01",
@@ -76,7 +76,7 @@
      "phase": "completed",
      "role": "exterior",
      "confidence": "high",
-     "alt": "Ashton Gate Development: exterior (completed)"
+     "alt": "Ashton Gate, Bristol, from the street, with the stand's angled roof truss above"
     },
     {
      "file": "ashton-gate-detail-01",
@@ -97,7 +97,7 @@
      "phase": "completed (South Stand)",
      "role": "detail",
      "confidence": "high",
-     "alt": "Ashton Gate Development: detail (completed (South Stand))"
+     "alt": "The South Stand's white cladding and turnstile entrance at Ashton Gate, Bristol"
     },
     {
      "file": "ashton-gate-exterior-02",
@@ -118,7 +118,7 @@
      "phase": "completed",
      "role": "exterior-alt",
      "confidence": "high",
-     "alt": "Ashton Gate Development: exterior alt (completed)"
+     "alt": "The curved stadium frontage and Ashton Gate sign on the approach road, Bristol"
     }
    ],
    "rejected": [],
@@ -155,7 +155,7 @@
      "phase": "construction",
      "role": "construction",
      "confidence": "high",
-     "alt": "Kop stand redevelopment, Racecourse Ground: construction (construction)"
+     "alt": "The new Kop stand at the Racecourse Ground, Wrexham, under construction: concrete cores and steel frame"
     },
     {
      "file": "racecourse-ground-kop-stand-construction-02",
@@ -176,7 +176,7 @@
      "phase": "construction",
      "role": "construction-alt",
      "confidence": "high",
-     "alt": "Kop stand redevelopment, Racecourse Ground: construction alt (construction)"
+     "alt": "Supporters at the Racecourse Ground, Wrexham, with the Kop stand under construction behind the pitch"
     }
    ],
    "rejected": [],
@@ -213,7 +213,7 @@
      "phase": "completed",
      "role": "exterior",
      "confidence": "high",
-     "alt": "Arena Abertawe: exterior (completed)"
+     "alt": "Swansea Arena's gold-ribbed façade, lit with an event projection, and crowds at the entrance"
     },
     {
      "file": "arena-abertawe-construction-01",
@@ -234,7 +234,7 @@
      "phase": "construction",
      "role": "construction",
      "confidence": "high",
-     "alt": "Arena Abertawe: construction (construction)"
+     "alt": "Swansea Arena under construction, seen from the street behind safety barriers"
     }
    ],
    "rejected": [],
@@ -286,7 +286,7 @@
      "phase": "completed",
      "role": "exterior",
      "confidence": "high",
-     "alt": "Lee Valley Ice Centre: exterior (completed)"
+     "alt": "Lee Valley Ice Centre, London: a curved copper-clad roof above a stone-faced base"
     },
     {
      "file": "lee-valley-ice-centre-exterior-02",
@@ -307,7 +307,7 @@
      "phase": "completed",
      "role": "exterior-alt",
      "confidence": "high",
-     "alt": "Lee Valley Ice Centre: exterior alt (completed)"
+     "alt": "Lee Valley Ice Centre's curved copper roof seen across planted landscaping, London"
     }
    ],
    "rejected": [],
@@ -359,7 +359,7 @@
      "phase": "construction",
      "role": "construction",
      "confidence": "high",
-     "alt": "Aarhus Stadium: construction (construction)"
+     "alt": "Aarhus Stadium, Denmark, under construction: new seating tiers around a bare pitch"
     }
    ],
    "rejected": [],
@@ -396,7 +396,7 @@
      "phase": "completed",
      "role": "hero",
      "confidence": "high",
-     "alt": "AFC Wimbledon Stadium: hero (completed)"
+     "alt": "Supporters filling the Cappagh Stand at Plough Lane, AFC Wimbledon's stadium in south-west London"
     }
    ],
    "rejected": [],
@@ -448,7 +448,7 @@
      "phase": "completed",
      "role": "hero",
      "confidence": "high",
-     "alt": "Amex Stadium: hero (completed)"
+     "alt": "The Amex Stadium's white arched roof seen from a footpath and footbridge at Falmer, near Brighton"
     },
     {
      "file": "amex-stadium-exterior-01",
@@ -469,7 +469,7 @@
      "phase": "completed",
      "role": "exterior",
      "confidence": "high",
-     "alt": "Amex Stadium: exterior (completed)"
+     "alt": "The Amex Stadium, near Brighton: a long, curved stand under white roof arches, seen across an empty forecourt"
     }
    ],
    "rejected": [],
@@ -506,7 +506,7 @@
      "phase": "completed (Anfield Road Stand)",
      "role": "hero",
      "confidence": "high",
-     "alt": "Anfield Stadium: hero (completed (Anfield Road Stand))"
+     "alt": "Rows of red seats in the expanded Anfield Road Stand at Anfield, Liverpool, beneath its new roof"
     },
     {
      "file": "anfield-stadium-exterior-01",
@@ -527,7 +527,7 @@
      "phase": "completed (Main Stand)",
      "role": "exterior",
      "confidence": "high",
-     "alt": "Anfield Stadium: exterior (completed (Main Stand))"
+     "alt": "Anfield's Main Stand, Liverpool: a tall red-brick façade with the club crest, beneath a steeply raked roof"
     }
    ],
    "rejected": [],
@@ -579,7 +579,7 @@
      "phase": "completed",
      "role": "hero",
      "confidence": "high",
-     "alt": "Brentford Community Stadium: hero (completed)"
+     "alt": "Brentford Community Stadium, west London: a grey-clad stand rising beside railway tracks, with a covered walkway and stairs"
     },
     {
      "file": "brentford-community-stadium-exterior-01",
@@ -600,7 +600,7 @@
      "phase": "completed",
      "role": "exterior",
      "confidence": "high",
-     "alt": "Brentford Community Stadium: exterior (completed)"
+     "alt": "The grey-panelled main entrance of Brentford Community Stadium, framed in red, with young trees in planters"
     },
     {
      "file": "brentford-community-stadium-detail-01",
@@ -621,7 +621,7 @@
      "phase": "completed",
      "role": "detail",
      "confidence": "high",
-     "alt": "Brentford Community Stadium: detail (completed)"
+     "alt": "The box office entrance at Brentford Community Stadium: red columns beneath a glazed upper floor lined with metal louvres"
     }
    ],
    "rejected": [],
@@ -688,7 +688,7 @@
      "phase": "existing venue",
      "role": "hero",
      "confidence": "medium",
-     "alt": "City Ground, Nottingham: hero (existing venue)"
+     "alt": "The City Ground, Nottingham, seen across the River Trent: a long glazed stand beside a red floodlight frame"
     },
     {
      "file": "city-ground-nottingham-aerial-01",
@@ -709,7 +709,7 @@
      "phase": "existing venue",
      "role": "aerial",
      "confidence": "medium",
-     "alt": "City Ground, Nottingham: aerial (existing venue)"
+     "alt": "Aerial view of the City Ground beside the River Trent, Nottingham, with a cleared site next to one stand"
     }
    ],
    "rejected": [],
@@ -746,7 +746,7 @@
      "phase": "completed",
      "role": "hero",
      "confidence": "high",
-     "alt": "City of Salford Community Stadium: hero (completed)"
+     "alt": "The City of Salford Community Stadium: a dark-clad stand on angled white supports, with a mast above the roof"
     }
    ],
    "rejected": [
@@ -788,7 +788,7 @@
      "phase": "completed (new pavilion)",
      "role": "hero",
      "confidence": "high",
-     "alt": "County Ground, Gloucestershire CCC: hero (completed (new pavilion))"
+     "alt": "The glass-fronted new pavilion at the County Ground, Bristol, above a match-day crowd under umbrellas"
     }
    ],
    "rejected": [
@@ -830,7 +830,7 @@
      "phase": "completed",
      "role": "hero",
      "confidence": "high",
-     "alt": "Craven Cottage: hero (completed)"
+     "alt": "Craven Cottage's completed Riverside Stand, London, seen across the River Thames through trees"
     },
     {
      "file": "craven-cottage-construction-01",
@@ -851,7 +851,7 @@
      "phase": "construction",
      "role": "construction",
      "confidence": "high",
-     "alt": "Craven Cottage: construction (construction)"
+     "alt": "The Riverside Stand at Craven Cottage under construction beside the Thames, with tower cranes and work barges"
     },
     {
      "file": "craven-cottage-exterior-01",
@@ -872,7 +872,7 @@
      "phase": "construction (near completion)",
      "role": "exterior",
      "confidence": "high",
-     "alt": "Craven Cottage: exterior (construction (near completion))"
+     "alt": "The new Riverside Stand at Craven Cottage nearing completion, reflected in the Thames as a rowing boat passes"
     }
    ],
    "rejected": [],
@@ -929,7 +929,7 @@
      "phase": "completed (Barwell Stand)",
      "role": "hero",
      "confidence": "high",
-     "alt": "Franklin's Gardens: hero (completed (Barwell Stand))"
+     "alt": "The Barwell Stand at Franklin's Gardens, Northampton, seen across the rugby pitch"
     }
    ],
    "rejected": [],
@@ -1031,7 +1031,7 @@
      "phase": "existing structure before roof replacement",
      "role": "hero",
      "confidence": "medium",
-     "alt": "Montreal Olympic Stadium: hero (existing structure before roof replacement)"
+     "alt": "Montreal's Olympic Stadium from above the city: the leaning tower above the original white roof, before it was replaced"
     }
    ],
    "rejected": [],
@@ -1068,7 +1068,7 @@
      "phase": "completed",
      "role": "hero",
      "confidence": "high",
-     "alt": "New Tottenham Hotspur Stadium: hero (completed)"
+     "alt": "The Tottenham Hotspur Stadium from High Road, London: a curved metal-clad bowl behind brick and timber-clad buildings"
     },
     {
      "file": "new-tottenham-hotspur-stadium-exterior-01",
@@ -1089,7 +1089,7 @@
      "phase": "completed",
      "role": "exterior",
      "confidence": "high",
-     "alt": "New Tottenham Hotspur Stadium: exterior (completed)"
+     "alt": "Aerial view of the Tottenham Hotspur Stadium, north London: an oval bowl with a glazed inner roof ring"
     }
    ],
    "rejected": [],
@@ -1126,7 +1126,7 @@
      "phase": "existing venue (general upgrades)",
      "role": "exterior",
      "confidence": "medium",
-     "alt": "Old Trafford Stadium: exterior (existing venue (general upgrades))"
+     "alt": "The red and grey Sir Alex Ferguson Stand at Old Trafford, Manchester, seen along the canal towpath"
     },
     {
      "file": "old-trafford-stadium-interior-01",
@@ -1147,7 +1147,7 @@
      "phase": "existing venue (general upgrades)",
      "role": "interior",
      "confidence": "medium",
-     "alt": "Old Trafford Stadium: interior (existing venue (general upgrades))"
+     "alt": "The East Stand at Old Trafford, Manchester: tiers of empty red seats around the pitch"
     }
    ],
    "rejected": [],
@@ -1199,7 +1199,7 @@
      "phase": "completed (East Stand)",
      "role": "hero",
      "confidence": "high",
-     "alt": "Sixfields Stadium, Northampton: hero (completed (East Stand))"
+     "alt": "The East Stand at Sixfields Stadium, Northampton, seen across the pitch in low winter sun"
     },
     {
      "file": "sixfields-stadium-northampton-interior-01",
@@ -1220,7 +1220,7 @@
      "phase": "completed (East Stand)",
      "role": "interior",
      "confidence": "high",
-     "alt": "Sixfields Stadium, Northampton: interior (completed (East Stand))"
+     "alt": "Supporters in the East Stand at Sixfields Stadium, Northampton, beneath its steel-framed roof"
     }
    ],
    "rejected": [],
@@ -1272,7 +1272,7 @@
      "phase": "completed",
      "role": "hero",
      "confidence": "high",
-     "alt": "Stadium MK: hero (completed)"
+     "alt": "The pitch and lit roof canopies inside Stadium MK, Milton Keynes, on a match day"
     },
     {
      "file": "stadium-mk-exterior-01",
@@ -1293,7 +1293,7 @@
      "phase": "completed",
      "role": "exterior",
      "confidence": "high",
-     "alt": "Stadium MK: exterior (completed)"
+     "alt": "Stadium MK, Milton Keynes: the stand's glazed and clad exterior above a car park"
     }
    ],
    "rejected": [
@@ -1350,7 +1350,7 @@
      "phase": "completed (One Oval Square / JM Finn Stand)",
      "role": "hero",
      "confidence": "high",
-     "alt": "The Oval Cricket Ground: hero (completed (One Oval Square / JM Finn Stand))"
+     "alt": "The JM Finn Stand at The Oval, London, with its white canopy roof, seen across the cricket outfield"
     }
    ],
    "rejected": [],
@@ -1387,7 +1387,7 @@
      "phase": "construction (East Stand works)",
      "role": "construction",
      "confidence": "high",
-     "alt": "Twickenham: construction (construction (East Stand works))"
+     "alt": "Construction work at Twickenham Stadium, London: a cylindrical concrete stair core beside the East Stand, behind site fencing"
     }
    ],
    "rejected": [],
@@ -1454,7 +1454,7 @@
      "phase": "completed (West Stand)",
      "role": "hero",
      "confidence": "high",
-     "alt": "Welford Road Stadium: hero (completed (West Stand))"
+     "alt": "The West Stand at Welford Road, Leicester, seen across the rugby pitch from under another stand's roof"
     }
    ],
    "rejected": [],
@@ -1491,7 +1491,7 @@
      "phase": "completed",
      "role": "structural-detail",
      "confidence": "high",
-     "alt": "Wembley Stadium: structural detail (completed)"
+     "alt": "Looking up at the Wembley Stadium arch at night, its steel lattice lit in teal"
     },
     {
      "file": "wembley-stadium-structural-02",
@@ -1512,7 +1512,7 @@
      "phase": "completed",
      "role": "structural-detail-alt",
      "confidence": "high",
-     "alt": "Wembley Stadium: structural detail alt (completed)"
+     "alt": "The Wembley Stadium arch lit in teal at night, rising past the stadium's glazed façade"
     }
    ],
    "rejected": [],
@@ -1564,7 +1564,7 @@
      "phase": "completed (temporary venue, since dismantled)",
      "role": "hero",
      "confidence": "high",
-     "alt": "London 2012 Basketball Arena: hero (completed (temporary venue, since dismantled))"
+     "alt": "The London 2012 Basketball Arena: a temporary box wrapped in white, ridged fabric panels, in the Olympic Park"
     },
     {
      "file": "london-2012-basketball-arena-detail-01",
@@ -1585,7 +1585,7 @@
      "phase": "completed (temporary venue)",
      "role": "detail",
      "confidence": "high",
-     "alt": "London 2012 Basketball Arena: detail (completed (temporary venue))"
+     "alt": "Close-up of the London 2012 Basketball Arena's stretched white fabric panels against the sky, in black and white"
     }
    ],
    "rejected": [],
@@ -1622,7 +1622,7 @@
      "phase": "completed",
      "role": "hero",
      "confidence": "high",
-     "alt": "London 2012 Handball Arena / Copper Box: hero (completed)"
+     "alt": "The Copper Box Arena, Queen Elizabeth Olympic Park, London: a dark copper-clad box above a grassy bank and steps"
     },
     {
      "file": "london-2012-handball-arena-copper-box-exterior-01",
@@ -1643,7 +1643,7 @@
      "phase": "completed",
      "role": "exterior",
      "confidence": "high",
-     "alt": "London 2012 Handball Arena / Copper Box: exterior (completed)"
+     "alt": "The Copper Box Arena's copper cladding overhanging a glazed ground floor, London"
     }
    ],
    "rejected": [],
@@ -1680,7 +1680,7 @@
      "phase": "completed",
      "role": "hero",
      "confidence": "high",
-     "alt": "MK Arena: hero (completed)"
+     "alt": "MK Arena, Milton Keynes: a long, low arena with curved metal cladding, seen across an empty car park"
     }
    ],
    "rejected": [],
@@ -1882,7 +1882,7 @@
      "phase": "completed (Surrey Sports Park)",
      "role": "hero",
      "confidence": "high",
-     "alt": "University of Surrey Sports Centre: hero (completed (Surrey Sports Park))"
+     "alt": "Surrey Sports Park, Guildford: timber and dark cladding above a brick base, behind rugby posts"
     },
     {
      "file": "university-of-surrey-sports-centre-exterior-01",
@@ -1903,7 +1903,7 @@
      "phase": "completed (Surrey Sports Park)",
      "role": "exterior",
      "confidence": "high",
-     "alt": "University of Surrey Sports Centre: exterior (completed (Surrey Sports Park))"
+     "alt": "Surrey Sports Park, Guildford: a glazed upper floor and external stair above a brick base, beside a rugby pitch"
     }
    ],
    "rejected": [],
@@ -2020,7 +2020,7 @@
      "phase": "completed",
      "role": "hero",
      "confidence": "high",
-     "alt": "National Indoor Arena, Dublin (Phase 1 and Phase 2): hero (completed)"
+     "alt": "The National Indoor Arena, Dublin: a large curved-roof hall clad in white and dark grey panels beside a road"
     },
     {
      "file": "national-indoor-arena-dublin-phase-1-and-phase-2-exterior-01",
@@ -2041,7 +2041,7 @@
      "phase": "completed",
      "role": "exterior",
      "confidence": "high",
-     "alt": "National Indoor Arena, Dublin (Phase 1 and Phase 2): exterior (completed)"
+     "alt": "The white-clad entrance to the National Indoor Arena at the Sport Ireland Campus, Dublin"
     }
    ],
    "rejected": [],
@@ -2128,7 +2128,7 @@
      "phase": "completed (redevelopment)",
      "role": "hero",
      "confidence": "medium",
-     "alt": "London Olympia: hero (completed (redevelopment))"
+     "alt": "London Olympia's redevelopment: curved glass towers seen through a glazed roof canopy"
     },
     {
      "file": "london-olympia-interior-01",
@@ -2149,7 +2149,7 @@
      "phase": "completed (redevelopment)",
      "role": "interior",
      "confidence": "medium",
-     "alt": "London Olympia: interior (completed (redevelopment))"
+     "alt": "A new covered walkway at London Olympia, with a curved LED screen ceiling and shops on either side"
     }
    ],
    "rejected": [],
