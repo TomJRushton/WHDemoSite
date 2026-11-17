@@ -577,6 +577,12 @@
         (rel.length ? '<section class="sec-compact wrap" style="padding-top:0" aria-labelledby="svc-rel-h"><h2 class="label" id="svc-rel-h" style="margin-bottom:16px">Related services</h2><ul class="rel-svcs">' +
           rel.map(function (r) { return '<li><a href="' + svcUrl(r) + '">' + esc(r.name) + '<span>' + esc(r.summary) + '</span></a></li>'; }).join('') + '</ul></section>' : '') +
         contactBand('Talk to Martin or Rob about ' + esc(sv.name.toLowerCase().replace('&', 'and')) + '.');
+      var extra = $('#svc-extra');
+      /* Related insight: a linked News article (sample articles keep their Sample tag) */
+      var insight = sv.article && articles.filter(function (x) { return x.slug === sv.article; })[0];
+      if (insight) extra.insertAdjacentHTML('beforeend', '<section class="sec-compact wrap" style="padding-top:0" aria-labelledby="svc-ins-h"><div class="sec-head rule-top"><h2 class="heading-section" id="svc-ins-h">Related insight</h2><a class="tl" href="' + catUrl(insight.category) + '">All ' + esc(insight.category.toLowerCase()) + ' →</a></div>' +
+        '<ul class="news-list"><li><a class="news-row" href="' + articleUrl(insight) + '">' + articleFrame(insight, 'ratio-32', '(max-width:620px) 100vw, 240px') +
+        '<div><p class="label">' + esc(insight.category) + ' · <time datetime="' + insight.date + '">' + fmtDate(insight.date) + '</time></p><h3 class="title-project">' + esc(insight.title) + '</h3><p class="body-small">' + esc(insight.summary) + '</p>' + sampleTag + '</div></a></li></ul></section>');
     }
   }
 
