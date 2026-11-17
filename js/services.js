@@ -14,5 +14,61 @@ window.WH_SERVICES = {
     { title: "We produce designs to be built", text: "Buildability is central from the start: simple, efficient construction sequences, validated with contractors." },
     { title: "We design for low carbon", text: "We track embodied carbon on all our designs to deliver the lowest feasible carbon outcome." }
   ],
-  services: []
+  services: [
+    {
+      "slug": "structural-engineering",
+      "name": "Structural Engineering",
+      "order": 1,
+      "status": "published",
+      "confirmed": true,
+      "summary": "Engineering design of new and existing structures across the sports, entertainment and leisure sector.",
+      "intro": [
+        [
+          "p",
+          "Willis Hazell is a specialist structural engineering consultancy for the sports, entertainment and leisure sector, set up in 2023 by two Chartered Structural Engineers."
+        ],
+        [
+          "ph",
+          "[Service introduction to be written with Willis Hazell: the structures the practice designs, the stages it works across, and who usually appoints it.]"
+        ]
+      ],
+      "capabilities": [
+        {
+          "title": "Engineering design of new and existing structures"
+        },
+        {
+          "title": "Lightweight and temporary structures design"
+        },
+        {
+          "title": "Construction methodology and buildability advice"
+        },
+        {
+          "title": "Client Technical Advisor role"
+        },
+        {
+          "title": "Embodied carbon tracking"
+        },
+        {
+          "title": "Green Guide annual inspections and structural appraisals",
+          "service": "inspections-appraisals"
+        }
+      ],
+      "image": {
+        "name": "structural",
+        "maxW": 1200,
+        "w": 1200,
+        "h": 898,
+        "alt": "Long-span roof steelwork being lifted into place on a stadium",
+        "credit": "Image from willishazell.com; credit to confirm"
+      },
+      "related": [
+        "civil-engineering",
+        "inspections-appraisals"
+      ],
+      "seo": {
+        "title": "Structural Engineering for Sports, Entertainment and Leisure Venues",
+        "description": "Structural engineering for stadia, arenas, training grounds and leisure venues: new and existing structures, lightweight and temporary structures, buildability and embodied carbon."
+      }
+    }
+  ]
 };
