@@ -440,6 +440,10 @@ code{font-size:.92em;background:var(--navy-tint);padding:1px 5px}
 .svc-native{width:min(var(--native),100%)}
 .svc-native img{width:100%;height:auto}
 .svc-contact-h{font-size:clamp(34px,4.2vw,60px)}
+/* Homepage Services links (SERV-007) */
+.svc-home-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:12px 24px;margin-bottom:28px}
+#services .row h3 a{text-decoration:none}
+#services .row h3 a:hover{color:var(--navy);text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
 /* Service template */
 .s-open{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:32px clamp(32px,6vw,112px);align-items:end;padding-block:clamp(48px,6vw,96px) clamp(40px,5vw,72px)}
 .s-open .intro{margin-top:24px}
