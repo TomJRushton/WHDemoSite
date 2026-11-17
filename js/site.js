@@ -546,6 +546,14 @@
       '</div></div></section>';
   };
 
+  /* SERV-009a: project cards reuse the archive card; evidence lists the key inputs that link the project to the service */
+  var svcCard = function (p, evidence) {
+    return '<li><a href="' + projectUrl(p) + '"><div class="frame ratio-32">' + img(p.image, p.imageMaxW, '(max-width:620px) 100vw, (max-width:900px) 50vw, 33vw', '') + '</div>' +
+      '<div class="card-text"><h3 class="title-project">' + esc(p.name) + '</h3><p class="label">' + esc(p.sector) + ' · ' + esc(p.location) + '</p>' +
+      (evidence ? '<p class="svc-evid">Listed inputs: ' + esc(evidence.join(', ')) + '</p>' : '') + creditTag(p) + '</div></a></li>';
+  };
+  var projBySlug = function (slug) { return D.projects.filter(function (p) { return p.slug === slug; })[0]; };
+
   /* Services overview: services.html (layout C, directory) and services-alt.html (layout A, editorial index).
      Both render from the same records; sections are filled in by renderOverviewExtras (sectors, projects). */
   var ov = $('#svc-overview');
@@ -588,6 +596,10 @@
         }).join('') : '<td colspan="' + services.length + '" data-h="All services"><span class="svc-nomark">Relationships to be confirmed with Willis Hazell</span></td>';
         return '<tr><th scope="row"><a href="projects.html?sector=' + slugify(x) + '">' + esc(x) + '</a></th>' + cells + '</tr>';
       }).join('') + '</tbody></table></section>');
+
+    var sel = (SVC.selected || []).map(projBySlug).filter(Boolean);
+    if (sel.length) ovExtra.insertAdjacentHTML('beforeend', '<section class="sec-compact wrap" style="padding-top:0" aria-labelledby="svc-sel-h"><div class="sec-head rule-top"><h2 class="heading-section" id="svc-sel-h">Selected case studies</h2><a class="tl" href="projects.html">All projects →</a></div>' +
+      '<ul class="results svc-three" style="padding-top:0">' + sel.map(function (p) { return svcCard(p); }).join('') + '</ul></section>');
 
     /* Layout C: the photograph beside the directory follows the hovered or focused service (as the homepage Sectors band) */
     var photo = $('.c-photo img'), photoCap = $('#c-photo-cap');
@@ -638,6 +650,10 @@
           rel.map(function (r) { return '<li><a href="' + svcUrl(r) + '">' + esc(r.name) + '<span>' + esc(r.summary) + '</span></a></li>'; }).join('') + '</ul></section>' : '') +
         contactBand('Talk to Martin or Rob about ' + esc(sv.name.toLowerCase().replace('&', 'and')) + '.', sv.name.replace('&', 'and') + ' enquiry');
       var extra = $('#svc-extra');
+      var rp = (sv.projects || []).map(function (x) { var p = projBySlug(x.slug); return p && { p: p, ev: x.evidence }; }).filter(Boolean);
+      if (rp.length) extra.insertAdjacentHTML('beforeend', '<section class="sec-compact wrap" style="padding-top:0" aria-labelledby="svc-rp-h"><div class="sec-head rule-top"><h2 class="heading-section" id="svc-rp-h">Related projects</h2><a class="tl" href="projects.html">All projects →</a></div>' +
+        '<p class="credit-note" style="margin:0 0 8px">Case studies where the current website lists inputs from this service. Willis Hazell’s role on each project is being confirmed.</p>' +
+        '<ul class="results svc-three">' + rp.map(function (x) { return svcCard(x.p, x.ev); }).join('') + '</ul></section>');
       /* Related insight: a linked News article (sample articles keep their Sample tag) */
       var insight = sv.article && articles.filter(function (x) { return x.slug === sv.article; })[0];
       if (insight) extra.insertAdjacentHTML('beforeend', '<section class="sec-compact wrap" style="padding-top:0" aria-labelledby="svc-ins-h"><div class="sec-head rule-top"><h2 class="heading-section" id="svc-ins-h">Related insight</h2><a class="tl" href="' + catUrl(insight.category) + '">All ' + esc(insight.category.toLowerCase()) + ' →</a></div>' +

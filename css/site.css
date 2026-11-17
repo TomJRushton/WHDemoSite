@@ -499,6 +499,11 @@ code{font-size:.92em;background:var(--navy-tint);padding:1px 5px}
   .a-media{order:-1}
 }
 .js-pending #svc-overview{min-height:100svh;visibility:hidden}
+/* Related projects (SERV-009a) */
+.results.svc-three{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:900px){.results.svc-three{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:620px){.results.svc-three{grid-template-columns:minmax(0,1fr)}}
+.svc-evid{font-size:13px;line-height:1.5;color:var(--stone-600);margin:0}
 /* Sector table (SERV-008) */
 .svc-matrix{width:100%;border-collapse:collapse}
 .svc-matrix caption{text-align:left;caption-side:bottom;padding-top:14px}

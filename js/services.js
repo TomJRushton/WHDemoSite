@@ -4,6 +4,7 @@
    Recommended extensions: order, status (draft | published), confirmed, image.alt / image.credit,
    related (services), per-project evidence, topics, capsSource, article.
    Only records with status "published" are shown anywhere on the site.
+   projects: case studies whose key inputs on willishazell.com show the service; "evidence" lists those inputs.
    sectors: derived from the sectors of the case studies whose key inputs show the service (evidence-based; to be confirmed by Willis Hazell).
    Sources: willishazell.com services lists and case-study key inputs (checked 2026-11-17).
    [Square brackets] mark content for Willis Hazell to supply. Project credits remain unconfirmed. */
@@ -15,6 +16,8 @@ window.WH_SERVICES = {
     { title: "We produce designs to be built", text: "Buildability is central from the start: simple, efficient construction sequences, validated with contractors." },
     { title: "We design for low carbon", text: "We track embodied carbon on all our designs to deliver the lowest feasible carbon outcome." }
   ],
+  /* Case studies shown on the Services overview (editable) */
+  selected: ["ashton-gate", "arena-abertawe", "brighton-elite-performance-centre"],
   services: [
     {
       "slug": "structural-engineering",
@@ -63,6 +66,14 @@ window.WH_SERVICES = {
         "credit": "Image from willishazell.com; credit to confirm"
       },
       "sectors": ["Stadia", "Arenas", "Leisure Centres", "Training Grounds"],
+      "projects": [
+        { "slug": "ashton-gate", "evidence": ["Long-span design", "Buildability", "Detailed design"] },
+        { "slug": "racecourse-ground-kop-stand", "evidence": ["Long-span design", "Buildability", "Detailed design"] },
+        { "slug": "arena-abertawe", "evidence": ["Long-span design", "Buildability", "Detailed design"] },
+        { "slug": "david-lloyd-clubs", "evidence": ["Long-span design", "Buildability", "Detailed design"] },
+        { "slug": "lee-valley-ice-centre", "evidence": ["Long-span design", "Embodied carbon tracking", "Buildability"] },
+        { "slug": "brighton-elite-performance-centre", "evidence": ["Watertight pool box design", "Buildability", "Detailed design"] }
+      ],
       "related": [
         "civil-engineering",
         "inspections-appraisals"
@@ -111,6 +122,14 @@ window.WH_SERVICES = {
         "credit": "Image from willishazell.com; credit to confirm"
       },
       "sectors": ["Stadia", "Arenas", "Leisure Centres", "Training Grounds"],
+      "projects": [
+        { "slug": "ashton-gate", "evidence": ["Highways", "SuDS", "Site appraisal"] },
+        { "slug": "racecourse-ground-kop-stand", "evidence": ["Earthworks"] },
+        { "slug": "arena-abertawe", "evidence": ["Earthworks and enabling works", "Highways"] },
+        { "slug": "david-lloyd-clubs", "evidence": ["Earthworks", "Highways", "SuDS"] },
+        { "slug": "lee-valley-ice-centre", "evidence": ["Earthworks", "Highways", "SuDS"] },
+        { "slug": "brighton-elite-performance-centre", "evidence": ["Site appraisal", "Earthworks"] }
+      ],
       "related": [
         "structural-engineering"
       ],
@@ -172,6 +191,10 @@ window.WH_SERVICES = {
         "credit": "Image from willishazell.com; credit to confirm"
       },
       "sectors": ["Stadia"],
+      "projects": [
+        { "slug": "ashton-gate", "evidence": ["Green Guide inspection", "Condition surveys and capacity assessments"] },
+        { "slug": "racecourse-ground-kop-stand", "evidence": ["Green Guide inspection"] }
+      ],
       "related": [
         "structural-engineering"
       ],
