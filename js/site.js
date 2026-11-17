@@ -213,7 +213,7 @@
         (p.detail ? '<p class="body-small">' + esc(p.detail.charAt(0).toUpperCase() + p.detail.slice(1)) + '</p>' : '') + creditTag(p);
       /* Projects without a detail page: the first licensed photo becomes the card thumbnail (no link, no new page) */
       var ph = !p.image && photosFor(p.slug);
-      if (ph) return '<li><div class="photo-card"><div class="frame ratio-45">' + photoImg(ph[0], '(max-width:620px) 100vw, 33vw') + '</div>' +
+      if (ph) return '<li><div class="photo-card"><div class="frame ratio-45">' + photoImg(ph[0], '(max-width:620px) calc(100vw - 32px), (max-width:900px) 45vw, 320px') + '</div>' +
         '<p class="photo-credit">' + photoCredit(ph[0]) + '</p><div class="card-text">' + text + '</div></div></li>';
       return '<li><div class="typo-card">' + text + '</div></li>';
     };
@@ -305,7 +305,7 @@
         ? '<div class="photo-gallery">' + gal.map(function (ph, n) {
             var phase = photoPhase(ph);
             return '<figure><button type="button" data-gallery="' + n + '" aria-label="View image full screen: ' + esc(ph.alt) + '"><div class="frame ratio-32">' +
-              photoImg(ph, '(max-width:620px) 100vw, (max-width:1100px) 50vw, 360px') + '</div></button>' +
+              photoImg(ph, '(max-width:620px) calc(100vw - 32px), (max-width:1100px) 45vw, 240px') + '</div></button>' +
               '<figcaption class="photo-credit">' + (phase ? '<span class="photo-phase">' + phase + '.</span> ' : '') + photoCredit(ph) + '</figcaption></figure>';
           }).join('') + '</div><p class="caption" style="margin-top:14px">Photographs from Wikimedia Commons, used under the licences credited. They show the venue; they are not Willis Hazell photographs and do not confirm its role on the project.</p>'
         : '<div class="gallery-slots"><div class="slot">Construction photograph</div><div class="slot">Structural detail</div><div class="slot">Completed interior</div></div>' +

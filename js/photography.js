@@ -6,6 +6,7 @@ window.WH_PHOTOS = {
    "name": "ashton-gate-hero",
    "maxW": 2400,
    "widths": [
+    400,
     800,
     1600,
     2400
@@ -26,6 +27,7 @@ window.WH_PHOTOS = {
    "name": "ashton-gate-interior-01",
    "maxW": 2400,
    "widths": [
+    400,
     800,
     1600,
     2400
@@ -46,6 +48,7 @@ window.WH_PHOTOS = {
    "name": "ashton-gate-exterior-01",
    "maxW": 2400,
    "widths": [
+    400,
     800,
     1600,
     2400
@@ -66,6 +69,7 @@ window.WH_PHOTOS = {
    "name": "ashton-gate-detail-01",
    "maxW": 2400,
    "widths": [
+    400,
     800,
     1600,
     2400
@@ -86,6 +90,7 @@ window.WH_PHOTOS = {
    "name": "ashton-gate-exterior-02",
    "maxW": 2304,
    "widths": [
+    400,
     800,
     1600,
     2304
@@ -108,6 +113,7 @@ window.WH_PHOTOS = {
    "name": "racecourse-ground-kop-stand-construction-01",
    "maxW": 2400,
    "widths": [
+    400,
     800,
     1600,
     2400
@@ -128,6 +134,7 @@ window.WH_PHOTOS = {
    "name": "racecourse-ground-kop-stand-construction-02",
    "maxW": 2400,
    "widths": [
+    400,
     800,
     1600,
     2400
@@ -150,6 +157,7 @@ window.WH_PHOTOS = {
    "name": "arena-abertawe-exterior-01",
    "maxW": 2400,
    "widths": [
+    400,
     800,
     1600,
     2400
@@ -170,6 +178,7 @@ window.WH_PHOTOS = {
    "name": "arena-abertawe-construction-01",
    "maxW": 2400,
    "widths": [
+    400,
     800,
     1600,
     2400
@@ -192,6 +201,7 @@ window.WH_PHOTOS = {
    "name": "lee-valley-ice-centre-exterior-01",
    "maxW": 2400,
    "widths": [
+    400,
     800,
     1600,
     2400
@@ -212,6 +222,7 @@ window.WH_PHOTOS = {
    "name": "lee-valley-ice-centre-exterior-02",
    "maxW": 2400,
    "widths": [
+    400,
     800,
     1600,
     2400
@@ -234,6 +245,7 @@ window.WH_PHOTOS = {
    "name": "aarhus-stadium-construction-01",
    "maxW": 2400,
    "widths": [
+    400,
     800,
     1600,
     2400
@@ -256,6 +268,7 @@ window.WH_PHOTOS = {
    "name": "afc-wimbledon-stadium-hero",
    "maxW": 2400,
    "widths": [
+    400,
     800,
     1600,
     2400
@@ -278,6 +291,7 @@ window.WH_PHOTOS = {
    "name": "amex-stadium-hero",
    "maxW": 2400,
    "widths": [
+    400,
     800,
     1600,
     2400
@@ -298,6 +312,7 @@ window.WH_PHOTOS = {
    "name": "amex-stadium-exterior-01",
    "maxW": 2400,
    "widths": [
+    400,
     800,
     1600,
     2400
@@ -320,6 +335,7 @@ window.WH_PHOTOS = {
    "name": "anfield-stadium-hero",
    "maxW": 2048,
    "widths": [
+    400,
     800,
     1600,
     2048
@@ -340,6 +356,7 @@ window.WH_PHOTOS = {
    "name": "anfield-stadium-exterior-01",
    "maxW": 2400,
    "widths": [
+    400,
     800,
     1600,
     2400
@@ -362,6 +379,7 @@ window.WH_PHOTOS = {
    "name": "brentford-community-stadium-hero",
    "maxW": 2400,
    "widths": [
+    400,
     800,
     1600,
     2400
@@ -382,6 +400,7 @@ window.WH_PHOTOS = {
    "name": "brentford-community-stadium-exterior-01",
    "maxW": 2400,
    "widths": [
+    400,
     800,
     1600,
     2400
@@ -402,6 +421,7 @@ window.WH_PHOTOS = {
    "name": "brentford-community-stadium-detail-01",
    "maxW": 2400,
    "widths": [
+    400,
     800,
     1600,
     2400
@@ -424,6 +444,7 @@ window.WH_PHOTOS = {
    "name": "city-ground-nottingham-hero",
    "maxW": 2000,
    "widths": [
+    400,
     800,
     1600,
     2000
@@ -444,6 +465,7 @@ window.WH_PHOTOS = {
    "name": "city-ground-nottingham-aerial-01",
    "maxW": 2400,
    "widths": [
+    400,
     800,
     1600,
     2400
@@ -466,6 +488,7 @@ window.WH_PHOTOS = {
    "name": "city-of-salford-community-stadium-hero",
    "maxW": 2400,
    "widths": [
+    400,
     800,
     1600,
     2400
@@ -488,6 +511,7 @@ window.WH_PHOTOS = {
    "name": "county-ground-gloucestershire-ccc-hero",
    "maxW": 2400,
    "widths": [
+    400,
     800,
     1600,
     2400
@@ -510,6 +534,7 @@ window.WH_PHOTOS = {
    "name": "craven-cottage-hero",
    "maxW": 2400,
    "widths": [
+    400,
     800,
     1600,
     2400
@@ -530,6 +555,7 @@ window.WH_PHOTOS = {
    "name": "craven-cottage-construction-01",
    "maxW": 2400,
    "widths": [
+    400,
     800,
     1600,
     2400
@@ -550,6 +576,7 @@ window.WH_PHOTOS = {
    "name": "craven-cottage-exterior-01",
    "maxW": 2400,
    "widths": [
+    400,
     800,
     1600,
     2400
@@ -572,6 +599,7 @@ window.WH_PHOTOS = {
    "name": "franklin-s-gardens-hero",
    "maxW": 2400,
    "widths": [
+    400,
     800,
     1600,
     2400
@@ -594,6 +622,7 @@ window.WH_PHOTOS = {
    "name": "montreal-olympic-stadium-hero",
    "maxW": 2400,
    "widths": [
+    400,
     800,
     1600,
     2400
@@ -616,6 +645,7 @@ window.WH_PHOTOS = {
    "name": "new-tottenham-hotspur-stadium-hero",
    "maxW": 2400,
    "widths": [
+    400,
     800,
     1600,
     2400
@@ -636,6 +666,7 @@ window.WH_PHOTOS = {
    "name": "new-tottenham-hotspur-stadium-exterior-01",
    "maxW": 2400,
    "widths": [
+    400,
     800,
     1600,
     2400
@@ -658,6 +689,7 @@ window.WH_PHOTOS = {
    "name": "old-trafford-stadium-exterior-01",
    "maxW": 2400,
    "widths": [
+    400,
     800,
     1600,
     2400
@@ -678,6 +710,7 @@ window.WH_PHOTOS = {
    "name": "old-trafford-stadium-interior-01",
    "maxW": 2400,
    "widths": [
+    400,
     800,
     1600,
     2400
@@ -700,6 +733,7 @@ window.WH_PHOTOS = {
    "name": "sixfields-stadium-northampton-hero",
    "maxW": 2400,
    "widths": [
+    400,
     800,
     1600,
     2400
@@ -720,6 +754,7 @@ window.WH_PHOTOS = {
    "name": "sixfields-stadium-northampton-interior-01",
    "maxW": 2400,
    "widths": [
+    400,
     800,
     1600,
     2400
@@ -742,6 +777,7 @@ window.WH_PHOTOS = {
    "name": "stadium-mk-hero",
    "maxW": 2400,
    "widths": [
+    400,
     800,
     1600,
     2400
@@ -762,6 +798,7 @@ window.WH_PHOTOS = {
    "name": "stadium-mk-exterior-01",
    "maxW": 2400,
    "widths": [
+    400,
     800,
     1600,
     2400
@@ -784,6 +821,7 @@ window.WH_PHOTOS = {
    "name": "the-oval-cricket-ground-hero",
    "maxW": 2400,
    "widths": [
+    400,
     800,
     1600,
     2400
@@ -806,6 +844,7 @@ window.WH_PHOTOS = {
    "name": "twickenham-construction-01",
    "maxW": 2400,
    "widths": [
+    400,
     800,
     1600,
     2400
@@ -828,6 +867,7 @@ window.WH_PHOTOS = {
    "name": "welford-road-stadium-hero",
    "maxW": 2400,
    "widths": [
+    400,
     800,
     1600,
     2400
@@ -850,6 +890,7 @@ window.WH_PHOTOS = {
    "name": "wembley-stadium-structural-01",
    "maxW": 2400,
    "widths": [
+    400,
     800,
     1600,
     2400
@@ -870,6 +911,7 @@ window.WH_PHOTOS = {
    "name": "wembley-stadium-structural-02",
    "maxW": 2400,
    "widths": [
+    400,
     800,
     1600,
     2400
@@ -892,6 +934,7 @@ window.WH_PHOTOS = {
    "name": "london-2012-basketball-arena-hero",
    "maxW": 1600,
    "widths": [
+    400,
     800,
     1600
    ],
@@ -911,6 +954,7 @@ window.WH_PHOTOS = {
    "name": "london-2012-basketball-arena-detail-01",
    "maxW": 2400,
    "widths": [
+    400,
     800,
     1600,
     2400
@@ -933,6 +977,7 @@ window.WH_PHOTOS = {
    "name": "london-2012-handball-arena-copper-box-hero",
    "maxW": 2400,
    "widths": [
+    400,
     800,
     1600,
     2400
@@ -953,6 +998,7 @@ window.WH_PHOTOS = {
    "name": "london-2012-handball-arena-copper-box-exterior-01",
    "maxW": 2400,
    "widths": [
+    400,
     800,
     1600,
     2400
@@ -975,6 +1021,7 @@ window.WH_PHOTOS = {
    "name": "mk-arena-hero",
    "maxW": 2400,
    "widths": [
+    400,
     800,
     1600,
     2400
@@ -997,6 +1044,7 @@ window.WH_PHOTOS = {
    "name": "university-of-surrey-sports-centre-hero",
    "maxW": 2400,
    "widths": [
+    400,
     800,
     1600,
     2400
@@ -1017,6 +1065,7 @@ window.WH_PHOTOS = {
    "name": "university-of-surrey-sports-centre-exterior-01",
    "maxW": 2400,
    "widths": [
+    400,
     800,
     1600,
     2400
@@ -1039,6 +1088,7 @@ window.WH_PHOTOS = {
    "name": "national-indoor-arena-dublin-phase-1-and-phase-2-hero",
    "maxW": 2400,
    "widths": [
+    400,
     800,
     1600,
     2400
@@ -1059,6 +1109,7 @@ window.WH_PHOTOS = {
    "name": "national-indoor-arena-dublin-phase-1-and-phase-2-exterior-01",
    "maxW": 2400,
    "widths": [
+    400,
     800,
     1600,
     2400
@@ -1081,6 +1132,7 @@ window.WH_PHOTOS = {
    "name": "london-olympia-hero",
    "maxW": 2400,
    "widths": [
+    400,
     800,
     1600,
     2400
@@ -1101,6 +1153,7 @@ window.WH_PHOTOS = {
    "name": "london-olympia-interior-01",
    "maxW": 2400,
    "widths": [
+    400,
     800,
     1600,
     2400

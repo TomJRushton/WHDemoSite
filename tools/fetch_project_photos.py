@@ -29,7 +29,7 @@ except ImportError:
     sys.exit("Pillow is required: pip install Pillow")
 
 ROOT = Path(__file__).resolve().parent.parent
-WIDTHS = [800, 1600, 2400]
+WIDTHS = [400, 800, 1600, 2400]
 # Wikimedia asks automated clients for a descriptive User-Agent with a way to reach the operator.
 UA = "WillisHazellDemoPhotoFetch/1.1 (https://github.com/TomJRushton/WHDemoSite; one-off fetch of manifest images) python-urllib"
 
