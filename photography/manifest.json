@@ -1,0 +1,246 @@
+{
+ "_about": "Project photography manifest (pilot: 3 projects). Images are research picks with Wikimedia Commons licences; run tools/fetch_project_photos.py to download and optimise.",
+ "accessed": "2026-11-17",
+ "projects": [
+  {
+   "id": "craven-cottage",
+   "name": "Craven Cottage",
+   "detail": "new Riverside Stand",
+   "sector": "Stadia",
+   "location": "Fulham, London",
+   "existingCoverage": "none (text-only portfolio card)",
+   "candidatesReviewed": 15,
+   "confidence": "high",
+   "images": [
+    {
+     "file": "craven-cottage-hero",
+     "commonsTitle": "Craven Cottage Riverside Stand 2026-05-06.jpg",
+     "sourcePage": "https://commons.wikimedia.org/wiki/File:Craven_Cottage_Riverside_Stand_2026-05-06.jpg",
+     "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/c/ca/Craven_Cottage_Riverside_Stand_2026-05-06.jpg",
+     "sha1": "00c7b44fc5740ae317d936dedac8bc8132a5ca95",
+     "originalWidth": 4032,
+     "originalHeight": 3024,
+     "photographer": "Matt Brown",
+     "licence": "CC BY 4.0",
+     "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+     "attribution": "Photo: Matt Brown, CC BY 4.0, via Wikimedia Commons",
+     "dateTaken": "2026-05-06",
+     "dateAccessed": "2026-11-17",
+     "permissionStatus": "Explicitly licensed for the intended use",
+     "imageType": "photograph",
+     "phase": "completed",
+     "role": "hero",
+     "identityEvidence": "Commons title names the Riverside Stand; completed stand seen from the Thames, May 2026",
+     "alt": "The completed Riverside Stand at Craven Cottage seen across the River Thames"
+    },
+    {
+     "file": "craven-cottage-construction-01",
+     "commonsTitle": "Fulham Football Club , Riverside Stand re-development - geograph.org.uk - 7028206.jpg",
+     "sourcePage": "https://commons.wikimedia.org/wiki/File:Fulham_Football_Club_,_Riverside_Stand_re-development_-_geograph.org.uk_-_7028206.jpg",
+     "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f6/Fulham_Football_Club_,_Riverside_Stand_re-development_-_geograph.org.uk_-_7028206.jpg",
+     "sha1": "93cb318c1bff770077bf935c9e3f63665e102486",
+     "originalWidth": 4032,
+     "originalHeight": 3024,
+     "photographer": "Jim Osley",
+     "licence": "CC BY-SA 2.0",
+     "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+     "attribution": "Photo: Jim Osley, CC BY-SA 2.0, via Wikimedia Commons",
+     "dateTaken": "2021-11-25",
+     "dateAccessed": "2026-11-17",
+     "permissionStatus": "Explicitly licensed for the intended use",
+     "imageType": "photograph",
+     "phase": "construction",
+     "role": "construction",
+     "identityEvidence": "Geograph title: 'Riverside Stand re-development'; cranes and frame visible, Nov 2021",
+     "alt": "The Riverside Stand under construction beside the Thames, with tower cranes"
+    },
+    {
+     "file": "craven-cottage-exterior-01",
+     "commonsTitle": "The new Riverside Stand, Craven Cottage - geograph.org.uk - 7369905.jpg",
+     "sourcePage": "https://commons.wikimedia.org/wiki/File:The_new_Riverside_Stand,_Craven_Cottage_-_geograph.org.uk_-_7369905.jpg",
+     "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/3/33/The_new_Riverside_Stand,_Craven_Cottage_-_geograph.org.uk_-_7369905.jpg",
+     "sha1": "3dea51557b6389e7042ea3dd7efdce1da73dc86a",
+     "originalWidth": 3634,
+     "originalHeight": 4753,
+     "photographer": "Neil Theasby",
+     "licence": "CC BY-SA 2.0",
+     "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+     "attribution": "Photo: Neil Theasby, CC BY-SA 2.0, via Wikimedia Commons",
+     "dateTaken": "2022-12-26",
+     "dateAccessed": "2026-11-17",
+     "permissionStatus": "Explicitly licensed for the intended use",
+     "imageType": "photograph",
+     "phase": "construction (near completion)",
+     "role": "exterior",
+     "identityEvidence": "Geograph title names the new Riverside Stand; Dec 2022, before full opening",
+     "alt": "The new Riverside Stand rising above the Thames riverbank, late 2022"
+    }
+   ],
+   "rejected": [
+    [
+     "Riverside Stand 24082024 (1).jpg",
+     "taken from the stand looking out; shows seating and pitch, not the structure"
+    ],
+    [
+     "Craven Cottage (Fulham).jpg",
+     "match-day view with crowd"
+    ],
+    [
+     "Lancelot 'Capability' Brown statue 2025-08-09.jpg",
+     "statue, not the project"
+    ],
+    [
+     "Work to rebuild Craven Cottage - geograph 6782334",
+     "1807px, distant and small in frame"
+    ]
+   ],
+   "verifiedImages": 3
+  },
+  {
+   "id": "brentford-community-stadium",
+   "name": "Brentford Community Stadium",
+   "detail": "new stadium",
+   "sector": "Stadia",
+   "location": "Brentford, London",
+   "existingCoverage": "none (text-only portfolio card)",
+   "candidatesReviewed": 14,
+   "confidence": "high",
+   "images": [
+    {
+     "file": "brentford-community-stadium-hero",
+     "commonsTitle": "Brentford Community Stadium from Lionel Road South.jpg",
+     "sourcePage": "https://commons.wikimedia.org/wiki/File:Brentford_Community_Stadium_from_Lionel_Road_South.jpg",
+     "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f7/Brentford_Community_Stadium_from_Lionel_Road_South.jpg",
+     "sha1": "b3f0c033d3281d32f70ff3c7d177008fb1d46a3c",
+     "originalWidth": 3000,
+     "originalHeight": 1917,
+     "photographer": "AndyScott",
+     "licence": "CC BY-SA 4.0",
+     "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+     "attribution": "Photo: AndyScott, CC BY-SA 4.0, via Wikimedia Commons",
+     "dateTaken": "2023-06-06",
+     "dateAccessed": "2026-11-17",
+     "permissionStatus": "Explicitly licensed for the intended use",
+     "imageType": "photograph",
+     "phase": "completed",
+     "role": "hero",
+     "identityEvidence": "Commons title and Construction/stadium category; external cladding and stand from Lionel Road South",
+     "alt": "Brentford Community Stadium from Lionel Road South"
+    },
+    {
+     "file": "brentford-community-stadium-exterior-01",
+     "commonsTitle": "Brentford Gtech Community Stadium.jpg",
+     "sourcePage": "https://commons.wikimedia.org/wiki/File:Brentford_Gtech_Community_Stadium.jpg",
+     "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7e/Brentford_Gtech_Community_Stadium.jpg",
+     "sha1": "ea3761b39b1cf29297dd917c8db92c6702f760ef",
+     "originalWidth": 3000,
+     "originalHeight": 2004,
+     "photographer": "AndyScott",
+     "licence": "CC BY-SA 4.0",
+     "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+     "attribution": "Photo: AndyScott, CC BY-SA 4.0, via Wikimedia Commons",
+     "dateTaken": "2023-10-27",
+     "dateAccessed": "2026-11-17",
+     "permissionStatus": "Explicitly licensed for the intended use",
+     "imageType": "photograph",
+     "phase": "completed",
+     "role": "exterior",
+     "identityEvidence": "Commons title names the stadium (Gtech sponsorship name); exterior facade",
+     "alt": "Exterior facade of Brentford's Gtech Community Stadium"
+    },
+    {
+     "file": "brentford-community-stadium-detail-01",
+     "commonsTitle": "Brentford Community Stadium, box office entrance, Lionel Road.jpg",
+     "sourcePage": "https://commons.wikimedia.org/wiki/File:Brentford_Community_Stadium,_box_office_entrance,_Lionel_Road.jpg",
+     "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/4/44/Brentford_Community_Stadium,_box_office_entrance,_Lionel_Road.jpg",
+     "sha1": "20aab7e1c7febc4afb0a466f060a4125df26c48d",
+     "originalWidth": 2500,
+     "originalHeight": 1875,
+     "photographer": "AndyScott",
+     "licence": "CC BY-SA 4.0",
+     "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+     "attribution": "Photo: AndyScott, CC BY-SA 4.0, via Wikimedia Commons",
+     "dateTaken": "2022-04-13",
+     "dateAccessed": "2026-11-17",
+     "permissionStatus": "Explicitly licensed for the intended use",
+     "imageType": "photograph",
+     "phase": "completed",
+     "role": "detail",
+     "identityEvidence": "Commons title: box office entrance, Lionel Road",
+     "alt": "Box office entrance and cladding detail at Brentford Community Stadium"
+    }
+   ],
+   "rejected": [
+    [
+     "Line-up at the Brentford v Nottingham Forest football match on 21 Dece…",
+     "match action"
+    ],
+    [
+     "Germany Denmark Womens Euros.jpg",
+     "match action and crowd"
+    ],
+    [
+     "Brentford Community Stadium Hub.jpg",
+     "signage close-up, little architecture"
+    ]
+   ],
+   "verifiedImages": 3
+  },
+  {
+   "id": "afc-wimbledon-stadium",
+   "name": "AFC Wimbledon Stadium",
+   "detail": "new stadium (Plough Lane)",
+   "sector": "Stadia",
+   "location": "Wimbledon, London",
+   "existingCoverage": "none (text-only portfolio card)",
+   "candidatesReviewed": 19,
+   "confidence": "high",
+   "images": [
+    {
+     "file": "afc-wimbledon-stadium-hero",
+     "commonsTitle": "The Cappagh Stand in Plough Lane Stadium - geograph.org.uk - 6957193.jpg",
+     "sourcePage": "https://commons.wikimedia.org/wiki/File:The_Cappagh_Stand_in_Plough_Lane_Stadium_-_geograph.org.uk_-_6957193.jpg",
+     "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/0/0a/The_Cappagh_Stand_in_Plough_Lane_Stadium_-_geograph.org.uk_-_6957193.jpg",
+     "sha1": "89339c9f931799d706f2a0ab3c8426e182297662",
+     "originalWidth": 4800,
+     "originalHeight": 3200,
+     "photographer": "Steve Daniels",
+     "licence": "CC BY-SA 2.0",
+     "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+     "attribution": "Photo: Steve Daniels, CC BY-SA 2.0, via Wikimedia Commons",
+     "dateTaken": "2021-09-04",
+     "dateAccessed": "2026-11-17",
+     "permissionStatus": "Explicitly licensed for the intended use",
+     "imageType": "photograph",
+     "phase": "completed",
+     "role": "hero",
+     "identityEvidence": "Geograph title names the Cappagh Stand at Plough Lane (opened 2020)",
+     "alt": "The Cappagh Stand at AFC Wimbledon's Plough Lane stadium"
+    }
+   ],
+   "rejected": [
+    [
+     "The home entrance to Plough Lane Stadium - geograph 6957189",
+     "building-focused but crowd dominates the foreground (building-only rule)"
+    ],
+    [
+     "Plough Lane.png / Cherry Red Records Stadium.png and 6 others",
+     "match action"
+    ],
+    [
+     "Plough Lane Attendances *.png",
+     "charts, not photographs"
+    ],
+    [
+     "AFC Wimbledon Trophy 22082026.jpg",
+     "trophy, not the building"
+    ],
+    [
+     "Wimbledon Door 15022025 (1).jpg",
+     "door close-up, weak"
+    ]
+   ],
+   "verifiedImages": 1
+  }
+ ]
+}
