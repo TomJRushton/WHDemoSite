@@ -69,6 +69,53 @@ window.WH_SERVICES = {
         "title": "Structural Engineering for Sports, Entertainment and Leisure Venues",
         "description": "Structural engineering for stadia, arenas, training grounds and leisure venues: new and existing structures, lightweight and temporary structures, buildability and embodied carbon."
       }
+    },
+    {
+      "slug": "civil-engineering",
+      "name": "Civil Engineering",
+      "order": 2,
+      "status": "published",
+      "confirmed": true,
+      "summary": "Earthworks, drainage, flood risk, highways and site appraisals for sports, entertainment and leisure developments.",
+      "intro": [
+        [
+          "ph",
+          "[Service introduction to be written with Willis Hazell: the site and infrastructure work the practice designs, and how it is coordinated with the structural design.]"
+        ]
+      ],
+      "capabilities": [
+        {
+          "title": "Earthworks design and modelling"
+        },
+        {
+          "title": "Flood risk assessment and mitigation"
+        },
+        {
+          "title": "Foul and surface water underground drainage"
+        },
+        {
+          "title": "Road and highways design"
+        },
+        {
+          "title": "Site appraisals"
+        }
+      ],
+      "image": {
+        "name": "civil",
+        "maxW": 528,
+        "w": 528,
+        "h": 450,
+        "alt": "Aerial view of a building and its landscaped external works",
+        "credit": "Image from willishazell.com; credit to confirm"
+      },
+      "related": [
+        "structural-engineering"
+      ],
+      "seo": {
+        "title": "Civil Engineering for Sports and Leisure Developments",
+        "description": "Civil engineering for sports, entertainment and leisure developments: earthworks, flood risk, drainage, highways and site appraisals.",
+        "note": "Specification target phrase 'sports pitch civil engineer' is not used until Willis Hazell supplies confirmed pitch-related content."
+      }
     }
   ]
 };
