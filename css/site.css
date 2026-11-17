@@ -117,6 +117,7 @@ section{scroll-margin-top:80px}
 /* Practice statement */
 .statement{display:flex;flex-wrap:wrap;gap:48px clamp(32px,6vw,120px)}
 .statement .lead{flex:999 1 560px;min-width:0;max-width:900px;padding-left:clamp(0px,7vw,112px)}
+@media (max-width:700px){.statement .lead{padding-left:0}}
 .facts{flex:1 1 240px;margin:0;border-top:1px solid var(--ink);align-self:flex-start;font-variant-numeric:tabular-nums}
 .facts div{padding:18px 0;border-bottom:1px solid var(--stone-200)}
 .facts dt{font-size:13px;color:var(--stone-600)}
