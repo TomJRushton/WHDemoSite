@@ -150,17 +150,20 @@
   if (archive) {
     var form = $('#filters-form'), list = $('#results'), countEl = $('#count'), chips = $('#chips'), clearBtn = $('#clear'), moreWrap = $('#more');
     var PAGE = 18, shown = PAGE;
+    /* Concept preview: when licensed photography is loaded, list only projects that have an image
+       (case studies, plus projects with a WH_PHOTOS entry). Without WH_PHOTOS every project is listed, as before. */
+    var AP = window.WH_PHOTOS ? D.projects.filter(function (p) { return p.image || photosFor(p.slug); }) : D.projects;
     var emptyHeading = $('#empty h2'), emptyHeadingDefault = emptyHeading.textContent;
-    var sectorsInUse = D.sectors.filter(function (s) { return D.projects.some(function (p) { return p.sector === s; }); });
+    var sectorsInUse = D.sectors.filter(function (s) { return AP.some(function (p) { return p.sector === s; }); });
     var TYPES = [{ id: 'case-studies', label: 'Case studies', test: function (p) { return p.caseStudy; } },
                  { id: 'experience-list', label: 'Experience list', test: function (p) { return !p.caseStudy; } }];
 
     $('#opt-sector').innerHTML = sectorsInUse.map(function (s) {
-      var n = D.projects.filter(function (p) { return p.sector === s; }).length;
+      var n = AP.filter(function (p) { return p.sector === s; }).length;
       return '<label class="opt"><input type="checkbox" name="sector" value="' + slugify(s) + '"> ' + esc(s) + ' <span class="n">(' + n + ')</span></label>';
     }).join('');
     $('#opt-type').innerHTML = TYPES.map(function (t) {
-      var n = D.projects.filter(t.test).length;
+      var n = AP.filter(t.test).length;
       return '<label class="opt"><input type="checkbox" name="type" value="' + t.id + '"> ' + t.label + ' <span class="n">(' + n + ')</span></label>';
     }).join('');
 
@@ -213,7 +216,7 @@
       return '<li><div class="typo-card">' + text + '</div></li>';
     };
     var render = function (st) {
-      var res = D.projects.filter(function (p) { return matches(p, st); });
+      var res = AP.filter(function (p) { return matches(p, st); });
       res.sort(function (a, b) { return (b.caseStudy ? 1 : 0) - (a.caseStudy ? 1 : 0); });
       countEl.textContent = res.length + (res.length === 1 ? ' project' : ' projects');
       var tags = [];
@@ -228,7 +231,7 @@
         list.innerHTML = '';
         /* Selected sectors that have no projects at all (e.g. Event Overlay): say "to follow" rather than "no match" */
         var emptySectors = st.sector.map(function (v) { return D.sectors.filter(function (s) { return slugify(s) === v; })[0]; })
-          .filter(function (s) { return s && !D.projects.some(function (p) { return p.sector === s; }); });
+          .filter(function (s) { return s && !AP.some(function (p) { return p.sector === s; }); });
         emptyHeading.textContent = st.sector.length && emptySectors.length === st.sector.length ? emptySectors.join(' and ') + ' projects to follow' : emptyHeadingDefault;
         $('#empty').hidden = false; moreWrap.hidden = true; return;
       }
