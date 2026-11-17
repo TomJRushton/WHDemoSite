@@ -499,6 +499,10 @@ code{font-size:.92em;background:var(--navy-tint);padding:1px 5px}
   .a-media{order:-1}
 }
 .js-pending #svc-overview{min-height:100svh;visibility:hidden}
+/* Case study related services (SERV-009b) */
+.cs-svcs{margin-top:28px;border-top:1px solid var(--ink);padding-top:14px}
+.cs-svcs p{margin:8px 0 0}
+.cs-svcs .caption{margin-top:6px}
 /* Related projects (SERV-009a) */
 .results.svc-three{grid-template-columns:repeat(3,minmax(0,1fr))}
 @media (max-width:900px){.results.svc-three{grid-template-columns:repeat(2,minmax(0,1fr))}}

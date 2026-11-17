@@ -22,6 +22,16 @@
     return '<span class="credit tbc">Credit to confirm</span>';
   }
   function projectUrl(p) { return 'project.html?p=' + encodeURIComponent(p.slug); }
+  /* SERV-009b: services whose records list this case study (reverse of the service -> project relationship).
+     Labelled "Related services" so it does not stand in for the project's confirmed services, which stay hidden until supplied. */
+  function csServices(p) {
+    var list = ((window.WH_SERVICES || {}).services || []).filter(function (s) {
+      return s.status === 'published' && (s.projects || []).some(function (x) { return x.slug === p.slug; });
+    }).sort(function (a, b) { return a.order - b.order; });
+    if (!list.length) return '';
+    return '<div class="cs-svcs"><h2 class="label">Related services</h2><p>' + list.map(function (s) { return '<a class="inline-link" href="service.html?s=' + encodeURIComponent(s.slug) + '">' + esc(s.name) + '</a>'; }).join(' · ') +
+      '</p><p class="caption">Linked from the key inputs listed for this project.</p></div>';
+  }
 
   /* Header: transparent over the hero, solid after it; mobile menu */
   var header = $('.site-header');
@@ -240,7 +250,7 @@
           '<div class="credit-banner" role="note"><span class="credit tbc" style="flex:none">Credit to confirm</span><p>Demo content. Before publication this will state either “Willis Hazell Engineers: [role], [stages]” or that the project was delivered by a team member at a previous practice.</p></div>' +
         '<div class="cs-body"><div><h2 class="label" style="margin-bottom:14px">Project facts</h2><dl class="md">' +
           meta.filter(function (m) { return m[1]; }).map(function (m) { return '<div><dt>' + m[0] + '</dt><dd>' + esc(m[1]) + '</dd></div>'; }).join('') +
-          '</dl><p class="caption" style="margin-top:12px">Architect, services, role and completion are hidden until supplied.</p></div>' +
+          '</dl><p class="caption" style="margin-top:12px">Architect, services, role and completion are hidden until supplied.</p>' + csServices(p) + '</div>' +
           '<div class="prose"><h2>Key inputs</h2><ul class="inputs">' + p.keyInputs.map(function (k) { return '<li>' + esc(k) + '</li>'; }).join('') + '</ul>' +
           '<h2>The engineering challenge</h2><p class="tbc">[To be written with the project team: the site, structure and constraints that made this project demanding.]</p>' +
           '<h2>Our contribution</h2><p class="tbc">[To be written with the project team: what Willis Hazell designed, decided or changed, with figures where possible.]</p>' +
