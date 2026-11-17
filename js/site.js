@@ -515,6 +515,71 @@
       '<p class="field-error" id="' + id + '-err" hidden></p>' + control.replace('<input ', '<input aria-describedby="' + (hint ? id + '-hint ' : '') + id + '-err" ').replace('<textarea ', '<textarea aria-describedby="' + id + '-err" ') + '</div>';
   }
 
+  /* ---------- Services (js/services.js) ---------- */
+  var SVC = window.WH_SERVICES || { principles: [], services: [] };
+  /* Only published records exist as far as the site is concerned (drafts such as an unconfirmed service stay hidden) */
+  var services = SVC.services.filter(function (s) { return s.status === 'published'; })
+    .sort(function (a, b) { return a.order - b.order; });
+  var svcBySlug = function (slug) { return services.filter(function (s) { return s.slug === slug; })[0]; };
+  var svcUrl = function (s) { return 'service.html?s=' + encodeURIComponent(s.slug); };
+  /* Images narrower than 1000px are shown at native size or smaller, never stretched (DESIGN-003 logic) */
+  var svcFigure = function (s, sizes, eager, ratio) {
+    var i = s.image; if (!i) return '';
+    var native = i.maxW < 1000;
+    return '<figure class="svc-fig' + (native ? ' svc-native" style="--native:' + i.maxW + 'px' : '') + '">' +
+      '<div class="frame"' + (native ? ' style="aspect-ratio:' + i.w + '/' + i.h + ';background:none"' : (ratio ? ' style="aspect-ratio:' + ratio + '"' : '')) + '>' +
+      img(i.name, i.maxW, native ? '(max-width:900px) 100vw, ' + i.maxW + 'px' : sizes, i.alt, eager) + '</div>' +
+      '<figcaption class="caption">' + esc(i.credit) + '</figcaption></figure>';
+  };
+  var principlesHtml = function (head, id) {
+    return '<section class="sec-compact wrap" aria-labelledby="' + id + '"><div class="sec-head" style="padding-top:0"><h2 class="heading-section" id="' + id + '">' + head + '</h2><a class="tl" href="about.html">How we work →</a></div>' +
+      '<ol class="svc-principles">' + SVC.principles.map(function (p, n) {
+        return '<li><p class="svc-num">0' + (n + 1) + '</p><h3>' + esc(p.title) + '</h3><p class="body-small">' + esc(p.text) + '</p></li>';
+      }).join('') + '</ol></section>';
+  };
+  var contactBand = function (h, subject) {
+    var q = subject ? '?subject=' + encodeURIComponent(subject) : '';
+    return '<section class="on-dark sec" aria-labelledby="svc-contact-h"><div class="wrap contact-band">' +
+      '<h2 class="display-hero svc-contact-h" id="svc-contact-h">' + h + '</h2><div class="people-contacts">' +
+      '<p><strong style="font-weight:500">Martin Willis</strong><br><a href="tel:+447825362748">07825 362 748</a><br><a href="mailto:Martin@willishazell.com' + q + '">Martin@willishazell.com</a></p>' +
+      '<p><strong style="font-weight:500">Rob Hazell</strong><br><a href="tel:+447786440846">07786 440 846</a><br><a href="mailto:Rob@willishazell.com' + q + '">Rob@willishazell.com</a></p>' +
+      '</div></div></section>';
+  };
+
+  /* Service template: service.html?s=<slug> */
+  var svcEl = $('#service');
+  if (svcEl) {
+    var sv = svcBySlug(QS.get('s'));
+    if (!sv) notFound(svcEl, 'services.html', 'Services', 'Service not found', 'This service page may have moved or is not published.', 'View all services');
+    else {
+      document.title = sv.name + ' — Willis Hazell Engineers';
+      var rel = (sv.related || []).map(svcBySlug).filter(Boolean);
+      var glance = [];
+      if (rel.length) glance.push(['Related services', rel.map(function (r) { return '<a href="' + svcUrl(r) + '">' + esc(r.name) + '</a>'; }).join(' · ')]);
+      glance.push(['Contact', '<a href="#svc-contact-h">Martin Willis · Rob Hazell</a>']);
+      var caps = sv.capabilities.map(function (c, n) {
+        var link = c.service && svcBySlug(c.service);
+        return '<li><span class="svc-num">' + ('0' + (n + 1)).slice(-2) + '</span><span class="t">' +
+          (link ? '<a href="' + svcUrl(link) + '">' + esc(c.title) + ' →</a><span class="x">See ' + esc(link.name) + '</span>' : esc(c.title)) + '</span></li>';
+      }).join('');
+      svcEl.innerHTML =
+        '<div class="wrap s-open"><div><p class="crumbs"><a href="services.html">Services</a></p><h1 class="heading-page">' + esc(sv.name) + '</h1>' +
+          '<p class="intro">' + esc(sv.summary) + '</p></div>' + svcFigure(sv, '(max-width:900px) 100vw, 40vw', true, '4/3') + '</div>' +
+        '<div class="wrap s-body"><div><h2 class="label" style="margin-bottom:14px">At a glance</h2><dl class="md" id="svc-glance">' +
+          glance.map(function (g) { return '<div><dt>' + g[0] + '</dt><dd>' + g[1] + '</dd></div>'; }).join('') + '</dl></div>' +
+          '<div class="prose"><h2>About the service</h2>' + richText(sv.intro) + '</div></div>' +
+        '<section class="sec-compact wrap" style="padding-top:0" aria-labelledby="svc-cap-h"><div class="sec-head" style="padding-top:0"><h2 class="heading-section" id="svc-cap-h">What the service includes</h2>' +
+          '<p class="caption" style="margin:0">' + esc(sv.capsSource || 'As listed on willishazell.com') + '</p></div><ol class="s-caps">' + caps + '</ol></section>' +
+        (sv.topics ? '<section class="sec-compact wrap" style="padding-top:0" aria-labelledby="svc-top-h"><div class="sec-head rule-top"><h2 class="heading-section" id="svc-top-h">What the service covers</h2></div><div class="rows" style="border-top:0">' +
+          sv.topics.map(function (t) { return '<div class="row"><h3 class="title-project">' + esc(t.title) + '</h3><p class="body-small tbc-text" style="margin:0">' + esc(t.text) + '</p></div>'; }).join('') + '</div></section>' : '') +
+        principlesHtml('Our approach', 'svc-appr-h') +
+        '<div id="svc-extra"></div>' +
+        (rel.length ? '<section class="sec-compact wrap" style="padding-top:0" aria-labelledby="svc-rel-h"><h2 class="label" id="svc-rel-h" style="margin-bottom:16px">Related services</h2><ul class="rel-svcs">' +
+          rel.map(function (r) { return '<li><a href="' + svcUrl(r) + '">' + esc(r.name) + '<span>' + esc(r.summary) + '</span></a></li>'; }).join('') + '</ul></section>' : '') +
+        contactBand('Talk to Martin or Rob about ' + esc(sv.name.toLowerCase().replace('&', 'and')) + '.');
+    }
+  }
+
   /* PERF-002: rendering done; release the space and visibility held while the page was pending */
   if (!heroPending) document.documentElement.classList.remove('js-pending');
 })();
