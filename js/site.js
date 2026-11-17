@@ -212,11 +212,13 @@
       }
       return true;
     };
+    var isWide = function (p) { return !!(p.caseStudy && p.image && p.imageMaxW >= 1400); };
     var card = function (p, i) {
       if (p.caseStudy) {
-        var wide = i === 0 && p.imageMaxW >= 1400;
+        /* Featured case studies: double width (same height as a normal card) where the image is large enough */
+        var wide = isWide(p);
         return '<li' + (wide ? ' class="wide"' : '') + '><a href="' + projectUrl(p) + '">' +
-          '<div class="frame ' + (wide ? 'ratio-169' : 'ratio-45') + '">' + img(p.image, p.imageMaxW, wide ? '(max-width:620px) 100vw, 66vw' : '(max-width:620px) 100vw, 33vw', '') + '</div>' +
+          '<div class="frame ratio-45">' + img(p.image, p.imageMaxW, wide ? '(max-width:620px) calc(100vw - 32px), (max-width:900px) 92vw, (max-width:1264px) 66vw, 640px' : '(max-width:620px) 100vw, 33vw', '') + '</div>' +
           '<div class="card-text"><h3 class="title-project">' + esc(p.name) + '</h3><p class="body-small">' + esc(p.summary) + '</p>' +
           '<p class="label">' + esc(p.sector) + ' · ' + esc(p.location) + '</p>' + creditTag(p) + '</div></a></li>';
       }
@@ -233,7 +235,9 @@
     };
     var render = function (st) {
       var res = AP.filter(function (p) { return matches(p, st); });
-      res.sort(function (a, b) { return (b.caseStudy ? 1 : 0) - (a.caseStudy ? 1 : 0); });
+      /* Case studies first; standard-size ones before featured (wide) ones so they pair up in the first row */
+      var rank = function (p) { return p.caseStudy ? (isWide(p) ? 1 : 0) : 2; };
+      res.sort(function (a, b) { return rank(a) - rank(b); });
       countEl.textContent = res.length + (res.length === 1 ? ' project' : ' projects');
       var tags = [];
       st.sector.forEach(function (v) { tags.push({ k: 'sector', v: v, l: (D.sectors.filter(function (s) { return slugify(s) === v; })[0] || v) }); });
