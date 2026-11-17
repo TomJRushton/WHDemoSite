@@ -552,7 +552,8 @@
     var sv = svcBySlug(QS.get('s'));
     if (!sv) notFound(svcEl, 'services.html', 'Services', 'Service not found', 'This service page may have moved or is not published.', 'View all services');
     else {
-      document.title = sv.name + ' — Willis Hazell Engineers';
+      /* SERV-011: per-service SEO title and description from the record's editable seo fields */
+      setMeta(sv.seo && sv.seo.title || sv.name, sv.seo && sv.seo.description || sv.summary);
       var rel = (sv.related || []).map(svcBySlug).filter(Boolean);
       var glance = [];
       if (rel.length) glance.push(['Related services', rel.map(function (r) { return '<a href="' + svcUrl(r) + '">' + esc(r.name) + '</a>'; }).join(' · ')]);
