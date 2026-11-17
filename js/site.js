@@ -336,7 +336,7 @@
     }).join('');
     var hc = $('#home-careers');
     if (hc && openJobs.length) {
-      hc.innerHTML = '<p class="label">Careers</p><p class="title-project">We are recruiting: ' + openJobs.map(function (j) { return esc(j.title); }).join(', ') + '.</p><a class="tl" href="careers.html">View vacancies →</a>';
+      hc.innerHTML = '<p class="label">Careers</p><p class="title-project">We are recruiting: ' + openJobs.map(function (j) { return esc(j.title); }).join(', ') + '.</p>' + sampleTag + '<a class="tl" href="careers.html">View vacancies →</a>';
       hc.hidden = false;
     }
   }
