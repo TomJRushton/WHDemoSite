@@ -20,6 +20,10 @@
      Everything falls back to today's behaviour when WH_PHOTOS or a project's entry is absent. */
   var PH = window.WH_PHOTOS || {};
   var photosFor = function (slug) { return Object.prototype.hasOwnProperty.call(PH, slug) && PH[slug] && PH[slug].length ? PH[slug] : null; };
+  /* Concept preview: when licensed photography is loaded, only projects with an image are listed (case studies,
+     plus projects with a WH_PHOTOS entry). Used by the Projects archive and the homepage sector counts.
+     Without WH_PHOTOS every project is listed, as before. */
+  var listedProjects = window.WH_PHOTOS ? D.projects.filter(function (p) { return p.image || photosFor(p.slug); }) : D.projects;
   /* Sibling of img(): srcset from the photo's own widths array; width/height reserve its aspect ratio */
   function photoImg(ph, sizes) {
     var srcset = ph.widths.map(function (w) { return 'assets/img/' + ph.name + '-' + w + '.webp ' + w + 'w'; }).join(', ');
@@ -136,7 +140,7 @@
 
   /* Sector counts + hover image */
   $$('[data-sector-count]').forEach(function (el) {
-    var n = D.projects.filter(function (p) { return p.sector === el.getAttribute('data-sector-count'); }).length;
+    var n = listedProjects.filter(function (p) { return p.sector === el.getAttribute('data-sector-count'); }).length;
     el.textContent = n ? n + (n === 1 ? ' project' : ' projects') : 'Projects to follow';
   });
   var sectorImg = $('.sector-image img');
@@ -150,9 +154,7 @@
   if (archive) {
     var form = $('#filters-form'), list = $('#results'), countEl = $('#count'), chips = $('#chips'), clearBtn = $('#clear'), moreWrap = $('#more');
     var PAGE = 18, shown = PAGE;
-    /* Concept preview: when licensed photography is loaded, list only projects that have an image
-       (case studies, plus projects with a WH_PHOTOS entry). Without WH_PHOTOS every project is listed, as before. */
-    var AP = window.WH_PHOTOS ? D.projects.filter(function (p) { return p.image || photosFor(p.slug); }) : D.projects;
+    var AP = listedProjects;
     var emptyHeading = $('#empty h2'), emptyHeadingDefault = emptyHeading.textContent;
     var sectorsInUse = D.sectors.filter(function (s) { return AP.some(function (p) { return p.sector === s; }); });
     var TYPES = [{ id: 'case-studies', label: 'Case studies', test: function (p) { return p.caseStudy; } },
