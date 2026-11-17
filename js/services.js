@@ -176,6 +176,22 @@ window.WH_SERVICES = {
         "title": "Green Guide Inspections and Structural Appraisals",
         "description": "Green Guide annual inspections, stadium inspections and structural appraisals of existing spectator venues, from Willis Hazell Engineers."
       }
+    },
+    {
+      "slug": "geotechnical-engineering",
+      "name": "Geotechnical Engineering",
+      "order": 4,
+      "status": "draft",
+      "confirmed": false,
+      "summary": "[Unconfirmed. The specification lists this service as subject to confirmation. Not shown on the site while status is draft.]",
+      "intro": [],
+      "capabilities": [],
+      "image": null,
+      "related": [],
+      "seo": {
+        "title": "",
+        "description": ""
+      }
     }
   ]
 };
