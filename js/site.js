@@ -293,7 +293,7 @@
       document.title = p.name + ' — Willis Hazell Engineers';
       var meta = [['Client', p.client], ['Location', p.location], ['Sector', p.sector], ['Capacity', p.capacity],
                   ['Architect', null], ['Services', null], ['Willis Hazell’s role', null], ['Completion', null]];
-      var related = D.projects.filter(function (x) { return x.sector === p.sector && x.slug !== p.slug; }).slice(0, 6);
+      var related = listedProjects.filter(function (x) { return x.sector === p.sector && x.slug !== p.slug; }).slice(0, 6);
       /* Low-resolution images (< 1400px wide) are shown inset beside the title, never stretched full-bleed */
       var inset = p.imageMaxW < 1400;
       var heroHtml = '<div class="cs-hero' + (inset ? ' inset' : '') + '"><button type="button" data-lightbox aria-label="View image full screen: ' + esc(p.name) + '"><div class="frame"' + (inset ? ' style="--native:' + p.imageMaxW + 'px"' : '') + '>' +
@@ -328,7 +328,11 @@
         '<a class="next-project" href="' + projectUrl(next) + '"><span class="label">Next case study</span><span class="heading-section">' + esc(next.name) + ' →</span></a></div>';
       function card2(x) {
         if (x.caseStudy) return '<li><a href="' + projectUrl(x) + '"><div class="frame ratio-32">' + img(x.image, x.imageMaxW, '(max-width:620px) 100vw, 33vw', '') + '</div><div class="card-text"><h3 class="title-project">' + esc(x.name) + '</h3>' + creditTag(x) + '</div></a></li>';
-        return '<li><div class="typo-card"><h3 class="title-project">' + esc(x.name) + '</h3>' + (x.detail ? '<p class="body-small">' + esc(x.detail.charAt(0).toUpperCase() + x.detail.slice(1)) + '</p>' : '') + creditTag(x) + '</div></li>';
+        var rText = '<h3 class="title-project">' + esc(x.name) + '</h3>' + (x.detail ? '<p class="body-small">' + esc(x.detail.charAt(0).toUpperCase() + x.detail.slice(1)) + '</p>' : '') + creditTag(x);
+        var rph = !x.image && photosFor(x.slug);
+        if (rph) return '<li><div class="photo-card"><div class="frame ratio-32">' + photoImg(rph[0], '(max-width:620px) calc(100vw - 32px), (max-width:900px) 45vw, 320px') + '</div>' +
+          '<p class="photo-credit">' + photoCredit(rph[0]) + '</p><div class="card-text">' + rText + '</div></div></li>';
+        return '<li><div class="typo-card">' + rText + '</div></li>';
       }
       /* PERF-002: inset hero images have no reserved height, so stay pending until the hero image is ready */
       var heroImg = $('.cs-hero img', cs);
