@@ -546,6 +546,49 @@
       '</div></div></section>';
   };
 
+  /* Services overview: services.html (layout C, directory) and services-alt.html (layout A, editorial index).
+     Both render from the same records; sections are filled in by renderOverviewExtras (sectors, projects). */
+  var ov = $('#svc-overview');
+  if (ov) {
+    var layout = ov.getAttribute('data-layout');
+    var capsList = function (s, cls) { return '<ul class="' + cls + '">' + s.capabilities.map(function (c) { return '<li>' + esc(c.title) + '</li>'; }).join('') + '</ul>'; };
+    var main = '';
+    if (layout === 'c') {
+      var first = services[0] && services[0].image;
+      main = '<section class="wrap sec-compact" style="padding-top:0" aria-label="Service directory"><div class="c-index"><ul class="c-list">' +
+        services.map(function (s, n) {
+          var i = s.image;
+          return '<li class="c-item"' + (i ? ' data-img="' + i.name + '-' + i.maxW + '" data-alt="' + esc(i.alt) + '" data-cap="' + esc(i.credit) + '"' : '') + '>' +
+            (i ? '<div class="c-thumb"><div class="frame">' + img(i.name, i.maxW, '(max-width:900px) 100vw, 1px', '', false) + '</div></div>' : '') +
+            '<p class="svc-num">0' + (n + 1) + '</p><h2 class="c-title"><a href="' + svcUrl(s) + '">' + esc(s.name) + '</a></h2><span class="c-go" aria-hidden="true">→</span>' +
+            '<p class="c-sum">' + esc(s.summary) + '</p>' + capsList(s, 'c-caps') + '</li>';
+        }).join('') + '</ul>' +
+        (first ? '<figure class="c-photo"><div class="frame">' + img(first.name, first.maxW, '(max-width:900px) 1px, 36vw', first.alt, true) + '</div><figcaption class="caption" id="c-photo-cap">' + esc(first.credit) + '</figcaption></figure>' : '') +
+        '</div></section>';
+    } else {
+      main = services.map(function (s, n) {
+        return '<section class="wrap" aria-labelledby="a-' + s.slug + '"><div class="a-svc' + (n % 2 ? ' flip' : '') + '">' +
+          '<div class="a-text"><p class="svc-num">0' + (n + 1) + '</p><h2 class="heading-section" id="a-' + s.slug + '"><a href="' + svcUrl(s) + '">' + esc(s.name) + '</a></h2>' +
+          '<p class="a-sum">' + esc(s.summary) + '</p>' + capsList(s, 'a-caps') + '<p><a class="tl" href="' + svcUrl(s) + '">' + esc(s.name) + ' →</a></p></div>' +
+          '<div class="a-media">' + svcFigure(s, '(max-width:900px) 100vw, 50vw', n === 0, '4/3') + '</div></div></section>';
+      }).join('');
+    }
+    ov.innerHTML = main + principlesHtml('How the disciplines work together', 'svc-pr-h') +
+      '<div id="svc-ov-extra"></div>' + contactBand('Talk to us early about your venue.');
+    /* Layout C: the photograph beside the directory follows the hovered or focused service (as the homepage Sectors band) */
+    var photo = $('.c-photo img'), photoCap = $('#c-photo-cap');
+    if (photo) $$('.c-item[data-img]').forEach(function (li) {
+      var show = function () {
+        if (photo.getAttribute('data-cur') === li.getAttribute('data-img')) return;
+        photo.setAttribute('data-cur', li.getAttribute('data-img'));
+        photo.removeAttribute('srcset'); photo.removeAttribute('sizes');
+        photo.src = 'assets/img/' + li.getAttribute('data-img') + '.webp'; photo.alt = li.getAttribute('data-alt');
+        photoCap.textContent = li.getAttribute('data-cap');
+      };
+      li.addEventListener('mouseenter', show); li.addEventListener('focusin', show);
+    });
+  }
+
   /* Service template: service.html?s=<slug> */
   var svcEl = $('#service');
   if (svcEl) {
