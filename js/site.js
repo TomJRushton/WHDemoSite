@@ -214,7 +214,7 @@
       /* Projects without a detail page: the first licensed photo becomes the card thumbnail (no link, no new page) */
       var ph = !p.image && photosFor(p.slug);
       if (ph) return '<li><div class="photo-card"><div class="frame ratio-45">' + photoImg(ph[0], '(max-width:620px) calc(100vw - 32px), (max-width:900px) 45vw, 320px') + '</div>' +
-        '<p class="photo-credit">' + photoCredit(ph[0]) + '</p><div class="card-text">' + text + '</div></div></li>';
+        '<p class="photo-credit">' + (photoPhase(ph[0]) ? '<span class="photo-phase">' + photoPhase(ph[0]) + '.</span> ' : '') + photoCredit(ph[0]) + '</p><div class="card-text">' + text + '</div></div></li>';
       return '<li><div class="typo-card">' + text + '</div></li>';
     };
     var render = function (st) {
@@ -331,7 +331,7 @@
         var rText = '<h3 class="title-project">' + esc(x.name) + '</h3>' + (x.detail ? '<p class="body-small">' + esc(x.detail.charAt(0).toUpperCase() + x.detail.slice(1)) + '</p>' : '') + creditTag(x);
         var rph = !x.image && photosFor(x.slug);
         if (rph) return '<li><div class="photo-card"><div class="frame ratio-32">' + photoImg(rph[0], '(max-width:620px) calc(100vw - 32px), (max-width:900px) 45vw, 320px') + '</div>' +
-          '<p class="photo-credit">' + photoCredit(rph[0]) + '</p><div class="card-text">' + rText + '</div></div></li>';
+          '<p class="photo-credit">' + (photoPhase(rph[0]) ? '<span class="photo-phase">' + photoPhase(rph[0]) + '.</span> ' : '') + photoCredit(rph[0]) + '</p><div class="card-text">' + rText + '</div></div></li>';
         return '<li><div class="typo-card">' + rText + '</div></li>';
       }
       /* PERF-002: inset hero images have no reserved height, so stay pending until the hero image is ready */
