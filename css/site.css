@@ -440,6 +440,13 @@ code{font-size:.92em;background:var(--navy-tint);padding:1px 5px}
 .photo-credit{margin:8px 0 0;font-size:12px;line-height:1.45;color:var(--stone-600)}
 .photo-credit a{color:inherit;text-decoration:underline;text-underline-offset:2px}
 .photo-credit a:hover{color:var(--navy)}
+.photo-gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:28px 24px}
+.photo-gallery figure{margin:0}
+.photo-gallery button{all:unset;display:block;cursor:zoom-in;width:100%}
+.photo-gallery button:focus-visible{outline:2px solid var(--navy);outline-offset:3px}
+.photo-gallery .frame img{transition:transform var(--reveal) ease}
+.photo-gallery button:hover .frame img{transform:scale(1.03)}
+.photo-phase{color:var(--ink-soft);font-weight:500}
 
 /* ---------- Services ---------- */
 .svc-num{font-size:12px;font-weight:600;letter-spacing:.14em;color:var(--stone-600);font-variant-numeric:tabular-nums;margin:0}

@@ -293,6 +293,17 @@
       var heroHtml = '<div class="cs-hero' + (inset ? ' inset' : '') + '"><button type="button" data-lightbox aria-label="View image full screen: ' + esc(p.name) + '"><div class="frame"' + (inset ? ' style="--native:' + p.imageMaxW + 'px"' : '') + '>' +
           img(p.image, p.imageMaxW, inset ? '(max-width:700px) 100vw, ' + p.imageMaxW + 'px' : '100vw', p.caption.split('. Image')[0], true) + '</div></button>' +
           '<p class="caption' + (inset ? '' : ' wrap') + '" style="margin-top:10px">' + esc(p.caption) + '</p></div>';
+      /* Gallery: licensed photos (manifest order) replace the placeholder slots; without photos the slots stay as they were */
+      var gal = photosFor(p.slug);
+      var galleryHtml = gal
+        ? '<div class="photo-gallery">' + gal.map(function (ph, n) {
+            var phase = photoPhase(ph);
+            return '<figure><button type="button" data-gallery="' + n + '" aria-label="View image full screen: ' + esc(ph.alt) + '"><div class="frame ratio-32">' +
+              photoImg(ph, '(max-width:620px) 100vw, (max-width:1100px) 50vw, 360px') + '</div></button>' +
+              '<figcaption class="photo-credit">' + (phase ? '<span class="photo-phase">' + phase + '.</span> ' : '') + photoCredit(ph) + '</figcaption></figure>';
+          }).join('') + '</div><p class="caption" style="margin-top:14px">Photographs from Wikimedia Commons, used under the licences credited. They show the venue; they are not Willis Hazell photographs and do not confirm its role on the project.</p>'
+        : '<div class="gallery-slots"><div class="slot">Construction photograph</div><div class="slot">Structural detail</div><div class="slot">Completed interior</div></div>' +
+          '<p class="caption" style="margin-top:10px">Gallery images to be supplied with usage rights.</p>';
       var titleHtml = '<div class="cs-title"><div><p class="crumbs"><a href="projects.html">Projects</a> / <a href="projects.html?sector=' + slugify(p.sector) + '">' + esc(p.sector) + '</a></p>' +
           '<h1 class="heading-page">' + esc(p.name) + '</h1><p class="intro" style="margin-top:16px;max-width:820px">' + esc(p.summary) + '</p></div></div>';
       cs.innerHTML =
@@ -305,8 +316,7 @@
           '<div class="prose"><h2>Key inputs</h2><ul class="inputs">' + p.keyInputs.map(function (k) { return '<li>' + esc(k) + '</li>'; }).join('') + '</ul>' +
           '<h2>The engineering challenge</h2><p class="tbc">[To be written with the project team: the site, structure and constraints that made this project demanding.]</p>' +
           '<h2>Our contribution</h2><p class="tbc">[To be written with the project team: what Willis Hazell designed, decided or changed, with figures where possible.]</p>' +
-          '<h2>Gallery</h2><div class="gallery-slots"><div class="slot">Construction photograph</div><div class="slot">Structural detail</div><div class="slot">Completed interior</div></div>' +
-          '<p class="caption" style="margin-top:10px">Gallery images to be supplied with usage rights.</p></div></div>' +
+          '<h2>Gallery</h2>' + galleryHtml + '</div></div>' +
         (related.length ? '<section class="sec-compact" aria-labelledby="rel-h"><div class="sec-head rule-top"><h2 id="rel-h" class="heading-section">More ' + esc(p.sector.toLowerCase()) + '</h2><a class="tl" href="projects.html?sector=' + slugify(p.sector) + '">All ' + esc(p.sector.toLowerCase()) + ' →</a></div>' +
           '<ul class="results" style="padding-top:0">' + related.map(card2).join('') + '</ul></section>' : '') +
         '<a class="next-project" href="' + projectUrl(next) + '"><span class="label">Next case study</span><span class="heading-section">' + esc(next.name) + ' →</span></a></div>';
@@ -323,9 +333,17 @@
       }
       /* Lightbox */
       var lb = $('#lightbox'), lbImg = $('img', lb), lbCap = $('figcaption', lb), lastFocus;
-      var openLb = function () { lastFocus = document.activeElement; lbImg.src = 'assets/img/' + p.image + '-' + p.imageMaxW + '.webp'; lbImg.alt = p.name; lbCap.textContent = p.caption; lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false'); $('.close', lb).focus(); document.body.style.overflow = 'hidden'; };
+      var showLb = function (src, alt, cap) { lastFocus = document.activeElement; lbImg.src = src; lbImg.alt = alt; lbCap.textContent = cap; lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false'); $('.close', lb).focus(); document.body.style.overflow = 'hidden'; };
+      var openLb = function () { showLb('assets/img/' + p.image + '-' + p.imageMaxW + '.webp', p.name, p.caption); };
       var closeLb = function () { lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; if (lastFocus) lastFocus.focus(); };
       $('[data-lightbox]', cs).addEventListener('click', openLb);
+      /* Gallery photos open in the same lightbox; the caption carries the phase and the credit */
+      $$('[data-gallery]', cs).forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var ph = gal[+btn.getAttribute('data-gallery')], phase = photoPhase(ph);
+          showLb('assets/img/' + ph.name + '-' + ph.maxW + '.webp', ph.alt, (phase ? phase + '. ' : '') + ph.credit);
+        });
+      });
       $('.close', lb).addEventListener('click', closeLb);
       lb.addEventListener('click', function (e) { if (e.target === lb) closeLb(); });
       document.addEventListener('keydown', function (e) { if (!lb.classList.contains('open')) return; if (e.key === 'Escape') closeLb(); if (e.key === 'Tab') { e.preventDefault(); $('.close', lb).focus(); } });
