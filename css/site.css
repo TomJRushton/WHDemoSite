@@ -235,6 +235,7 @@ a:hover .title-project{color:var(--navy)}
 .typo-card p{margin:0}
 .empty{padding:56px 0;max-width:560px}
 .more{display:flex;justify-content:center;padding-bottom:clamp(64px,8vw,120px)}
+.more[hidden]{display:none}
 .filter-toggle{display:none}
 @media (max-width:760px){
   .filter-toggle{display:inline-flex;align-items:center;position:sticky;top:78px;z-index:20;margin:16px 0 0}
