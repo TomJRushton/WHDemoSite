@@ -127,14 +127,25 @@
         ? '<svg aria-hidden="true" width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M3.5 2 12 7 3.5 12Z"/></svg>'
         : '<svg aria-hidden="true" width="14" height="14" viewBox="0 0 14 14" stroke="currentColor" stroke-width="1.6"><path d="M4.5 2v10M9.5 2v10"/></svg>';
     };
-    /* Only attach the video where it is shown: wide screens with motion allowed */
-    var wantsVideo = !reduced && window.matchMedia('(min-width:701px)').matches;
-    if (wantsVideo) {
-      video.src = video.getAttribute('data-src');
+    /* Attach the video only when motion is allowed: the full-width cut on wide screens,
+       the lighter portrait cut on phones. Re-pick the cut when the width crosses 700px
+       (e.g. a phone rotated), keeping the visitor's pause choice. */
+    var userPaused = false;
+    var play = function () { var pr = video.play(); if (pr && pr.catch) pr.catch(function () {}); };
+    if (!reduced) {
+      var wideMq = window.matchMedia('(min-width:701px)');
+      var pick = function () {
+        var want = video.getAttribute(wideMq.matches ? 'data-src' : 'data-src-mobile');
+        if (!want || video.getAttribute('src') === want) return;
+        video.classList.remove('is-playing');
+        video.setAttribute('src', want);
+        if (!userPaused) play();
+      };
       video.addEventListener('playing', function () { video.classList.add('is-playing'); });
-      var pr0 = video.play(); if (pr0 && pr0.catch) pr0.catch(function () {});
+      pick();
+      if (wideMq.addEventListener) wideMq.addEventListener('change', pick); else if (wideMq.addListener) wideMq.addListener(pick);
     }
-    pause.addEventListener('click', function () { if (video.paused) { var pr = video.play(); if (pr && pr.catch) pr.catch(function () {}); } else video.pause(); });
+    pause.addEventListener('click', function () { if (video.paused) { userPaused = false; play(); } else { userPaused = true; video.pause(); } });
     video.addEventListener('play', setState); video.addEventListener('pause', setState); setState();
   }
 

@@ -98,7 +98,7 @@ h1,h2,h3{text-wrap:balance}
 .hero-meta{display:flex;align-items:center;gap:20px}
 .hero-meta p{margin:0;font-size:13px;line-height:1.4;color:#E4E1DA;text-align:right}
 .pause{width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.7);background:rgba(16,17,16,.25);color:#fff;display:grid;place-items:center;cursor:pointer;padding:0;flex:none}
-@media (max-width:700px),(prefers-reduced-motion:reduce){
+@media (prefers-reduced-motion:reduce){
   .hero video{display:none}
   .pause{display:none}
 }
