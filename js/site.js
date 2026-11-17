@@ -235,6 +235,7 @@
         var emptySectors = st.sector.map(function (v) { return D.sectors.filter(function (s) { return slugify(s) === v; })[0]; })
           .filter(function (s) { return s && !AP.some(function (p) { return p.sector === s; }); });
         emptyHeading.textContent = st.sector.length && emptySectors.length === st.sector.length ? emptySectors.join(' and ') + ' projects to follow' : emptyHeadingDefault;
+        $('#empty-concept').hidden = !window.WH_PHOTOS;
         $('#empty').hidden = false; moreWrap.hidden = true; return;
       }
       $('#empty').hidden = true;
