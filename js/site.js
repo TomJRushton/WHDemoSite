@@ -73,13 +73,18 @@
     if (!b) return;
     var hoverMq = window.matchMedia ? window.matchMedia('(hover: hover) and (min-width: 901px)') : { matches: false };
     var set = function (open) { g.classList.toggle('open', open); b.setAttribute('aria-expanded', open ? 'true' : 'false'); };
-    b.addEventListener('click', function () { set(!g.classList.contains('open')); });
+    /* A pointer that has just opened the menu by hovering would otherwise close it again with its click */
+    var hoverOpenedAt = 0;
+    b.addEventListener('click', function () {
+      if (Date.now() - hoverOpenedAt < 800) { set(true); return; }
+      set(!g.classList.contains('open'));
+    });
     g.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && g.classList.contains('open')) { e.stopPropagation(); set(false); b.focus(); }
     });
     g.addEventListener('focusout', function (e) { if (!g.contains(e.relatedTarget)) set(false); });
     document.addEventListener('click', function (e) { if (!g.contains(e.target)) set(false); });
-    g.addEventListener('mouseenter', function () { if (hoverMq.matches) set(true); });
+    g.addEventListener('mouseenter', function () { if (hoverMq.matches && !g.classList.contains('open')) { hoverOpenedAt = Date.now(); set(true); } });
     g.addEventListener('mouseleave', function () { if (hoverMq.matches) set(false); });
   });
 
