@@ -434,6 +434,13 @@ code{font-size:.92em;background:var(--navy-tint);padding:1px 5px}
   .nav .nav-sub a:hover,.site-header.over-hero .nav .nav-sub a:hover,.site-header.over-hero.scrolled .nav .nav-sub a:hover{color:var(--on-dark)}
   .site-header.menu-open .nav-sub :focus-visible{outline-color:var(--lime)}
 }
+/* ---------- Licensed project photography ---------- */
+.photo-card{display:flex;flex-direction:column;height:100%}
+.photo-card .card-text{padding-top:14px}
+.photo-credit{margin:8px 0 0;font-size:12px;line-height:1.45;color:var(--stone-600)}
+.photo-credit a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+.photo-credit a:hover{color:var(--navy)}
+
 /* ---------- Services ---------- */
 .svc-num{font-size:12px;font-weight:600;letter-spacing:.14em;color:var(--stone-600);font-variant-numeric:tabular-nums;margin:0}
 .svc-fig{margin:0}

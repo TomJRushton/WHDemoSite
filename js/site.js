@@ -16,6 +16,31 @@
     var srcset = widths.map(function (w) { return 'assets/img/' + name + '-' + w + '.webp ' + w + 'w'; }).join(', ');
     return '<img src="assets/img/' + name + '-' + widths[widths.length - 1] + '.webp" srcset="' + srcset + '" sizes="' + sizes + '" alt="' + esc(alt) + '"' + (eager ? '' : ' loading="lazy"') + ' decoding="async">';
   }
+  /* Licensed project photography (js/photography.js, window.WH_PHOTOS keyed by project slug).
+     Everything falls back to today's behaviour when WH_PHOTOS or a project's entry is absent. */
+  var PH = window.WH_PHOTOS || {};
+  var photosFor = function (slug) { return Object.prototype.hasOwnProperty.call(PH, slug) && PH[slug] && PH[slug].length ? PH[slug] : null; };
+  /* Sibling of img(): srcset from the photo's own widths array; width/height reserve its aspect ratio */
+  function photoImg(ph, sizes) {
+    var srcset = ph.widths.map(function (w) { return 'assets/img/' + ph.name + '-' + w + '.webp ' + w + 'w'; }).join(', ');
+    var src = ph.widths.filter(function (w) { return w <= 1600; }).pop() || ph.widths[0];
+    return '<img src="assets/img/' + ph.name + '-' + src + '.webp" srcset="' + srcset + '" sizes="' + sizes + '" width="' + ph.w + '" height="' + ph.h +
+      '" alt="' + esc(ph.alt) + '" loading="lazy" decoding="async">';
+  }
+  /* The manifest's credit wording, with the licence linked (CC BY / CC BY-SA requirement) and the Commons source linked */
+  function photoCredit(ph) {
+    var t = esc(ph.credit), lic = esc(ph.licence);
+    if (ph.licenceUrl && t.indexOf(lic) > -1) t = t.replace(lic, '<a href="' + esc(ph.licenceUrl) + '" rel="license noopener" target="_blank">' + lic + '<span class="visually-hidden"> (opens in a new tab)</span></a>');
+    if (ph.source && t.indexOf('Wikimedia Commons') > -1) t = t.replace('Wikimedia Commons', '<a href="' + esc(ph.source) + '" rel="noopener" target="_blank">Wikimedia Commons<span class="visually-hidden"> (opens in a new tab)</span></a>');
+    return t;
+  }
+  var MONTHS_PH = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  /* "Under construction, June 2026" for construction-stage photos */
+  function photoPhase(ph) {
+    if (!/^construction/i.test(ph.phase || '')) return '';
+    var d = /^(\d{4})-(\d{2})/.exec(ph.dateTaken || '');
+    return 'Under construction' + (d ? ', ' + MONTHS_PH[+d[2] - 1] + ' ' + d[1] : '');
+  }
   function creditTag(p) {
     if (p.credit === 'willis-hazell') return '<span class="credit wh">Willis Hazell</span>';
     if (p.credit === 'experience') return '<span class="credit">Team experience</span>';
@@ -179,8 +204,13 @@
           '<div class="card-text"><h3 class="title-project">' + esc(p.name) + '</h3><p class="body-small">' + esc(p.summary) + '</p>' +
           '<p class="label">' + esc(p.sector) + ' · ' + esc(p.location) + '</p>' + creditTag(p) + '</div></a></li>';
       }
-      return '<li><div class="typo-card"><p class="label">' + esc(p.sector) + '</p><h3 class="title-project">' + esc(p.name) + '</h3>' +
-        (p.detail ? '<p class="body-small">' + esc(p.detail.charAt(0).toUpperCase() + p.detail.slice(1)) + '</p>' : '') + creditTag(p) + '</div></li>';
+      var text = '<p class="label">' + esc(p.sector) + '</p><h3 class="title-project">' + esc(p.name) + '</h3>' +
+        (p.detail ? '<p class="body-small">' + esc(p.detail.charAt(0).toUpperCase() + p.detail.slice(1)) + '</p>' : '') + creditTag(p);
+      /* Projects without a detail page: the first licensed photo becomes the card thumbnail (no link, no new page) */
+      var ph = !p.image && photosFor(p.slug);
+      if (ph) return '<li><div class="photo-card"><div class="frame ratio-45">' + photoImg(ph[0], '(max-width:620px) 100vw, 33vw') + '</div>' +
+        '<p class="photo-credit">' + photoCredit(ph[0]) + '</p><div class="card-text">' + text + '</div></div></li>';
+      return '<li><div class="typo-card">' + text + '</div></li>';
     };
     var render = function (st) {
       var res = D.projects.filter(function (p) { return matches(p, st); });
