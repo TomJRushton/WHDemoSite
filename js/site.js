@@ -308,7 +308,7 @@
         ? '<div class="photo-gallery">' + gal.map(function (ph, n) {
             var phase = photoPhase(ph);
             return '<figure><button type="button" data-gallery="' + n + '" aria-label="View image full screen: ' + esc(ph.alt) + '"><div class="frame ratio-32">' +
-              photoImg(ph, '(max-width:620px) calc(100vw - 32px), (max-width:1100px) 45vw, 240px') + '</div></button>' +
+              photoImg(ph, '(max-width:620px) calc(100vw - 32px), (max-width:1100px) 45vw, 340px') + '</div></button>' +
               '<figcaption class="photo-credit">' + (phase ? '<span class="photo-phase">' + phase + '.</span> ' : '') + photoCredit(ph) + '</figcaption></figure>';
           }).join('') + '</div><p class="caption" style="margin-top:14px">Photographs from Wikimedia Commons, used under the licences credited. They show the venue; they are not Willis Hazell photographs and do not confirm its role on the project.</p>'
         : '<div class="gallery-slots"><div class="slot">Construction photograph</div><div class="slot">Structural detail</div><div class="slot">Completed interior</div></div>' +
