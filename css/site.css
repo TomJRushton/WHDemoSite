@@ -436,7 +436,9 @@ code{font-size:.92em;background:var(--navy-tint);padding:1px 5px}
 }
 /* ---------- Licensed project photography ---------- */
 .photo-card{display:flex;flex-direction:column;height:100%}
-.photo-card .card-text{padding-top:14px}
+/* DESIGN-006: same title offset as case-study cards; credit sits under the text */
+.photo-card .card-text{padding-top:18px}
+.photo-card .photo-credit{margin-top:10px}
 .photo-credit{margin:8px 0 0;font-size:12px;line-height:1.45;color:var(--stone-600)}
 .photo-credit a{color:inherit;text-decoration:underline;text-underline-offset:2px}
 .photo-credit a:hover{color:var(--navy)}
