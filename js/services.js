@@ -116,6 +116,66 @@ window.WH_SERVICES = {
         "description": "Civil engineering for sports, entertainment and leisure developments: earthworks, flood risk, drainage, highways and site appraisals.",
         "note": "Specification target phrase 'sports pitch civil engineer' is not used until Willis Hazell supplies confirmed pitch-related content."
       }
+    },
+    {
+      "slug": "inspections-appraisals",
+      "name": "Inspections & Appraisals",
+      "order": 3,
+      "status": "published",
+      "confirmed": true,
+      "summary": "SGSA Green Guide annual inspections and structural appraisals of existing spectator venues.",
+      "intro": [
+        [
+          "p",
+          "Willis Hazell carries out Green Guide annual inspections and structural appraisals, listed on its current website alongside its structural engineering services."
+        ],
+        [
+          "ph",
+          "[Service introduction to be written with Willis Hazell: who commissions the inspections, how often, and what the client receives. Technical and regulatory statements to be checked against the current Green Guide and SGSA guidance before publication.]"
+        ]
+      ],
+      "capsSource": "From willishazell.com: its services list and the key inputs on its case studies",
+      "capabilities": [
+        {
+          "title": "Green Guide annual inspections"
+        },
+        {
+          "title": "Structural appraisals"
+        },
+        {
+          "title": "Condition surveys and capacity assessments"
+        }
+      ],
+      "topics": [
+        {
+          "title": "Stadium inspections",
+          "text": "[What a stadium inspection by Willis Hazell covers. To be supplied.]"
+        },
+        {
+          "title": "Structural appraisals",
+          "text": "[Appraisals of existing structures: scope and typical outputs. To be supplied.]"
+        },
+        {
+          "title": "Green Guide and SGSA annual inspections",
+          "text": "[How the annual inspection relates to the Green Guide and SGSA guidance. To be written by Willis Hazell and verified before publication; no regulatory claims are made here.]"
+        }
+      ],
+      "image": {
+        "name": "ashton-gate",
+        "maxW": 529,
+        "w": 529,
+        "h": 450,
+        "alt": "Aerial view of Ashton Gate stadium, Bristol",
+        "credit": "Image from willishazell.com; credit to confirm"
+      },
+      "related": [
+        "structural-engineering"
+      ],
+      "article": "green-guide-annual-inspections",
+      "seo": {
+        "title": "Green Guide Inspections and Structural Appraisals",
+        "description": "Green Guide annual inspections, stadium inspections and structural appraisals of existing spectator venues, from Willis Hazell Engineers."
+      }
     }
   ]
 };
