@@ -575,6 +575,20 @@
     }
     ov.innerHTML = main + principlesHtml('How the disciplines work together', 'svc-pr-h') +
       '<div id="svc-ov-extra"></div>' + contactBand('Talk to us early about your venue.');
+    /* SERV-008: where the services apply. A mark only where a case study's key inputs show the service in that sector */
+    var ovExtra = $('#svc-ov-extra');
+    var secNames = (D.sectors || []).filter(function (x) { return x !== 'Other'; });
+    ovExtra.insertAdjacentHTML('beforeend', '<section class="sec-compact wrap" style="padding-top:0" aria-labelledby="svc-mx-h"><div class="sec-head rule-top"><h2 class="heading-section" id="svc-mx-h">Where our services apply</h2></div>' +
+      '<table class="svc-matrix"><caption class="caption">“Listed” means the current willishazell.com case studies list inputs from that service on a project in that sector. Project credits are being confirmed.</caption>' +
+      '<thead><tr><th scope="col">Sector</th>' + services.map(function (s) { return '<th scope="col"><a href="' + svcUrl(s) + '">' + esc(s.name) + '</a></th>'; }).join('') + '</tr></thead><tbody>' +
+      secNames.map(function (x) {
+        var any = services.some(function (s) { return (s.sectors || []).indexOf(x) > -1; });
+        var cells = any ? services.map(function (s) {
+          return '<td data-h="' + esc(s.name) + '">' + ((s.sectors || []).indexOf(x) > -1 ? '<span class="svc-mark">Listed</span>' : '<span class="svc-nomark"><span aria-hidden="true">—</span><span class="visually-hidden">Not listed</span></span>') + '</td>';
+        }).join('') : '<td colspan="' + services.length + '" data-h="All services"><span class="svc-nomark">Relationships to be confirmed with Willis Hazell</span></td>';
+        return '<tr><th scope="row"><a href="projects.html?sector=' + slugify(x) + '">' + esc(x) + '</a></th>' + cells + '</tr>';
+      }).join('') + '</tbody></table></section>');
+
     /* Layout C: the photograph beside the directory follows the hovered or focused service (as the homepage Sectors band) */
     var photo = $('.c-photo img'), photoCap = $('#c-photo-cap');
     if (photo) $$('.c-item[data-img]').forEach(function (li) {
@@ -599,6 +613,8 @@
       setMeta(sv.seo && sv.seo.title || sv.name, sv.seo && sv.seo.description || sv.summary);
       var rel = (sv.related || []).map(svcBySlug).filter(Boolean);
       var glance = [];
+      /* SERV-008: sectors link to the filtered Projects archive until sector landing pages exist */
+      if (sv.sectors && sv.sectors.length) glance.push(['Sectors', sv.sectors.map(function (x) { return '<a href="projects.html?sector=' + slugify(x) + '">' + esc(x) + '</a>'; }).join(' · ')]);
       if (rel.length) glance.push(['Related services', rel.map(function (r) { return '<a href="' + svcUrl(r) + '">' + esc(r.name) + '</a>'; }).join(' · ')]);
       glance.push(['Contact', '<a href="#svc-contact-h">Martin Willis · Rob Hazell</a>']);
       var caps = sv.capabilities.map(function (c, n) {

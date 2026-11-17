@@ -4,6 +4,7 @@
    Recommended extensions: order, status (draft | published), confirmed, image.alt / image.credit,
    related (services), per-project evidence, topics, capsSource, article.
    Only records with status "published" are shown anywhere on the site.
+   sectors: derived from the sectors of the case studies whose key inputs show the service (evidence-based; to be confirmed by Willis Hazell).
    Sources: willishazell.com services lists and case-study key inputs (checked 2026-11-17).
    [Square brackets] mark content for Willis Hazell to supply. Project credits remain unconfirmed. */
 window.WH_SERVICES = {
@@ -61,6 +62,7 @@ window.WH_SERVICES = {
         "alt": "Long-span roof steelwork being lifted into place on a stadium",
         "credit": "Image from willishazell.com; credit to confirm"
       },
+      "sectors": ["Stadia", "Arenas", "Leisure Centres", "Training Grounds"],
       "related": [
         "civil-engineering",
         "inspections-appraisals"
@@ -108,6 +110,7 @@ window.WH_SERVICES = {
         "alt": "Aerial view of a building and its landscaped external works",
         "credit": "Image from willishazell.com; credit to confirm"
       },
+      "sectors": ["Stadia", "Arenas", "Leisure Centres", "Training Grounds"],
       "related": [
         "structural-engineering"
       ],
@@ -168,6 +171,7 @@ window.WH_SERVICES = {
         "alt": "Aerial view of Ashton Gate stadium, Bristol",
         "credit": "Image from willishazell.com; credit to confirm"
       },
+      "sectors": ["Stadia"],
       "related": [
         "structural-engineering"
       ],

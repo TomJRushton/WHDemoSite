@@ -499,5 +499,26 @@ code{font-size:.92em;background:var(--navy-tint);padding:1px 5px}
   .a-media{order:-1}
 }
 .js-pending #svc-overview{min-height:100svh;visibility:hidden}
+/* Sector table (SERV-008) */
+.svc-matrix{width:100%;border-collapse:collapse}
+.svc-matrix caption{text-align:left;caption-side:bottom;padding-top:14px}
+.svc-matrix th,.svc-matrix td{text-align:left;padding:14px 16px 14px 0;border-bottom:1px solid var(--stone-200);vertical-align:baseline}
+.svc-matrix thead th{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--stone-600);border-bottom:1px solid var(--ink)}
+.svc-matrix thead th a{text-decoration:none}
+.svc-matrix thead th a:hover{color:var(--navy);text-decoration:underline}
+.svc-matrix tbody th{font-family:var(--serif);font-weight:400;font-size:24px}
+.svc-matrix tbody th a{text-decoration:none}
+.svc-matrix tbody th a:hover{color:var(--navy);text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
+.svc-mark{display:inline-flex;align-items:center;gap:8px;font-size:14px;color:var(--ink-soft)}
+.svc-mark::before{content:"";width:8px;height:8px;background:var(--navy)}
+.svc-nomark{color:var(--stone-600);font-size:14px}
+@media (max-width:700px){
+  .svc-matrix thead{display:none}
+  .svc-matrix,.svc-matrix tbody,.svc-matrix tr{display:block}
+  .svc-matrix tr{padding:16px 0;border-bottom:1px solid var(--stone-200)}
+  .svc-matrix tbody th,.svc-matrix td{display:block;border:0;padding:2px 0}
+  .svc-matrix tbody th{font-size:24px;margin-bottom:6px}
+  .svc-matrix td[data-h]::before{content:attr(data-h) ": ";font-size:14px;color:var(--stone-600)}
+}
 
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}a:hover .frame img{transform:none}}
