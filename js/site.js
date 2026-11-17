@@ -212,7 +212,9 @@
       }
       return true;
     };
-    var isWide = function (p) { return !!(p.caseStudy && p.image && p.imageMaxW >= 1400); };
+    /* projects.html: featured layout; projects-alt.html (data-layout="uniform"): every card the same size, original order */
+    var featured = archive.getAttribute('data-layout') !== 'uniform';
+    var isWide = function (p) { return !!(featured && p.caseStudy && p.image && p.imageMaxW >= 1400); };
     var card = function (p, i) {
       if (p.caseStudy) {
         /* Featured case studies: double width (same height as a normal card) where the image is large enough */
@@ -236,7 +238,7 @@
     var render = function (st) {
       var res = AP.filter(function (p) { return matches(p, st); });
       /* Case studies first; standard-size ones before featured (wide) ones so they pair up in the first row */
-      var rank = function (p) { return p.caseStudy ? (isWide(p) ? 1 : 0) : 2; };
+      var rank = function (p) { return p.caseStudy ? (featured ? (isWide(p) ? 1 : 0) : 0) : 2; };
       res.sort(function (a, b) { return rank(a) - rank(b); });
       countEl.textContent = res.length + (res.length === 1 ? ' project' : ' projects');
       var tags = [];
