@@ -483,8 +483,11 @@ code{font-size:.92em;background:var(--navy-tint);padding:1px 5px}
 .c-title{font-family:var(--serif);font-weight:400;font-size:clamp(32px,3.4vw,48px);line-height:1.08;letter-spacing:-.01em;margin:0}
 .c-title a{text-decoration:none}
 .c-title a::after{content:"";position:absolute;inset:0}
-.c-title a:focus-visible{outline:none}
-.c-item:has(a:focus-visible){outline:2px solid var(--navy);outline-offset:4px}
+/* Where :has() is supported the focus ring moves from the title link to the whole row; elsewhere the link keeps its own ring */
+@supports selector(:has(*)){
+  .c-title a:focus-visible{outline:none}
+  .c-item:has(a:focus-visible){outline:2px solid var(--navy);outline-offset:4px}
+}
 .c-go{font-size:22px;line-height:1;color:var(--stone-500);transition:transform var(--fast),color var(--fast)}
 .c-sum{grid-column:2 / span 2;margin:8px 0 4px;max-width:620px;font-size:17px;line-height:1.55}
 .c-caps{grid-column:2 / span 2;display:flex;flex-wrap:wrap;margin:0;padding:0;list-style:none}
