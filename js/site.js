@@ -472,7 +472,7 @@
             field('ap-role', 'Role', '<input id="ap-role" name="role" type="text" readonly value="' + esc(j.title) + '">') +
             field('ap-cv', 'CV', '<input id="ap-cv" name="cv" type="file" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" required>', 'PDF or Word document, up to 10MB.') +
             field('ap-note', 'Cover note (optional)', '<textarea id="ap-note" name="note" rows="6"></textarea>') +
-            '<div class="field" id="f-ap-consent"><label class="check"><input id="ap-consent" name="consent" type="checkbox" required> I agree to Willis Hazell Engineers processing my application under its privacy notice [to follow].</label><p class="field-error" id="ap-consent-err" hidden></p></div>' +
+            '<div class="field" id="f-ap-consent"><label class="check"><input id="ap-consent" name="consent" type="checkbox" required aria-describedby="ap-consent-err"> I agree to Willis Hazell Engineers processing my application under its privacy notice [to follow].</label><p class="field-error" id="ap-consent-err" hidden></p></div>' +
             '<button class="btn" type="submit">Send application</button>' +
           '</form></div></div></section>';
       jsonLd({ '@context': 'https://schema.org', '@type': 'JobPosting', title: j.title, description: j.summary, datePosted: j.publishAt, validThrough: j.closing,
