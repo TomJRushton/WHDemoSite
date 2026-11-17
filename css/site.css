@@ -381,8 +381,8 @@ code{font-size:.92em;background:var(--navy-tint);padding:1px 5px}
 .vac:hover .title-project,.vac:hover .vac-go{color:var(--navy)}
 @media (max-width:760px){.vac{grid-template-columns:minmax(0,1fr)}.vac .title-project{grid-row:auto}.vac-go,.vac .credit{grid-column:auto;grid-row:auto}}
 /* Forms */
-.form{max-width:640px;display:grid;gap:24px;margin-top:32px}
-.field{display:grid;gap:6px}
+.form{max-width:640px;display:grid;grid-template-columns:minmax(0,1fr);gap:24px;margin-top:32px}
+.field{display:grid;grid-template-columns:minmax(0,1fr);gap:6px}
 .field label{font-weight:500;font-size:16px}
 .field input[type=text],.field input[type=email],.field input[type=tel],.field textarea{width:100%;min-height:48px;border:1px solid var(--stone-500);border-radius:2px;background:var(--paper-raised);padding:10px 12px;font:inherit;font-size:16px;color:var(--ink)}
 .field input[readonly]{background:var(--paper);color:var(--ink-soft)}
