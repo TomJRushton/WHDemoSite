@@ -577,7 +577,7 @@
         '<div id="svc-extra"></div>' +
         (rel.length ? '<section class="sec-compact wrap" style="padding-top:0" aria-labelledby="svc-rel-h"><h2 class="label" id="svc-rel-h" style="margin-bottom:16px">Related services</h2><ul class="rel-svcs">' +
           rel.map(function (r) { return '<li><a href="' + svcUrl(r) + '">' + esc(r.name) + '<span>' + esc(r.summary) + '</span></a></li>'; }).join('') + '</ul></section>' : '') +
-        contactBand('Talk to Martin or Rob about ' + esc(sv.name.toLowerCase().replace('&', 'and')) + '.');
+        contactBand('Talk to Martin or Rob about ' + esc(sv.name.toLowerCase().replace('&', 'and')) + '.', sv.name.replace('&', 'and') + ' enquiry');
       var extra = $('#svc-extra');
       /* Related insight: a linked News article (sample articles keep their Sample tag) */
       var insight = sv.article && articles.filter(function (x) { return x.slug === sv.article; })[0];
