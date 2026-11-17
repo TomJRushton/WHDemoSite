@@ -17,7 +17,10 @@ window.WH_PHOTOS = {
    "alt": "Ashton Gate Development: hero (completed (Lansdown Stand))",
    "credit": "Photo: Bailey8891, CC BY-SA 4.0, via Wikimedia Commons",
    "source": "https://commons.wikimedia.org/wiki/File:Ashton_Gate_-_Lansdown_Stand.jpg",
-   "licence": "CC BY-SA 4.0"
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+   "dateTaken": "2018-10-19",
+   "photographer": "Bailey8891"
   },
   {
    "name": "ashton-gate-interior-01",
@@ -34,7 +37,10 @@ window.WH_PHOTOS = {
    "alt": "Ashton Gate Development: interior (completed (Lansdown/West Stand))",
    "credit": "Photo: JoeMaggs, CC BY-SA 4.0, via Wikimedia Commons",
    "source": "https://commons.wikimedia.org/wiki/File:Ashton_Gate_West_Stand.jpg",
-   "licence": "CC BY-SA 4.0"
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+   "dateTaken": "2016-07-27",
+   "photographer": "JoeMaggs"
   },
   {
    "name": "ashton-gate-exterior-01",
@@ -51,7 +57,10 @@ window.WH_PHOTOS = {
    "alt": "Ashton Gate Development: exterior (completed)",
    "credit": "Photo: Anthony O'Neil, CC BY-SA 2.0, via Wikimedia Commons",
    "source": "https://commons.wikimedia.org/wiki/File:Football_Stadium_-_geograph.org.uk_-_7395166.jpg",
-   "licence": "CC BY-SA 2.0"
+   "licence": "CC BY-SA 2.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+   "dateTaken": "2023-02-01",
+   "photographer": "Anthony O'Neil"
   },
   {
    "name": "ashton-gate-detail-01",
@@ -68,7 +77,10 @@ window.WH_PHOTOS = {
    "alt": "Ashton Gate Development: detail (completed (South Stand))",
    "credit": "Photo: Gareth James, CC BY-SA 2.0, via Wikimedia Commons",
    "source": "https://commons.wikimedia.org/wiki/File:SW_corner_of_Ashton_Gate_Stadium_-_geograph.org.uk_-_8140083.jpg",
-   "licence": "CC BY-SA 2.0"
+   "licence": "CC BY-SA 2.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+   "dateTaken": "2025-08-30",
+   "photographer": "Gareth James"
   },
   {
    "name": "ashton-gate-exterior-02",
@@ -85,7 +97,10 @@ window.WH_PHOTOS = {
    "alt": "Ashton Gate Development: exterior alt (completed)",
    "credit": "Photo: Neil Owen, CC BY-SA 2.0, via Wikimedia Commons",
    "source": "https://commons.wikimedia.org/wiki/File:A_new_shape_at_the_Gate_-_geograph.org.uk_-_5906949.jpg",
-   "licence": "CC BY-SA 2.0"
+   "licence": "CC BY-SA 2.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+   "dateTaken": "2018-09-14",
+   "photographer": "Neil Owen"
   }
  ],
  "racecourse-ground-kop-stand": [
@@ -104,7 +119,10 @@ window.WH_PHOTOS = {
    "alt": "Kop stand redevelopment, Racecourse Ground: construction (construction)",
    "credit": "Photo: Rhyswynne, CC0, via Wikimedia Commons",
    "source": "https://commons.wikimedia.org/wiki/File:Kop_newydd_1.jpg",
-   "licence": "CC0"
+   "licence": "CC0",
+   "licenceUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "dateTaken": "2026-06-28",
+   "photographer": "Rhyswynne"
   },
   {
    "name": "racecourse-ground-kop-stand-construction-02",
@@ -121,7 +139,10 @@ window.WH_PHOTOS = {
    "alt": "Kop stand redevelopment, Racecourse Ground: construction alt (construction)",
    "credit": "Photo: Rhyswynne, CC0, via Wikimedia Commons",
    "source": "https://commons.wikimedia.org/wiki/File:Kop_newydd_2.jpg",
-   "licence": "CC0"
+   "licence": "CC0",
+   "licenceUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "dateTaken": "2026-06-28",
+   "photographer": "Rhyswynne"
   }
  ],
  "arena-abertawe": [
@@ -140,7 +161,10 @@ window.WH_PHOTOS = {
    "alt": "Arena Abertawe: exterior (completed)",
    "credit": "Photo: Alan Hughes, CC BY-SA 2.0, via Wikimedia Commons",
    "source": "https://commons.wikimedia.org/wiki/File:Jesus_Christ_Superstar_(geograph_7745678)_(cropped).jpg",
-   "licence": "CC BY-SA 2.0"
+   "licence": "CC BY-SA 2.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+   "dateTaken": "2024-04-02",
+   "photographer": "Alan Hughes"
   },
   {
    "name": "arena-abertawe-construction-01",
@@ -157,7 +181,10 @@ window.WH_PHOTOS = {
    "alt": "Arena Abertawe: construction (construction)",
    "credit": "Photo: Hywel Williams, CC BY-SA 2.0, via Wikimedia Commons",
    "source": "https://commons.wikimedia.org/wiki/File:Construction_of_the_new_Swansea_Arena_-_geograph.org.uk_-_6838720.jpg",
-   "licence": "CC BY-SA 2.0"
+   "licence": "CC BY-SA 2.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+   "dateTaken": "2021-05-15",
+   "photographer": "Hywel Williams"
   }
  ],
  "lee-valley-ice-centre": [
@@ -176,7 +203,10 @@ window.WH_PHOTOS = {
    "alt": "Lee Valley Ice Centre: exterior (completed)",
    "credit": "Photo: The wub, CC BY-SA 4.0, via Wikimedia Commons",
    "source": "https://commons.wikimedia.org/wiki/File:Lee_Valley_Ice_Centre_2025-08-26_(1).jpg",
-   "licence": "CC BY-SA 4.0"
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+   "dateTaken": "2025-08-26",
+   "photographer": "The wub"
   },
   {
    "name": "lee-valley-ice-centre-exterior-02",
@@ -193,7 +223,10 @@ window.WH_PHOTOS = {
    "alt": "Lee Valley Ice Centre: exterior alt (completed)",
    "credit": "Photo: The wub, CC BY-SA 4.0, via Wikimedia Commons",
    "source": "https://commons.wikimedia.org/wiki/File:Lee_Valley_Ice_Centre_2025-08-26_(2).jpg",
-   "licence": "CC BY-SA 4.0"
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+   "dateTaken": "2025-08-26",
+   "photographer": "The wub"
   }
  ],
  "aarhus-stadium": [
@@ -212,7 +245,10 @@ window.WH_PHOTOS = {
    "alt": "Aarhus Stadium: construction (construction)",
    "credit": "Photo: BGH95, CC0, via Wikimedia Commons",
    "source": "https://commons.wikimedia.org/wiki/File:Construction_of_The_New_Stadium_in_Aarhus_(June_2026).jpg",
-   "licence": "CC0"
+   "licence": "CC0",
+   "licenceUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "dateTaken": "2026-06-19",
+   "photographer": "BGH95"
   }
  ],
  "afc-wimbledon-stadium": [
@@ -231,7 +267,10 @@ window.WH_PHOTOS = {
    "alt": "AFC Wimbledon Stadium: hero (completed)",
    "credit": "Photo: Steve Daniels, CC BY-SA 2.0, via Wikimedia Commons",
    "source": "https://commons.wikimedia.org/wiki/File:The_Cappagh_Stand_in_Plough_Lane_Stadium_-_geograph.org.uk_-_6957193.jpg",
-   "licence": "CC BY-SA 2.0"
+   "licence": "CC BY-SA 2.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+   "dateTaken": "2021-09-04",
+   "photographer": "Steve Daniels"
   }
  ],
  "amex-stadium": [
@@ -250,7 +289,10 @@ window.WH_PHOTOS = {
    "alt": "Amex Stadium: hero (completed)",
    "credit": "Photo: Hassocks5489, CC0, via Wikimedia Commons",
    "source": "https://commons.wikimedia.org/wiki/File:American_Express_Community_Stadium,_Falmer_(February_2023)_(2).jpg",
-   "licence": "CC0"
+   "licence": "CC0",
+   "licenceUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "dateTaken": "2023-02-10",
+   "photographer": "Hassocks5489"
   },
   {
    "name": "amex-stadium-exterior-01",
@@ -267,7 +309,10 @@ window.WH_PHOTOS = {
    "alt": "Amex Stadium: exterior (completed)",
    "credit": "Photo: Hassocks5489, CC0, via Wikimedia Commons",
    "source": "https://commons.wikimedia.org/wiki/File:American_Express_Community_Stadium,_Falmer_(August_2015)_(1).JPG",
-   "licence": "CC0"
+   "licence": "CC0",
+   "licenceUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "dateTaken": "2015-08-08",
+   "photographer": "Hassocks5489"
   }
  ],
  "anfield-stadium": [
@@ -286,7 +331,10 @@ window.WH_PHOTOS = {
    "alt": "Anfield Stadium: hero (completed (Anfield Road Stand))",
    "credit": "Photo: FYI2023, CC0, via Wikimedia Commons",
    "source": "https://commons.wikimedia.org/wiki/File:Anfield_Road_Stand_in_May_2024.jpg",
-   "licence": "CC0"
+   "licence": "CC0",
+   "licenceUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "dateTaken": "2024-05-15",
+   "photographer": "FYI2023"
   },
   {
    "name": "anfield-stadium-exterior-01",
@@ -303,7 +351,10 @@ window.WH_PHOTOS = {
    "alt": "Anfield Stadium: exterior (completed (Main Stand))",
    "credit": "Photo: Rodhullandemu, CC BY-SA 4.0, via Wikimedia Commons",
    "source": "https://commons.wikimedia.org/wiki/File:Anfield_Main_Stand_from_Anfield_Road.jpg",
-   "licence": "CC BY-SA 4.0"
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+   "dateTaken": "2019-11-20",
+   "photographer": "Rodhullandemu"
   }
  ],
  "brentford-community-stadium": [
@@ -322,7 +373,10 @@ window.WH_PHOTOS = {
    "alt": "Brentford Community Stadium: hero (completed)",
    "credit": "Photo: AndyScott, CC BY-SA 4.0, via Wikimedia Commons",
    "source": "https://commons.wikimedia.org/wiki/File:Brentford_Community_Stadium_from_Lionel_Road_South.jpg",
-   "licence": "CC BY-SA 4.0"
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+   "dateTaken": "2023-06-06",
+   "photographer": "AndyScott"
   },
   {
    "name": "brentford-community-stadium-exterior-01",
@@ -339,7 +393,10 @@ window.WH_PHOTOS = {
    "alt": "Brentford Community Stadium: exterior (completed)",
    "credit": "Photo: AndyScott, CC BY-SA 4.0, via Wikimedia Commons",
    "source": "https://commons.wikimedia.org/wiki/File:Brentford_Gtech_Community_Stadium.jpg",
-   "licence": "CC BY-SA 4.0"
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+   "dateTaken": "2023-10-27",
+   "photographer": "AndyScott"
   },
   {
    "name": "brentford-community-stadium-detail-01",
@@ -356,7 +413,10 @@ window.WH_PHOTOS = {
    "alt": "Brentford Community Stadium: detail (completed)",
    "credit": "Photo: AndyScott, CC BY-SA 4.0, via Wikimedia Commons",
    "source": "https://commons.wikimedia.org/wiki/File:Brentford_Community_Stadium,_box_office_entrance,_Lionel_Road.jpg",
-   "licence": "CC BY-SA 4.0"
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+   "dateTaken": "2022-04-13",
+   "photographer": "AndyScott"
   }
  ],
  "city-ground-nottingham": [
@@ -375,7 +435,10 @@ window.WH_PHOTOS = {
    "alt": "City Ground, Nottingham: hero (existing venue)",
    "credit": "Photo: habiloid, CC BY-SA 2.0, via Wikimedia Commons",
    "source": "https://commons.wikimedia.org/wiki/File:The_City_Ground_seen_across_The_River_Trent,_Nottingham_-_geograph.org.uk_-_7419781.jpg",
-   "licence": "CC BY-SA 2.0"
+   "licence": "CC BY-SA 2.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+   "dateTaken": "2023-02-17",
+   "photographer": "habiloid"
   },
   {
    "name": "city-ground-nottingham-aerial-01",
@@ -392,7 +455,10 @@ window.WH_PHOTOS = {
    "alt": "City Ground, Nottingham: aerial (existing venue)",
    "credit": "Photo: Arne Müseler, CC BY-SA 3.0 de, via Wikimedia Commons",
    "source": "https://commons.wikimedia.org/wiki/File:Nottingham_the_city_ground_stadium_forest.jpg",
-   "licence": "CC BY-SA 3.0 de"
+   "licence": "CC BY-SA 3.0 de",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+   "dateTaken": "2023-08-01",
+   "photographer": "Arne Müseler"
   }
  ],
  "city-of-salford-community-stadium": [
@@ -411,7 +477,10 @@ window.WH_PHOTOS = {
    "alt": "City of Salford Community Stadium: hero (completed)",
    "credit": "Photo: DS Pugh, CC BY-SA 2.0, via Wikimedia Commons",
    "source": "https://commons.wikimedia.org/wiki/File:Beside_the_CorpAcq_Stadium_-_geograph.org.uk_-_8400679.jpg",
-   "licence": "CC BY-SA 2.0"
+   "licence": "CC BY-SA 2.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+   "dateTaken": "2026-08-12",
+   "photographer": "DS Pugh"
   }
  ],
  "county-ground-gloucestershire-ccc": [
@@ -430,7 +499,10 @@ window.WH_PHOTOS = {
    "alt": "County Ground, Gloucestershire CCC: hero (completed (new pavilion))",
    "credit": "Photo: Anthony O'Neil, CC BY-SA 2.0, via Wikimedia Commons",
    "source": "https://commons.wikimedia.org/wiki/File:New_Pavilion_-_geograph.org.uk_-_4138219.jpg",
-   "licence": "CC BY-SA 2.0"
+   "licence": "CC BY-SA 2.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+   "dateTaken": "2014-08-25",
+   "photographer": "Anthony O'Neil"
   }
  ],
  "craven-cottage": [
@@ -449,7 +521,10 @@ window.WH_PHOTOS = {
    "alt": "Craven Cottage: hero (completed)",
    "credit": "Photo: Matt Brown, CC BY 4.0, via Wikimedia Commons",
    "source": "https://commons.wikimedia.org/wiki/File:Craven_Cottage_Riverside_Stand_2026-05-06.jpg",
-   "licence": "CC BY 4.0"
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "dateTaken": "2026-05-06",
+   "photographer": "Matt Brown"
   },
   {
    "name": "craven-cottage-construction-01",
@@ -466,7 +541,10 @@ window.WH_PHOTOS = {
    "alt": "Craven Cottage: construction (construction)",
    "credit": "Photo: Jim Osley, CC BY-SA 2.0, via Wikimedia Commons",
    "source": "https://commons.wikimedia.org/wiki/File:Fulham_Football_Club_,_Riverside_Stand_re-development_-_geograph.org.uk_-_7028206.jpg",
-   "licence": "CC BY-SA 2.0"
+   "licence": "CC BY-SA 2.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+   "dateTaken": "2021-11-25",
+   "photographer": "Jim Osley"
   },
   {
    "name": "craven-cottage-exterior-01",
@@ -483,7 +561,10 @@ window.WH_PHOTOS = {
    "alt": "Craven Cottage: exterior (construction (near completion))",
    "credit": "Photo: Neil Theasby, CC BY-SA 2.0, via Wikimedia Commons",
    "source": "https://commons.wikimedia.org/wiki/File:The_new_Riverside_Stand,_Craven_Cottage_-_geograph.org.uk_-_7369905.jpg",
-   "licence": "CC BY-SA 2.0"
+   "licence": "CC BY-SA 2.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+   "dateTaken": "2022-12-26",
+   "photographer": "Neil Theasby"
   }
  ],
  "franklin-s-gardens": [
@@ -502,7 +583,10 @@ window.WH_PHOTOS = {
    "alt": "Franklin's Gardens: hero (completed (Barwell Stand))",
    "credit": "Photo: Mattleythegreat, CC BY-SA 4.0, via Wikimedia Commons",
    "source": "https://commons.wikimedia.org/wiki/File:Barwell_Stand_.jpg",
-   "licence": "CC BY-SA 4.0"
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+   "dateTaken": "2017-02-25",
+   "photographer": "Mattleythegreat"
   }
  ],
  "montreal-olympic-stadium": [
@@ -521,7 +605,10 @@ window.WH_PHOTOS = {
    "alt": "Montreal Olympic Stadium: hero (existing structure before roof replacement)",
    "credit": "Photo: Yanik Crépeau, CC BY-SA 3.0, via Wikimedia Commons",
    "source": "https://commons.wikimedia.org/wiki/File:Le_Stade_Olympique._-_panoramio.jpg",
-   "licence": "CC BY-SA 3.0"
+   "licence": "CC BY-SA 3.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+   "dateTaken": "?",
+   "photographer": "Yanik Crépeau"
   }
  ],
  "new-tottenham-hotspur-stadium": [
@@ -540,7 +627,10 @@ window.WH_PHOTOS = {
    "alt": "New Tottenham Hotspur Stadium: hero (completed)",
    "credit": "Photo: Stadium spotter, CC BY-SA 4.0, via Wikimedia Commons",
    "source": "https://commons.wikimedia.org/wiki/File:Populous_Tottenham-Stadium_High_Road_1.jpg",
-   "licence": "CC BY-SA 4.0"
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+   "dateTaken": "2024-06-12",
+   "photographer": "Stadium spotter"
   },
   {
    "name": "new-tottenham-hotspur-stadium-exterior-01",
@@ -557,7 +647,10 @@ window.WH_PHOTOS = {
    "alt": "New Tottenham Hotspur Stadium: exterior (completed)",
    "credit": "Photo: Arne Müseler, CC BY-SA 3.0 de, via Wikimedia Commons",
    "source": "https://commons.wikimedia.org/wiki/File:London_Tottenham_Hotspur_Stadium.jpg",
-   "licence": "CC BY-SA 3.0 de"
+   "licence": "CC BY-SA 3.0 de",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+   "dateTaken": "2022-10-11",
+   "photographer": "Arne Müseler"
   }
  ],
  "old-trafford-stadium": [
@@ -576,7 +669,10 @@ window.WH_PHOTOS = {
    "alt": "Old Trafford Stadium: exterior (existing venue (general upgrades))",
    "credit": "Photo: Chris Morgan, CC BY-SA 2.0, via Wikimedia Commons",
    "source": "https://commons.wikimedia.org/wiki/File:Alex_Ferguson_Stand_at_Old_Trafford_-_geograph.org.uk_-_7627282.jpg",
-   "licence": "CC BY-SA 2.0"
+   "licence": "CC BY-SA 2.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+   "dateTaken": "2023-10-16",
+   "photographer": "Chris Morgan"
   },
   {
    "name": "old-trafford-stadium-interior-01",
@@ -593,7 +689,10 @@ window.WH_PHOTOS = {
    "alt": "Old Trafford Stadium: interior (existing venue (general upgrades))",
    "credit": "Photo: WDM10, CC BY-SA 4.0, via Wikimedia Commons",
    "source": "https://commons.wikimedia.org/wiki/File:The_East_Stand_–_Old_Trafford.jpg",
-   "licence": "CC BY-SA 4.0"
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+   "dateTaken": "2017-12-24",
+   "photographer": "WDM10"
   }
  ],
  "sixfields-stadium-northampton": [
@@ -612,7 +711,10 @@ window.WH_PHOTOS = {
    "alt": "Sixfields Stadium, Northampton: hero (completed (East Stand))",
    "credit": "Photo: Steve Daniels, CC BY-SA 2.0, via Wikimedia Commons",
    "source": "https://commons.wikimedia.org/wiki/File:The_East_Stand_at_Sixfields_Stadium_-_geograph.org.uk_-_7692145.jpg",
-   "licence": "CC BY-SA 2.0"
+   "licence": "CC BY-SA 2.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+   "dateTaken": "2023-12-23",
+   "photographer": "Steve Daniels"
   },
   {
    "name": "sixfields-stadium-northampton-interior-01",
@@ -629,7 +731,10 @@ window.WH_PHOTOS = {
    "alt": "Sixfields Stadium, Northampton: interior (completed (East Stand))",
    "credit": "Photo: Steve Daniels, CC BY-SA 2.0, via Wikimedia Commons",
    "source": "https://commons.wikimedia.org/wiki/File:The_East_Stand_at_Sixfields_Stadium_-_geograph.org.uk_-_7692155.jpg",
-   "licence": "CC BY-SA 2.0"
+   "licence": "CC BY-SA 2.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+   "dateTaken": "2023-12-23",
+   "photographer": "Steve Daniels"
   }
  ],
  "stadium-mk": [
@@ -648,7 +753,10 @@ window.WH_PHOTOS = {
    "alt": "Stadium MK: hero (completed)",
    "credit": "Photo: Steve Daniels, CC BY-SA 2.0, via Wikimedia Commons",
    "source": "https://commons.wikimedia.org/wiki/File:Stadium_MK_in_Milton_Keynes_-_geograph.org.uk_-_6919004.jpg",
-   "licence": "CC BY-SA 2.0"
+   "licence": "CC BY-SA 2.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+   "dateTaken": "2019-12-14",
+   "photographer": "Steve Daniels"
   },
   {
    "name": "stadium-mk-exterior-01",
@@ -665,7 +773,10 @@ window.WH_PHOTOS = {
    "alt": "Stadium MK: exterior (completed)",
    "credit": "Photo: Bryn Holmes, CC BY-SA 2.0, via Wikimedia Commons",
    "source": "https://commons.wikimedia.org/wiki/File:Stadium_MK,_Stadium_Way_West,_Bletchley_-_geograph.org.uk_-_7450200.jpg",
-   "licence": "CC BY-SA 2.0"
+   "licence": "CC BY-SA 2.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+   "dateTaken": "2023-04-07",
+   "photographer": "Bryn Holmes"
   }
  ],
  "the-oval-cricket-ground": [
@@ -684,7 +795,10 @@ window.WH_PHOTOS = {
    "alt": "The Oval Cricket Ground: hero (completed (One Oval Square / JM Finn Stand))",
    "credit": "Photo: Mark Percy, CC BY-SA 2.0, via Wikimedia Commons",
    "source": "https://commons.wikimedia.org/wiki/File:Kia_Oval_-_JM_Finn_stand_-_geograph.org.uk_-_7536667.jpg",
-   "licence": "CC BY-SA 2.0"
+   "licence": "CC BY-SA 2.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+   "dateTaken": "2022-08-07",
+   "photographer": "Mark Percy"
   }
  ],
  "twickenham": [
@@ -703,7 +817,10 @@ window.WH_PHOTOS = {
    "alt": "Twickenham: construction (construction (East Stand works))",
    "credit": "Photo: David Howard, CC BY-SA 2.0, via Wikimedia Commons",
    "source": "https://commons.wikimedia.org/wiki/File:Construction_work_at_Twickenham_Stadium_-_geograph.org.uk_-_5871992.jpg",
-   "licence": "CC BY-SA 2.0"
+   "licence": "CC BY-SA 2.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+   "dateTaken": "2018-08-12",
+   "photographer": "David Howard"
   }
  ],
  "welford-road-stadium": [
@@ -722,7 +839,10 @@ window.WH_PHOTOS = {
    "alt": "Welford Road Stadium: hero (completed (West Stand))",
    "credit": "Photo: Skeene88, CC0, via Wikimedia Commons",
    "source": "https://commons.wikimedia.org/wiki/File:Welford_Road_West_Stand_August_2024.jpg",
-   "licence": "CC0"
+   "licence": "CC0",
+   "licenceUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "dateTaken": "2024-08-26",
+   "photographer": "Skeene88"
   }
  ],
  "wembley-stadium": [
@@ -741,7 +861,10 @@ window.WH_PHOTOS = {
    "alt": "Wembley Stadium: structural detail (completed)",
    "credit": "Photo: Robert Lamb, CC BY-SA 2.0, via Wikimedia Commons",
    "source": "https://commons.wikimedia.org/wiki/File:Looking_up_at_the_Wembley_Stadium_arch_from_the_perimeter_walkway_-_geograph.org.uk_-_5965993.jpg",
-   "licence": "CC BY-SA 2.0"
+   "licence": "CC BY-SA 2.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+   "dateTaken": "2018-11-04",
+   "photographer": "Robert Lamb"
   },
   {
    "name": "wembley-stadium-structural-02",
@@ -758,7 +881,10 @@ window.WH_PHOTOS = {
    "alt": "Wembley Stadium: structural detail alt (completed)",
    "credit": "Photo: Robert Lamb, CC BY-SA 2.0, via Wikimedia Commons",
    "source": "https://commons.wikimedia.org/wiki/File:View_of_the_Wembley_Stadium_arch_from_the_stadium_walkway_-_geograph.org.uk_-_5968025.jpg",
-   "licence": "CC BY-SA 2.0"
+   "licence": "CC BY-SA 2.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+   "dateTaken": "2018-11-04",
+   "photographer": "Robert Lamb"
   }
  ],
  "london-2012-basketball-arena": [
@@ -776,7 +902,10 @@ window.WH_PHOTOS = {
    "alt": "London 2012 Basketball Arena: hero (completed (temporary venue, since dismantled))",
    "credit": "Photo: Paul Gillett, CC BY-SA 2.0, via Wikimedia Commons",
    "source": "https://commons.wikimedia.org/wiki/File:Basketball_arena_-_Olympic_Park_(geograph_3118976).jpg",
-   "licence": "CC BY-SA 2.0"
+   "licence": "CC BY-SA 2.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+   "dateTaken": "2012-09-05",
+   "photographer": "Paul Gillett"
   },
   {
    "name": "london-2012-basketball-arena-detail-01",
@@ -793,7 +922,10 @@ window.WH_PHOTOS = {
    "alt": "London 2012 Basketball Arena: detail (completed (temporary venue))",
    "credit": "Photo: Mark McNestry, CC BY 2.0, via Wikimedia Commons",
    "source": "https://commons.wikimedia.org/wiki/File:Arena_(29063501885).jpg",
-   "licence": "CC BY 2.0"
+   "licence": "CC BY 2.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/2.0/",
+   "dateTaken": "2012-08-12",
+   "photographer": "Mark McNestry"
   }
  ],
  "london-2012-handball-arena-copper-box": [
@@ -812,7 +944,10 @@ window.WH_PHOTOS = {
    "alt": "London 2012 Handball Arena / Copper Box: hero (completed)",
    "credit": "Photo: Daniel from Glasgow, United Kingdom, CC BY 2.0, via Wikimedia Commons",
    "source": "https://commons.wikimedia.org/wiki/File:Copper_Box_Arena_(52255396956).jpg",
-   "licence": "CC BY 2.0"
+   "licence": "CC BY 2.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/2.0/",
+   "dateTaken": "2022-07-31",
+   "photographer": "Daniel from Glasgow, United Kingdom"
   },
   {
    "name": "london-2012-handball-arena-copper-box-exterior-01",
@@ -829,7 +964,10 @@ window.WH_PHOTOS = {
    "alt": "London 2012 Handball Arena / Copper Box: exterior (completed)",
    "credit": "Photo: Oast House Archive, CC BY-SA 2.0, via Wikimedia Commons",
    "source": "https://commons.wikimedia.org/wiki/File:Copper_Box_Arena_-_geograph.org.uk_-_6559577.jpg",
-   "licence": "CC BY-SA 2.0"
+   "licence": "CC BY-SA 2.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+   "dateTaken": "2020-08-02",
+   "photographer": "Oast House Archive"
   }
  ],
  "mk-arena": [
@@ -848,7 +986,10 @@ window.WH_PHOTOS = {
    "alt": "MK Arena: hero (completed)",
    "credit": "Photo: OZOO, CC BY-SA 4.0, via Wikimedia Commons",
    "source": "https://commons.wikimedia.org/wiki/File:Marshall_Arena_Milton_Keynes_6_July_2020_(cropped).jpg",
-   "licence": "CC BY-SA 4.0"
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+   "dateTaken": "2020-07-06",
+   "photographer": "OZOO"
   }
  ],
  "university-of-surrey-sports-centre": [
@@ -867,7 +1008,10 @@ window.WH_PHOTOS = {
    "alt": "University of Surrey Sports Centre: hero (completed (Surrey Sports Park))",
    "credit": "Photo: Colin Smith, CC BY-SA 2.0, via Wikimedia Commons",
    "source": "https://commons.wikimedia.org/wiki/File:Surrey_Sports_Park_-_geograph.org.uk_-_3030538.jpg",
-   "licence": "CC BY-SA 2.0"
+   "licence": "CC BY-SA 2.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+   "dateTaken": "2012-07-09",
+   "photographer": "Colin Smith"
   },
   {
    "name": "university-of-surrey-sports-centre-exterior-01",
@@ -884,7 +1028,10 @@ window.WH_PHOTOS = {
    "alt": "University of Surrey Sports Centre: exterior (completed (Surrey Sports Park))",
    "credit": "Photo: Colin Smith, CC BY-SA 2.0, via Wikimedia Commons",
    "source": "https://commons.wikimedia.org/wiki/File:Surrey_Sports_Park,_University_of_Surrey_-_geograph.org.uk_-_3030555.jpg",
-   "licence": "CC BY-SA 2.0"
+   "licence": "CC BY-SA 2.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+   "dateTaken": "2012-07-09",
+   "photographer": "Colin Smith"
   }
  ],
  "national-indoor-arena-dublin-phase-1-and-phase-2": [
@@ -903,7 +1050,10 @@ window.WH_PHOTOS = {
    "alt": "National Indoor Arena, Dublin (Phase 1 and Phase 2): hero (completed)",
    "credit": "Photo: Laurel Lodged, CC BY-SA 4.0, via Wikimedia Commons",
    "source": "https://commons.wikimedia.org/wiki/File:Sheephill_Sport_Ireland_National_Indoor_Arena_2021_b.jpg",
-   "licence": "CC BY-SA 4.0"
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+   "dateTaken": "2021-01-16",
+   "photographer": "Laurel Lodged"
   },
   {
    "name": "national-indoor-arena-dublin-phase-1-and-phase-2-exterior-01",
@@ -920,7 +1070,10 @@ window.WH_PHOTOS = {
    "alt": "National Indoor Arena, Dublin (Phase 1 and Phase 2): exterior (completed)",
    "credit": "Photo: Laurel Lodged, CC BY-SA 4.0, via Wikimedia Commons",
    "source": "https://commons.wikimedia.org/wiki/File:Sheephill_Sport_Irelnad_National_Indoor_Arena_2021.jpg",
-   "licence": "CC BY-SA 4.0"
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+   "dateTaken": "2021-01-16",
+   "photographer": "Laurel Lodged"
   }
  ],
  "london-olympia": [
@@ -939,7 +1092,10 @@ window.WH_PHOTOS = {
    "alt": "London Olympia: hero (completed (redevelopment))",
    "credit": "Photo: Matt From London, CC BY 4.0, via Wikimedia Commons",
    "source": "https://commons.wikimedia.org/wiki/File:New_development_above_Olympia_2026-06-19.jpg",
-   "licence": "CC BY 4.0"
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "dateTaken": "2026-06-19",
+   "photographer": "Matt From London"
   },
   {
    "name": "london-olympia-interior-01",
@@ -956,7 +1112,10 @@ window.WH_PHOTOS = {
    "alt": "London Olympia: interior (completed (redevelopment))",
    "credit": "Photo: Matt From London, CC BY 4.0, via Wikimedia Commons",
    "source": "https://commons.wikimedia.org/wiki/File:Emberton_Walk_2026-06-19.jpg",
-   "licence": "CC BY 4.0"
+   "licence": "CC BY 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+   "dateTaken": "2026-06-19",
+   "photographer": "Matt From London"
   }
  ]
 };
