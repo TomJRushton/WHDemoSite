@@ -229,7 +229,7 @@ a:hover .title-project{color:var(--navy)}
 @media (max-width:620px){.results .wide{grid-column:auto}}
 /* Projects archive: featured case studies span two columns at the same height as a 4:5 card,
    so titles stay level across mixed rows; dense packing fills the gap a wide card can leave */
-#results{grid-auto-flow:row dense}
+/* A11Y-005: no dense packing; site.js only widens a card where it fits, so DOM order = visual order */
 #results .wide .frame{position:relative;aspect-ratio:auto;height:0;padding-bottom:calc((100% - clamp(24px,3vw,40px)) * .625)}
 #results .wide .frame img{position:absolute;inset:0}
 @media (max-width:620px){#results .wide .frame{height:auto;padding-bottom:0;aspect-ratio:4/5}#results .wide .frame img{position:static}}

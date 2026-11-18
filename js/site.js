@@ -215,10 +215,14 @@
     /* projects.html: featured layout; projects-alt.html (data-layout="uniform"): every card the same size, original order */
     var featured = archive.getAttribute('data-layout') !== 'uniform';
     var isWide = function (p) { return !!(featured && p.caseStudy && p.image && p.imageMaxW >= 1400); };
+    /* A11Y-005: a featured card is shown wide only if two columns remain in its row, so cards always flow
+       in DOM order (no dense packing) and keyboard focus follows the visual order at every column count. */
+    var wideNow = {}, lastCols = 0;
+    var colCount = function () { return window.matchMedia('(max-width:620px)').matches ? 1 : getComputedStyle(list).gridTemplateColumns.split(' ').length; };
     var card = function (p, i) {
       if (p.caseStudy) {
         /* Featured case studies: double width (same height as a normal card) where the image is large enough */
-        var wide = isWide(p);
+        var wide = !!wideNow[p.slug];
         return '<li' + (wide ? ' class="wide"' : '') + '><a href="' + projectUrl(p) + '">' +
           '<div class="frame ratio-45">' + img(p.image, p.imageMaxW, wide ? '(max-width:620px) calc(100vw - 32px), (max-width:900px) 92vw, (max-width:1264px) 66vw, 640px' : '(max-width:620px) 100vw, 33vw', '') + '</div>' +
           '<div class="card-text"><h3 class="title-project">' + esc(p.name) + '</h3><p class="body-small">' + esc(p.summary) + '</p>' +
@@ -259,6 +263,8 @@
         $('#empty').hidden = false; moreWrap.hidden = true; return;
       }
       $('#empty').hidden = true;
+      var cols = featured ? colCount() : 1, used = 0; lastCols = cols; wideNow = {};
+      res.slice(0, shown).forEach(function (p) { var w = cols > 1 && isWide(p) && cols - used >= 2; if (w) wideNow[p.slug] = true; used = (used + (w ? 2 : 1)) % cols; });
       list.innerHTML = res.slice(0, shown).map(card).join('');
       moreWrap.hidden = res.length <= shown;
       $('#more-btn').textContent = 'Show more (' + (res.length - shown) + ' remaining)';
@@ -270,6 +276,7 @@
       render(st);
     };
     var init = readState(); applyStateToForm(init); render(init);
+    if (featured) window.addEventListener('resize', function () { if (colCount() !== lastCols) render(formState()); });
     form.addEventListener('change', function () { update(true); });
     var t; $('#q').addEventListener('input', function () { clearTimeout(t); t = setTimeout(function () { update(false); }, 200); });
     form.addEventListener('submit', function (e) { e.preventDefault(); update(true); });
