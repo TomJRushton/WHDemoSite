@@ -645,6 +645,8 @@ a.btn{text-decoration:none}
 .w-mark-host > *:not(.w-mark){position:relative;z-index:1}
 .w-mark{position:absolute;right:-6%;bottom:-18%;width:min(820px,64vw);opacity:.25;pointer-events:none;z-index:0}
 .w-mark svg{display:block;width:100%;height:auto}
+/* Who We Are: the W sits wholly above the wide image below, with clear space under it (only the right edge runs off) */
+.w-mark.w-mark-about{bottom:clamp(40px,5vw,72px);right:-4%;width:min(700px,52vw)}
 /* Projects: a different project in each stroke of the W, a touch stronger */
 .w-mark-collage{opacity:.30}
 @media (max-width:760px){.w-mark{display:none}}
