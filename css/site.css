@@ -98,7 +98,9 @@ h1,h2,h3{text-wrap:balance}
 /* Hero parallax: the hero stays pinned under the header while the rest of the page scrolls up over it.
    Off when reduced motion is requested (normal scrolling). */
 .hero-cover{position:relative;z-index:1;background:var(--paper);box-shadow:0 -18px 40px rgba(16,17,16,.22)}
-@media (prefers-reduced-motion:no-preference){.hero{position:sticky;top:0;z-index:0}}
+/* Pin by the bottom edge when the screen is shorter than the hero (min-height 600px, e.g. a landscape phone),
+   so its headline, buttons and pause control can still be scrolled into view before the page covers it. */
+@media (prefers-reduced-motion:no-preference){.hero{position:sticky;top:min(0px,calc(100svh - 600px));z-index:0}}
 .hero video.is-playing{opacity:1}
 .hero::before{content:"";position:absolute;inset:0 0 auto;height:200px;background:linear-gradient(to bottom,rgba(16,17,16,.55),rgba(16,17,16,0));z-index:1}
 .hero::after{content:"";position:absolute;inset:auto 0 0;height:min(640px,82%);background:linear-gradient(to top,rgba(14,22,45,.9),rgba(14,22,45,.72) 45%,rgba(14,22,45,0));z-index:1}
