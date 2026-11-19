@@ -615,9 +615,7 @@ code{font-size:.92em;background:var(--navy-tint);padding:1px 5px}
 .w-split{display:flex;flex-wrap:wrap;align-items:center;gap:32px clamp(32px,5vw,80px)}
 .w-split > .w-text{flex:1 1 480px;min-width:0}
 .w-split > .w-photo{flex:0 1 clamp(320px,34vw,520px)}
-.cs-title > .w-photo{flex:1 1 240px;max-width:380px;align-self:center}
-.cs-inset .cs-title > .w-photo{display:none}
-@media (max-width:760px){.w-split > .w-photo,.cs-title > .w-photo{display:none}}
+@media (max-width:760px){.w-split > .w-photo{display:none}}
 
 /* LinkedIn <-> website (brand review 001, item 3) */
 a.btn{text-decoration:none}
