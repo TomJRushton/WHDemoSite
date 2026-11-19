@@ -634,3 +634,7 @@ a.btn{text-decoration:none}
 .li-slot p{margin:0}
 .li-panel{margin-top:48px;padding:24px;border-top:3px solid var(--lime);background:var(--navy-tint);display:grid;gap:14px;justify-items:start}
 .li-panel p{margin:0}
+
+/* Projects: the concept and credits notes sit at the end of the list */
+.archive-notes{margin-top:clamp(40px,5vw,72px);display:grid;gap:12px}
+.archive-notes .credit-note{margin:0}
