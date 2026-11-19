@@ -1,12 +1,17 @@
 /* Willis Hazell — prototype stylesheet. Tokens mirror design-system/tokens.json. */
 :root{
-  --paper:#F4F2EE; --paper-raised:#FBFAF7; --ink:#1C1D1F; --ink-soft:#3C3A36;
-  --stone-600:#5C5850; --stone-500:#77716A; --stone-200:#D9D4CB;
-  --navy:#1E2D55; --navy-tint:#E4E7EF; --lime:#BEDE18;
-  --on-dark:#F4F2EE; --on-dark-muted:#B9B3A8; --rule-dark:#3A4870;
+  /* Brand refresh (QA brand review 001): Willis Hazell brand guide 2023 — Overpass; navy #1E2D55 and lime #BEDE18
+     primary; neutrals are cool greys built from brand grey #DAE1E8 (replacing the earlier warm stone palette). */
+  --paper:#F6F8FA; --paper-raised:#FFFFFF; --ink:#16203A; --ink-soft:#3A4562;
+  --stone-600:#505B76; --stone-500:#69738E; --stone-200:#DAE1E8;
+  --navy:#1E2D55; --navy-tint:#E6EBF2; --lime:#BEDE18;
+  --on-dark:#FFFFFF; --on-dark-muted:#B8C3D7; --rule-dark:#34467A;
+  /* Brand secondary colours (guide p.7), for accents only */
+  --brand-blue:#0082D4; --brand-sky:#99CAEB; --brand-purple:#763CBC; --brand-yellow:#FEDA00; --brand-grey:#DAE1E8;
   --error:#A3311F;
-  --serif:"Newsreader",Georgia,"Times New Roman",serif;
-  --sans:"Schibsted Grotesk","Helvetica Neue",Arial,sans-serif;
+  /* One family per the brand guide. --serif is kept as a name so existing rules switch with it. */
+  --serif:"Overpass","Helvetica Neue",Arial,sans-serif;
+  --sans:"Overpass","Helvetica Neue",Arial,sans-serif;
   --margin:clamp(16px,4.4vw,64px);
   --fast:160ms; --reveal:600ms;
   color-scheme:light;
@@ -26,12 +31,12 @@ h1,h2,h3{text-wrap:balance}
 
 /* Type */
 .serif{font-family:var(--serif)}
-.display-hero{font-family:var(--serif);font-weight:400;font-size:clamp(36px,5.2vw,76px);line-height:1.03;letter-spacing:-.02em;margin:0}
-.heading-page{font-family:var(--serif);font-weight:400;font-size:clamp(34px,4.2vw,56px);line-height:1.06;letter-spacing:-.02em;margin:0}
-.heading-section{font-family:var(--serif);font-weight:400;font-size:clamp(30px,3vw,40px);line-height:1.1;letter-spacing:-.01em;margin:0}
+.display-hero{font-family:var(--serif);font-weight:500;font-size:clamp(36px,5.2vw,76px);line-height:1.04;letter-spacing:-.015em;margin:0}
+.heading-page{font-family:var(--serif);font-weight:500;font-size:clamp(34px,4.2vw,56px);line-height:1.08;letter-spacing:-.015em;margin:0}
+.heading-section{font-family:var(--serif);font-weight:500;font-size:clamp(30px,3vw,40px);line-height:1.12;letter-spacing:-.01em;margin:0}
 .intro{font-family:var(--serif);font-weight:300;font-size:clamp(24px,2.5vw,34px);line-height:1.3;margin:0}
-.title-project{font-family:var(--serif);font-weight:400;font-size:clamp(24px,2vw,28px);line-height:1.2;margin:0}
-.figure{font-family:var(--serif);font-weight:400;font-size:clamp(28px,2.5vw,34px);line-height:1.15;font-variant-numeric:tabular-nums}
+.title-project{font-family:var(--serif);font-weight:500;font-size:clamp(24px,2vw,28px);line-height:1.2;margin:0}
+.figure{font-family:var(--serif);font-weight:500;font-size:clamp(28px,2.5vw,34px);line-height:1.15;font-variant-numeric:tabular-nums}
 .label{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;line-height:1.35;color:var(--stone-600);margin:0}
 .on-dark .label{color:var(--on-dark-muted)}
 .body-small{font-size:15px;line-height:1.55;color:var(--ink-soft)}
@@ -73,7 +78,7 @@ h1,h2,h3{text-wrap:balance}
 .site-header.over-hero.scrolled :focus-visible{outline-color:var(--navy)}
 @media (max-width:900px){
   .menu-btn{display:block}
-  .nav{display:none;position:fixed;inset:0;top:0;background:var(--navy);color:var(--on-dark);flex-direction:column;gap:0;padding:96px var(--margin) 32px;font-family:var(--serif);font-size:34px;font-weight:400;z-index:-1}
+  .nav{display:none;position:fixed;inset:0;top:0;background:var(--navy);color:var(--on-dark);flex-direction:column;gap:0;padding:96px var(--margin) 32px;font-family:var(--serif);font-size:34px;font-weight:500;z-index:-1}
   .nav a{padding:12px 0;border-bottom:1px solid var(--rule-dark)}
   .nav a:hover{color:var(--on-dark)}
   .menu-open .nav{display:flex}
@@ -85,7 +90,7 @@ h1,h2,h3{text-wrap:balance}
 }
 
 /* Hero (home) */
-.hero{position:relative;height:100svh;min-height:600px;max-height:1100px;color:#fff;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;background:#2C302D}
+.hero{position:relative;height:100svh;min-height:600px;max-height:1100px;color:#fff;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;background:var(--navy)}
 .hero video,.hero .hero-still,.hero .hero-still img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .hero video{opacity:0;transition:opacity 400ms}
 /* Hero parallax: the hero stays pinned under the header while the rest of the page scrolls up over it.
@@ -94,13 +99,13 @@ h1,h2,h3{text-wrap:balance}
 @media (prefers-reduced-motion:no-preference){.hero{position:sticky;top:0;z-index:0}}
 .hero video.is-playing{opacity:1}
 .hero::before{content:"";position:absolute;inset:0 0 auto;height:200px;background:linear-gradient(to bottom,rgba(16,17,16,.55),rgba(16,17,16,0));z-index:1}
-.hero::after{content:"";position:absolute;inset:auto 0 0;height:min(520px,70%);background:linear-gradient(to top,rgba(16,17,16,.8),rgba(16,17,16,0));z-index:1}
+.hero::after{content:"";position:absolute;inset:auto 0 0;height:min(640px,82%);background:linear-gradient(to top,rgba(14,22,45,.9),rgba(14,22,45,.72) 45%,rgba(14,22,45,0));z-index:1}
 .hero-inner{position:relative;z-index:2;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px 32px;padding-bottom:clamp(32px,5vw,56px)}
 .hero-copy{flex:1 1 560px;max-width:920px}
 .hero .display-hero{margin-bottom:28px}
 .hero-actions{display:flex;flex-wrap:wrap;gap:4px 40px}
 .hero-meta{display:flex;align-items:center;gap:20px}
-.hero-meta p{margin:0;font-size:13px;line-height:1.4;color:#E4E1DA;text-align:right}
+.hero-meta p{margin:0;font-size:13px;line-height:1.4;color:#E3E8F0;text-align:right}
 .pause{width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.7);background:rgba(16,17,16,.25);color:#fff;display:grid;place-items:center;cursor:pointer;padding:0;flex:none}
 @media (prefers-reduced-motion:reduce){
   .hero video{display:none}
@@ -288,7 +293,7 @@ a:hover .title-project{color:var(--navy)}
 .md div{display:grid;grid-template-columns:140px minmax(0,1fr);gap:16px;padding:14px 0;border-bottom:1px solid var(--stone-200)}
 .md dt{font-size:13px;line-height:1.4;color:var(--stone-600);padding-top:3px}
 .md dd{margin:0;font-size:16px;line-height:1.5}
-.prose h2{font-family:var(--serif);font-weight:400;font-size:28px;line-height:1.2;margin:0 0 12px}
+.prose h2{font-family:var(--serif);font-weight:500;font-size:28px;line-height:1.2;margin:0 0 12px}
 .prose p{margin:0 0 20px;max-width:680px}
 .prose .tbc{color:var(--stone-600);font-style:italic}
 .inputs{list-style:none;margin:0 0 40px;padding:0;border-top:1px solid var(--stone-200);columns:2;column-gap:40px}
@@ -312,17 +317,17 @@ a:hover .title-project{color:var(--navy)}
 .founders{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:56px clamp(32px,5vw,80px)}
 .founder{display:grid;grid-template-columns:minmax(120px,200px) minmax(0,1fr);gap:24px;align-items:start}
 @media (max-width:480px){.founder{grid-template-columns:minmax(0,1fr)}.founder .frame{max-width:200px}}
-.founder .frame{aspect-ratio:4/5;background:#E7E5E0}
+.founder .frame{aspect-ratio:4/5;background:var(--stone-200)}
 .founder p{margin:0 0 12px}
 .founder .inline-link{overflow-wrap:anywhere}
 .principles{list-style:none;margin:0;padding:0;counter-reset:p;border-top:1px solid var(--rule-dark)}
 .principles li{counter-increment:p;display:grid;grid-template-columns:minmax(48px,1fr) minmax(0,5fr) minmax(0,6fr);gap:12px 40px;padding:32px 0;border-bottom:1px solid var(--rule-dark);align-items:baseline}
 .principles li::before{content:"0" counter(p);font-size:14px;color:var(--lime);font-variant-numeric:tabular-nums}
-.principles h3{font-family:var(--serif);font-weight:400;font-size:clamp(26px,2.6vw,36px);line-height:1.15;margin:0}
+.principles h3{font-family:var(--serif);font-weight:500;font-size:clamp(26px,2.6vw,36px);line-height:1.15;margin:0}
 .principles p{margin:0;color:var(--on-dark);opacity:.9;max-width:560px}
 @media (max-width:760px){.principles li{grid-template-columns:minmax(0,1fr)}}
 .team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:40px 24px;list-style:none;margin:0;padding:0}
-.team-grid .frame{aspect-ratio:4/5;background:#E7E5E0}
+.team-grid .frame{aspect-ratio:4/5;background:var(--stone-200)}
 .team-grid .ph{aspect-ratio:4/5;border:1px dashed var(--stone-500);display:grid;place-items:center;font-size:13px;color:var(--stone-600);text-align:center;padding:16px}
 .team-grid h3{font-family:var(--sans);font-size:17px;font-weight:500;margin:14px 0 0}
 .team-grid p{margin:0;font-size:15px;color:var(--stone-600)}
@@ -489,7 +494,7 @@ code{font-size:.92em;background:var(--navy-tint);padding:1px 5px}
 .s-caps .x{display:block;font-family:var(--sans);font-size:14px;color:var(--stone-600);margin-top:4px}
 @media (max-width:700px){.s-caps{grid-template-columns:minmax(0,1fr)}}
 .svc-principles{list-style:none;margin:0;padding:24px 0 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px clamp(24px,3vw,40px);border-top:1px solid var(--ink)}
-.svc-principles h3{font-family:var(--serif);font-weight:400;font-size:22px;line-height:1.2;margin:8px 0 10px}
+.svc-principles h3{font-family:var(--serif);font-weight:500;font-size:22px;line-height:1.2;margin:8px 0 10px}
 .svc-principles p{margin:0}
 @media (max-width:1024px){.svc-principles{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:560px){.svc-principles{grid-template-columns:minmax(0,1fr)}}
@@ -507,7 +512,7 @@ code{font-size:.92em;background:var(--navy-tint);padding:1px 5px}
 .c-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
 .c-item{position:relative;display:grid;grid-template-columns:56px minmax(0,1fr) auto;gap:6px 20px;padding:28px 0 30px;border-bottom:1px solid var(--stone-200);align-items:baseline}
 .c-item .svc-num{grid-row:1}
-.c-title{font-family:var(--serif);font-weight:400;font-size:clamp(32px,3.4vw,48px);line-height:1.08;letter-spacing:-.01em;margin:0}
+.c-title{font-family:var(--serif);font-weight:500;font-size:clamp(32px,3.4vw,48px);line-height:1.08;letter-spacing:-.01em;margin:0}
 .c-title a{text-decoration:none}
 .c-title a::after{content:"";position:absolute;inset:0}
 /* Where :has() is supported the focus ring moves from the title link to the whole row; elsewhere the link keeps its own ring */
@@ -573,7 +578,7 @@ code{font-size:.92em;background:var(--navy-tint);padding:1px 5px}
 .svc-matrix thead th{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--stone-600);border-bottom:1px solid var(--ink)}
 .svc-matrix thead th a{text-decoration:none}
 .svc-matrix thead th a:hover{color:var(--navy);text-decoration:underline}
-.svc-matrix tbody th{font-family:var(--serif);font-weight:400;font-size:24px}
+.svc-matrix tbody th{font-family:var(--serif);font-weight:500;font-size:24px}
 .svc-matrix tbody th a{text-decoration:none}
 .svc-matrix tbody th a:hover{color:var(--navy);text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
 .svc-mark{display:inline-flex;align-items:center;gap:8px;font-size:14px;color:var(--ink-soft)}
@@ -589,3 +594,24 @@ code{font-size:.92em;background:var(--navy-tint);padding:1px 5px}
 }
 
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}a:hover .frame img{transform:none}}
+
+/* Brand refresh: lime headings on navy (guide p.6), lime hero accent, lime 'Contact' button in the header */
+.on-dark .heading-section,.on-dark .heading-page,.on-dark .c-title,.on-dark .display-hero{color:var(--lime)}
+.hero .accent{color:var(--lime)}
+.nav a.nav-cta{background:var(--lime);color:var(--navy);padding:9px 20px 7px;border-radius:999px;font-weight:500;text-decoration:none}
+.nav a.nav-cta:hover,.site-header.over-hero .nav a.nav-cta:hover,.site-header.over-hero.scrolled .nav a.nav-cta:hover{color:var(--navy);background:#CFEA3A}
+.site-header.over-hero .nav a.nav-cta{color:var(--navy)}
+@media (max-width:900px){.nav a.nav-cta{background:none;color:inherit;padding:0;border-radius:0}}
+
+/* Photo through the W (brand device from the logo mark; see assets/img/w-mask.svg). QA brand review 001: examples
+   on the homepage Sectors band, the Who We Are and Projects headers, case-study titles and the contact bands. */
+.w-photo{position:relative;aspect-ratio:46.6/32.9;overflow:hidden;-webkit-mask:url(../assets/img/w-mask.svg) center/contain no-repeat;mask:url(../assets/img/w-mask.svg) center/contain no-repeat}
+.w-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.sector-image.w-photo{aspect-ratio:46.6/32.9;align-self:center;background:none}
+.w-split{display:flex;flex-wrap:wrap;align-items:center;gap:32px clamp(32px,5vw,80px)}
+.w-split > .w-text{flex:999 1 560px;min-width:0}
+.w-split > .w-photo{flex:1 1 280px;max-width:460px}
+.cs-title > .w-photo{flex:1 1 240px;max-width:380px;align-self:center}
+.cs-inset .cs-title > .w-photo{display:none}
+.contact-band::after{content:"";flex:0 1 clamp(200px,20vw,320px);aspect-ratio:46.6/32.9;align-self:center;background:url(../assets/img/david-lloyd-800.webp) center/cover;-webkit-mask:url(../assets/img/w-mask.svg) center/contain no-repeat;mask:url(../assets/img/w-mask.svg) center/contain no-repeat}
+@media (max-width:760px){.w-split > .w-photo,.cs-title > .w-photo,.contact-band::after{display:none}}

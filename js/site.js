@@ -349,8 +349,15 @@
           }).join('') + '</div><p class="caption" style="margin-top:14px">Photographs from Wikimedia Commons, used under the licences credited. They show the venue; they are not Willis Hazell photographs and do not confirm its role on the project.</p>'
         : '<div class="gallery-slots"><div class="slot">Construction photograph</div><div class="slot">Structural detail</div><div class="slot">Completed interior</div></div>' +
           '<p class="caption" style="margin-top:10px">Gallery images to be supplied with usage rights.</p>';
+      /* Brand review: photo through the W beside the case-study title (a second photo where there is one) */
+      var wTitle = function (p) {
+        var ph = photosFor(p.slug) || []; var alt = ph[1] || ph[0] || null;
+        var set = alt ? 'assets/img/' + alt.name + '-400.webp 400w, assets/img/' + alt.name + '-800.webp 800w'
+                      : 'assets/img/' + p.image + '-' + Math.min(800, p.imageMaxW) + '.webp ' + Math.min(800, p.imageMaxW) + 'w';
+        return '<div class="w-photo" aria-hidden="true"><img srcset="' + set + '" sizes="(max-width:760px) 0px, 380px" alt="" loading="lazy"></div>';
+      };
       var titleHtml = '<div class="cs-title"><div><p class="crumbs"><a href="projects.html">Projects</a> / <a href="projects.html?sector=' + slugify(p.sector) + '">' + esc(p.sector) + '</a></p>' +
-          '<h1 class="heading-page">' + esc(p.name) + '</h1><p class="intro" style="margin-top:16px;max-width:820px">' + esc(p.summary) + '</p></div></div>';
+          '<h1 class="heading-page">' + esc(p.name) + '</h1><p class="intro" style="margin-top:16px;max-width:820px">' + esc(p.summary) + '</p></div>' + wTitle(p) + '</div>';
       cs.innerHTML =
         (inset ? '<div class="wrap"><div class="cs-inset">' + titleHtml + heroHtml + '</div>'
                : heroHtml + '<div class="wrap">' + titleHtml) +
