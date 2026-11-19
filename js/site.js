@@ -144,6 +144,18 @@
       video.addEventListener('playing', function () { video.classList.add('is-playing'); });
       pick();
       if (wideMq.addEventListener) wideMq.addEventListener('change', pick); else if (wideMq.addListener) wideMq.addListener(pick);
+      /* Hero parallax: the pinned hero is hidden once the page has scrolled fully over it, so pause
+         the video then (saves battery) and resume it when uncovered, unless the visitor paused it. */
+      var heroBox = $('.hero'), covered = false, ticking = false;
+      var checkCover = function () {
+        ticking = false;
+        var now = window.scrollY >= heroBox.offsetHeight;
+        if (now === covered) return;
+        covered = now;
+        if (covered) { if (!video.paused) video.pause(); }
+        else if (!userPaused && video.getAttribute('src')) play();
+      };
+      window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(checkCover); } }, { passive: true });
     }
     pause.addEventListener('click', function () { if (video.paused) { userPaused = false; play(); } else { userPaused = true; video.pause(); } });
     video.addEventListener('play', setState); video.addEventListener('pause', setState); setState();
