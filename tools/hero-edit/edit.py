@@ -49,7 +49,12 @@ shots = [
   (still('kop', 'wrexham-kop-1600.webp', 3.6, mob_x=0.42),              'slant'),
   (clip('crowd', 'src/crowd.mp4', 4.0, 4.0),                           'wrev'),
 ]
-if SURF:
+# surf centre: Uppbeat clips by Spencer Frost (credited in the hero caption)
+if os.path.exists('src/surf_aerial.mp4') and os.path.exists('src/surfer.mp4'):
+  shots[-1] = (shots[-1][0], 'slant')
+  shots.append((clip('surf_aerial', 'src/surf_aerial.mp4', 1.0, 4.0, mob_x=0.22), 'slant'))
+  shots.append((clip('surfer', 'src/surfer.mp4', 8.0, 3.6, mob_pan=(0.38, 0.6)), 'wrev'))
+elif SURF:
   shots[-1] = (shots[-1][0], 'slant')
   shots.append((clip('surf', SURF, 1.0, 4.0), 'wrev'))
 shots += [
