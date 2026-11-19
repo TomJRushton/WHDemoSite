@@ -26,13 +26,17 @@ def clip(name, src, start, dur, mob_x=0.5, mob_pan=None):
     vf = f'crop={cw}:ih:{x}:0,scale={W}:{H}:flags=lanczos,fps={FPS},setsar=1'
   run(['-ss', str(start), '-i', src, '-vf', vf, '-frames:v', str(frames(dur))] + ENC + [out]); return out, dur
 
-def still(name, img, dur, mob_x=0.5, zoom=0.07):
+def still(name, img, dur, mob_x=0.5, zoom=0):
   """slow push-in on a photo"""
   out = f'{WD}/{name}.mp4'; n = frames(dur)
   # crop the photo to the target shape first, upscale 3x so the zoom is smooth
   pre = f'crop=\'min(iw,ih*{W}/{H})\':\'min(ih,iw*{H}/{W})\':\'(iw-min(iw,ih*{W}/{H}))*{mob_x}\':\'(ih-min(ih,iw*{H}/{W}))/2\',scale={W*3}:{H*3}:flags=lanczos'
-  zp = f"zoompan=z='1+{zoom}*on/{n}':d={n}:x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':s={W}x{H}:fps={FPS},setsar=1"
-  run(['-loop', '1', '-i', IMG + img, '-vf', pre + ',' + zp, '-frames:v', str(n)] + ENC + [out]); return out, dur
+  if zoom:
+    zp = f"zoompan=z='1+{zoom}*on/{n}':d={n}:x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':s={W}x{H}:fps={FPS},setsar=1"
+    vf = pre + ',' + zp
+  else:  # static: crop to shape and scale once from the original, so the photo stays sharp
+    vf = pre.replace(f'scale={W*3}:{H*3}', f'scale={W}:{H}') + f',fps={FPS},setsar=1'
+  run(['-loop', '1', '-i', IMG + img, '-vf', vf, '-frames:v', str(n)] + ENC + [out]); return out, dur
 
 def freeze_first(name, src, dur):
   out = f'{WD}/{name}.mp4'
@@ -44,7 +48,6 @@ def freeze_first(name, src, dur):
 # drone portrait crop sits at x=706 of 1920 (as the existing hero-mobile cut) -> share 706/(1920-608)
 DX = 706 / (1920 - 608)
 shots = [
-  (clip('drone', DRONE, 0, 4.2, mob_x=DX),                             'slant'),
   (clip('stadium', 'src/stadium_aerial.mp4', 0.6, 4.4, mob_pan=(0.12, 0.62)), 'wrev'),
   (still('kop', 'wrexham-kop-1600.webp', 3.6, mob_x=0.42),              'slant'),
   (clip('crowd', 'src/crowd.mp4', 4.0, 4.0),                           'wrev'),
@@ -63,10 +66,9 @@ shots += [
 ]
 # loop: end on the drone's first frame so the restart is seamless
 first = f'{WD}/first.mp4'
-vf = f'scale={W}:{H}:flags=lanczos' if MODE == 'desktop' else f'crop=ih*9/16:ih:(iw-ih*9/16)*{DX}:0,scale={W}:{H}:flags=lanczos'
-run(['-i', DRONE, '-vf', vf + f',fps={FPS},setsar=1', '-frames:v', '1', f'{WD}/first.png'])
-run(['-loop', '1', '-i', f'{WD}/first.png', '-vf', 'setsar=1', '-frames:v', str(frames(0.8))] + ENC + [first])
-shots.append(((first, 0.8), None))
+run(['-i', shots[0][0][0], '-frames:v', '1', f'{WD}/first.png'])
+run(['-loop', '1', '-i', f'{WD}/first.png', '-vf', 'setsar=1', '-frames:v', str(frames(1.0))] + ENC + [first])
+shots.append(((first, 1.0), None))  # 0.8 s fade + 0.2 s of the exact opening frame, for a seamless loop
 
 # fade mask (plain crossfade, 0.8 s)
 fd = f'{M}/fade'
