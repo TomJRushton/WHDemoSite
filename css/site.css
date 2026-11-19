@@ -1,4 +1,6 @@
 /* Willis Hazell — prototype stylesheet. Tokens mirror design-system/tokens.json. */
+/* Overpass (SIL Open Font License, assets/fonts/Overpass-OFL.txt), self-hosted: one variable file, Latin subset, weights 100–900 */
+@font-face{font-family:"Overpass";src:url(../assets/fonts/overpass-latin.woff) format("woff");font-weight:100 900;font-style:normal;font-display:swap}
 :root{
   /* Brand refresh (QA brand review 001): Willis Hazell brand guide 2023 — Overpass; navy #1E2D55 and lime #BEDE18
      primary; neutrals are cool greys built from brand grey #DAE1E8 (replacing the earlier warm stone palette). */
