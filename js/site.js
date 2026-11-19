@@ -477,6 +477,14 @@
   }
 
   /* News index: featured story, category filter in the query string, show more */
+  /* LinkedIn -> website: embedded company-page posts on the News page, or placeholders until they are added */
+  var liPosts = $('#li-posts');
+  if (liPosts) {
+    var posts = (E.linkedinPosts || []).filter(function (u) { return /^https:\/\/www\.linkedin\.com\/embed\/feed\/update\//.test(u); }).slice(0, 3);
+    liPosts.innerHTML = posts.length
+      ? posts.map(function (u, i) { return '<li><iframe src="' + esc(u) + '" title="LinkedIn post ' + (i + 1) + ' from Willis Hazell Engineers" loading="lazy" allowfullscreen></iframe></li>'; }).join('')
+      : [1, 2, 3].map(function (n) { return '<li class="li-slot"><span class="credit tbc">Placeholder</span><p class="title-project">[LinkedIn post ' + n + ']</p><p class="body-small">A recent post from the Willis Hazell LinkedIn page appears here, using LinkedIn\u2019s own \u201cEmbed this post\u201d code.</p></li>'; }).join('');
+  }
   var newsList = $('#news-list');
   if (newsList) {
     var NEWS_PAGE = 8, newsShown = NEWS_PAGE;
@@ -541,7 +549,13 @@
             '<li><a href="mailto:?subject=' + encodeURIComponent(a.title) + '&amp;body=' + encodeURIComponent(here) + '">Email</a></li>' +
             '<li><button type="button" id="copy-link">Copy link</button> <span class="caption" role="status" id="copy-status"></span></li></ul>' +
             (a.linkedin ? '<p><a class="inline-link" href="' + esc(a.linkedin) + '">View the LinkedIn post</a></p>' : '') + '</div>' +
-        '</aside><div class="prose article-prose">' + richText(a.body) + '</div></div>' +
+        '</aside><div class="prose article-prose">' + richText(a.body) +
+          /* Website -> LinkedIn: carry the reader to the conversation on LinkedIn */
+          '<div class="li-panel"><p class="label">On LinkedIn</p>' +
+            (a.linkedin
+              ? '<p>This story is also on our LinkedIn page. Join the conversation there.</p><a class="btn li-btn" href="' + esc(a.linkedin) + '" target="_blank" rel="noopener"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>Comment on LinkedIn<span class="visually-hidden"> (opens in a new tab)</span></a>'
+              : '<p>Found this useful? Share it with your network, or follow us for the next update.</p><a class="btn li-btn" href="https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(here) + '" target="_blank" rel="noopener"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>Share on LinkedIn<span class="visually-hidden"> (opens in a new tab)</span></a> <a class="tl" href="' + esc(E.linkedinCompany || 'https://www.linkedin.com/company/willis-hazell-engineers/') + '" target="_blank" rel="noopener">Follow Willis Hazell<span class="visually-hidden"> (opens in a new tab)</span></a>') +
+          '</div></div></div>' +
         (relP.length ? '<section class="wrap sec-compact" aria-labelledby="relp-h"><div class="sec-head rule-top"><h2 class="heading-section" id="relp-h">Related projects</h2></div>' +
           '<ul class="results" style="padding-top:0">' + relP.map(function (p) {
             return '<li><a href="' + projectUrl(p) + '"><div class="frame ratio-32">' + img(p.image, p.imageMaxW, '(max-width:620px) 100vw, 33vw', '') + '</div><div class="card-text"><h3 class="title-project">' + esc(p.name) + '</h3>' + creditTag(p) + '</div></a></li>';

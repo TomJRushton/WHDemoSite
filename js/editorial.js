@@ -11,6 +11,12 @@ window.WH_EDITORIAL = {
 
   newsCategories: ["Project Updates", "Completions", "Appointments", "Team News", "Insights"],
 
+  /* LinkedIn -> website: up to three company-page posts shown on the News page ("From our LinkedIn").
+     For each post, open it on LinkedIn, choose "..." > "Embed this post" and paste the src URL from the code
+     (https://www.linkedin.com/embed/feed/update/urn:li:share:...). Empty = placeholders are shown. */
+  linkedinPosts: [],
+  linkedinCompany: "https://www.linkedin.com/company/willis-hazell-engineers/",
+
   /* News collection. Fields mirror the brief's §7.5 model: title, slug, date, category, summary,
      body (rich content), hero image, gallery, LinkedIn post link, author, related projects, SEO. */
   articles: [
