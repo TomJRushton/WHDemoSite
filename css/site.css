@@ -638,3 +638,11 @@ a.btn{text-decoration:none}
 /* Projects: the concept and credits notes sit at the end of the list */
 .archive-notes{margin-top:clamp(40px,5vw,72px);display:grid;gap:12px}
 .archive-notes .credit-note{margin:0}
+
+/* Photo-filled W behind the header text (Who We Are): the W from the logo at 25% opacity, bottom right,
+   partly cropped by the header, like the brand guide cover. Hidden at 760px and below. */
+.w-mark-host{position:relative;overflow:hidden}
+.w-mark-host > *:not(.w-mark){position:relative;z-index:1}
+.w-mark{position:absolute;right:-6%;bottom:-18%;width:min(820px,64vw);opacity:.25;pointer-events:none;z-index:0}
+.w-mark svg{display:block;width:100%;height:auto}
+@media (max-width:760px){.w-mark{display:none}}
