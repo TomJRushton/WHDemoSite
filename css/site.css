@@ -613,8 +613,8 @@ code{font-size:.92em;background:var(--navy-tint);padding:1px 5px}
 .w-photo img{width:100%;height:100%;object-fit:cover;display:block}
 .sector-image.w-photo{aspect-ratio:46.6/32.9;align-self:center;background:none}
 .w-split{display:flex;flex-wrap:wrap;align-items:center;gap:32px clamp(32px,5vw,80px)}
-.w-split > .w-text{flex:999 1 560px;min-width:0}
-.w-split > .w-photo{flex:1 1 280px;max-width:460px}
+.w-split > .w-text{flex:1 1 480px;min-width:0}
+.w-split > .w-photo{flex:0 1 clamp(320px,34vw,520px)}
 .cs-title > .w-photo{flex:1 1 240px;max-width:380px;align-self:center}
 .cs-inset .cs-title > .w-photo{display:none}
 .contact-band::after{content:"";flex:0 1 clamp(200px,20vw,320px);aspect-ratio:46.6/32.9;align-self:center;background:url(../assets/img/david-lloyd-800.webp) center/cover;-webkit-mask:url(../assets/img/w-mask.svg) center/contain no-repeat;mask:url(../assets/img/w-mask.svg) center/contain no-repeat}
