@@ -2,7 +2,7 @@
    Shows staff how a story is added: they fill in a form, the story is saved to this browser only (localStorage key
    wh-news-draft) and drawn by the real article template in the preview frame (article.html?a=__preview).
    Publishing sets a flag that makes the story appear on the News page, the homepage and its own article URL,
-   in this browser only. Nothing is sent to a server. On the live site this form would be the CMS (WordPress) editor. */
+   in this browser only. Nothing is sent to a server. On the live site this form would be the CMS editor (WordPress or whichever system is chosen). */
 (function () {
   'use strict';
   var form = document.getElementById('ed-form');
