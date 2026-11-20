@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Add a news story (demo) — Willis Hazell Engineers</title>
+<meta name="description" content="Demo of how Willis Hazell staff add a news story.">
+<meta name="robots" content="noindex">
+<link rel="preload" href="assets/fonts/overpass-latin.woff" as="font" type="font/woff" crossorigin>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="css/site.css">
+<script>document.documentElement.classList.add('js-pending');setTimeout(function(){document.documentElement.classList.remove('js-pending')},3000)</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="logo" href="index.html" aria-label="Willis Hazell Engineers, home">
+      <img class="on-light-logo" src="assets/img/logo-on-light.svg" alt="" width="180" height="41">
+      <img class="on-dark-logo" src="assets/img/logo.svg" alt="" width="180" height="41">
+    </a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav class="nav" id="nav" aria-label="Main">
+      <div class="nav-group"><a class="nav-top" href="projects.html">Projects</a><button class="nav-sub-btn" type="button" aria-expanded="false" aria-controls="nav-projects"><span class="visually-hidden">Projects pages</span><svg aria-hidden="true" width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3.5 5 6.5 8 3.5"/></svg></button><ul class="nav-sub" id="nav-projects"><li><a href="projects.html">Projects</a></li><li><a href="projects-alt.html">Projects (alternative)</a></li></ul></div>
+      <div class="nav-group"><a class="nav-top" href="services.html">Services</a><button class="nav-sub-btn" type="button" aria-expanded="false" aria-controls="nav-services"><span class="visually-hidden">Services pages</span><svg aria-hidden="true" width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3.5 5 6.5 8 3.5"/></svg></button><ul class="nav-sub" id="nav-services"><li><a href="services.html">Services</a></li><li><a href="services-alt.html">Services (alternative)</a></li></ul></div>
+      <a href="about.html">Who We Are</a>
+      <a href="news.html" aria-current="page">News</a>
+      <a href="careers.html">Careers</a>
+      <a class="nav-cta" href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="ed-page">
+  <div class="wrap ed-head">
+    <p class="crumbs"><a href="news.html">News</a></p>
+    <h1 class="heading-page">Add a news story</h1>
+    <p class="intro">This is how Willis Hazell staff would add news: fill in the boxes and the website lays the story out in the house style. Nothing about the design needs touching.</p>
+    <div class="ed-note" role="note">
+      <p><strong>Demo of the editing screen.</strong> On the live site this form sits in the website's admin area (WordPress), behind a staff login, and will look a little different. Here, nothing is sent anywhere: your story is kept only in this browser, and you can remove it at any time.</p>
+    </div>
+    <div class="ed-examples">
+      <p class="label" id="ex-h">Start from an example</p>
+      <div role="group" aria-labelledby="ex-h">
+        <button type="button" class="btn secondary" data-example="update">Project update</button>
+        <button type="button" class="btn secondary" data-example="appointment">New appointment</button>
+        <button type="button" class="btn secondary" data-example="completion">Project completion</button>
+        <button type="button" class="tl ed-clear" id="ed-clear">Start blank</button>
+      </div>
+      <p class="caption">Examples are made up for the demo; anything in [square brackets] is a placeholder.</p>
+    </div>
+  </div>
+
+  <div class="wrap ed-layout">
+    <form class="ed-form" id="ed-form" novalidate aria-labelledby="ed-form-h">
+      <h2 class="visually-hidden" id="ed-form-h">News story</h2>
+      <div class="ed-errors" id="ed-errors" tabindex="-1" hidden></div>
+
+      <fieldset class="ed-card">
+        <legend>1. The story</legend>
+        <div class="ed-field">
+          <label for="f-title">Headline <span class="ed-req">required</span></label>
+          <input id="f-title" name="title" type="text" maxlength="110" autocomplete="off" aria-describedby="f-title-hint">
+          <p class="ed-hint" id="f-title-hint">Say what happened, plainly. Under 70 characters reads best in search results.</p>
+        </div>
+        <div class="ed-field">
+          <label for="f-summary">Summary <span class="ed-req">required</span></label>
+          <textarea id="f-summary" name="summary" rows="2" maxlength="220" aria-describedby="f-summary-hint f-summary-count"></textarea>
+          <p class="ed-hint" id="f-summary-hint">One or two sentences. Shown under the headline and on the News page.</p>
+          <p class="ed-count" id="f-summary-count" aria-live="polite"></p>
+        </div>
+        <div class="ed-field">
+          <label for="f-body">Story text</label>
+          <textarea id="f-body" name="body" rows="10" aria-describedby="f-body-hint"></textarea>
+          <p class="ed-hint" id="f-body-hint">Leave a blank line between paragraphs. Start a line with <code>##</code> to make it a subheading.</p>
+        </div>
+      </fieldset>
+
+      <fieldset class="ed-card">
+        <legend>2. Photo</legend>
+        <p class="ed-hint" id="f-photo-hint">Pick from the photo library or upload your own. A photo needs a description (read out to people using screen readers) and a credit.</p>
+        <div class="ed-library" role="radiogroup" aria-describedby="f-photo-hint" id="ed-library"></div>
+        <div class="ed-field ed-upload">
+          <label for="f-upload">Or upload a photo</label>
+          <input id="f-upload" type="file" accept="image/jpeg,image/png,image/webp">
+          <p class="ed-hint">JPEG, PNG or WebP. It is resized to 1600 pixels wide.</p>
+        </div>
+        <div class="ed-photo-fields" id="ed-photo-fields" hidden>
+          <div class="ed-field">
+            <label for="f-alt">Photo description <span class="ed-req">required</span></label>
+            <input id="f-alt" name="alt" type="text" maxlength="160" aria-describedby="f-alt-hint">
+            <p class="ed-hint" id="f-alt-hint">What the photo shows, for example "The new Kop stand roof steelwork from the pitch".</p>
+          </div>
+          <div class="ed-field">
+            <label for="f-credit">Photo credit <span class="ed-req">required</span></label>
+            <input id="f-credit" name="credit" type="text" maxlength="80">
+          </div>
+          <button type="button" class="tl" id="f-photo-remove">Remove photo</button>
+        </div>
+      </fieldset>
+
+      <fieldset class="ed-card">
+        <legend>3. Details</legend>
+        <div class="ed-row">
+          <div class="ed-field">
+            <label for="f-category">Category</label>
+            <select id="f-category" name="category"></select>
+          </div>
+          <div class="ed-field">
+            <label for="f-author">Author</label>
+            <select id="f-author" name="author"></select>
+          </div>
+          <div class="ed-field">
+            <label for="f-date">Date</label>
+            <input id="f-date" name="date" type="date">
+          </div>
+        </div>
+        <fieldset class="ed-sub">
+          <legend>Related projects</legend>
+          <p class="ed-hint">Shown as cards at the end of the story.</p>
+          <div class="ed-checks" id="ed-projects"></div>
+        </fieldset>
+        <div class="ed-field">
+          <label for="f-linkedin">LinkedIn post link</label>
+          <input id="f-linkedin" name="linkedin" type="url" inputmode="url" placeholder="https://www.linkedin.com/feed/update/…" aria-describedby="f-linkedin-hint">
+          <p class="ed-hint" id="f-linkedin-hint">Optional. After posting the story on LinkedIn, paste the post's link here so readers can join the conversation.</p>
+        </div>
+        <label class="ed-check-line"><input type="checkbox" id="f-featured" name="featured" checked> Feature at the top of the News page</label>
+      </fieldset>
+
+      <div class="ed-actions">
+        <button type="submit" class="btn" id="ed-publish">Publish</button>
+        <a class="tl" href="article.html?a=__preview" target="_blank" rel="noopener" id="ed-open-preview">Open preview in a new tab<span class="visually-hidden"> (opens in a new tab)</span></a>
+      </div>
+      <div class="ed-status" id="ed-status" role="status" aria-live="polite"></div>
+    </form>
+
+    <section class="ed-preview" aria-labelledby="ed-preview-h">
+      <div class="ed-preview-bar">
+        <h2 class="label" id="ed-preview-h">Live preview</h2>
+        <div class="ed-toggle" role="group" aria-label="Preview size">
+          <button type="button" aria-pressed="true" data-size="desktop">Desktop</button>
+          <button type="button" aria-pressed="false" data-size="phone">Phone</button>
+        </div>
+      </div>
+      <div class="ed-frame-box" id="ed-frame-box">
+        <iframe id="ed-frame" title="Live preview of the story" src="article.html?a=__preview" tabindex="-1"></iframe>
+      </div>
+    </section>
+  </div>
+</main>
+<p class="demo-note">Demo prototype. Content from willishazell.com; project credits, figures and imagery to be confirmed.</p>
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© Willis Hazell Engineers · [Registered company details]</span>
+    <span><a href="https://www.linkedin.com/company/willis-hazell-engineers/">LinkedIn</a> · Privacy · Cookies · Accessibility</span>
+  </div>
+</footer>
+<script src="js/data.js"></script>
+<script src="js/editorial.js"></script>
+<script src="js/site.js"></script>
+<script src="js/add-news.js"></script>
+</body>
+</html>

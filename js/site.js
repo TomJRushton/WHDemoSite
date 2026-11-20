@@ -416,7 +416,23 @@
   var asof = /^\d{4}-\d{2}-\d{2}$/.test(QS.get('asof') || '') ? QS.get('asof') : null;
   var today = asof || (function () { var n = new Date(); return n.getFullYear() + '-' + ('0' + (n.getMonth() + 1)).slice(-2) + '-' + ('0' + n.getDate()).slice(-2); })();
   var sampleTag = '<span class="credit tbc">Sample</span>';
-  var articles = E.articles.slice().sort(function (a, b) { return a.date < b.date ? 1 : a.date > b.date ? -1 : 0; });
+  /* "Add a news story" demo (add-news.html): a story typed there is kept in this browser only (localStorage) and
+     shown through the same templates as the sample articles. ?a=__preview shows the unpublished draft. */
+  var DRAFT_KEY = 'wh-news-draft';
+  var readDraft = function () { try { var d = JSON.parse(localStorage.getItem(DRAFT_KEY) || 'null'); return d && typeof d === 'object' ? d : null; } catch (e) { return null; } };
+  var draftArticle = function (d) {
+    var body = String(d.body || '').split(/\n\s*\n/).map(function (t) { return t.trim(); }).filter(Boolean).map(function (t) {
+      return /^##\s+/.test(t) ? ['h2', t.replace(/^##\s+/, '')] : ['p', t.replace(/\s*\n\s*/g, ' ')];
+    });
+    return { slug: slugify(d.title || '') || 'your-story', title: d.title || 'Your headline', date: /^\d{4}-\d{2}-\d{2}$/.test(d.date || '') ? d.date : today,
+      category: d.category || 'Project Updates', featured: d.featured !== false, author: d.author || 'sample-author', summary: d.summary || '',
+      image: d.image && (d.image.src || d.image.name) ? d.image : null, relatedProjects: d.relatedProjects || [], linkedin: /^https:\/\//.test(d.linkedin || '') ? d.linkedin : null,
+      body: body.length ? body : [['ph', 'The story text appears here.']], isDraft: true };
+  };
+  var draft = readDraft();
+  var draftTag = '<span class="credit tbc">Demo story: only in this browser</span>';
+  var tagFor = function (a) { return a && a.isDraft ? draftTag : sampleTag; };
+  var articles = (draft && draft.published && draft.title ? [draftArticle(draft)] : []).concat(E.articles).sort(function (a, b) { return a.date < b.date ? 1 : a.date > b.date ? -1 : 0; });
   var articleUrl = function (a) { return 'article.html?a=' + encodeURIComponent(a.slug); };
   var catUrl = function (c) { return 'news.html?category=' + slugify(c); };
   var jobState = function (j) {
@@ -430,6 +446,7 @@
     .sort(function (a, b) { return a.closing < b.closing ? -1 : 1; });
   var jobUrl = function (j) { return 'job.html?r=' + encodeURIComponent(j.slug) + (asof ? '&asof=' + asof : ''); };
   var articleFrame = function (a, ratio, sizes, eager) {
+    if (a.image && a.image.src) return '<div class="frame ' + ratio + '"><img src="' + esc(a.image.src) + '" alt="" decoding="async"></div>';
     if (a.image) return '<div class="frame ' + ratio + '">' + img(a.image.name, a.image.maxW, sizes, '', eager) + '</div>';
     return '<div class="frame ' + ratio + ' slot-frame"><span>Image to be supplied</span></div>';
   };
@@ -460,7 +477,7 @@
   if (homeNews) {
     homeNews.innerHTML = articles.slice(0, 3).map(function (a) {
       return '<li><a href="' + articleUrl(a) + '">' + articleFrame(a, 'ratio-32', '(max-width:760px) 100vw, 30vw') +
-        '<div class="card-text"><p class="label">' + esc(a.category) + ' · ' + fmtDate(a.date) + '</p><h3 class="title-project">' + esc(a.title) + '</h3>' + sampleTag + '</div></a></li>';
+        '<div class="card-text"><p class="label">' + esc(a.category) + ' · ' + fmtDate(a.date) + '</p><h3 class="title-project">' + esc(a.title) + '</h3>' + tagFor(a) + '</div></a></li>';
     }).join('');
     var hc = $('#home-careers');
     if (hc && openJobs.length) {
@@ -486,7 +503,7 @@
     var newsRow = function (a) {
       return '<li><a class="news-row" href="' + articleUrl(a) + '">' + articleFrame(a, 'ratio-32', '(max-width:620px) 100vw, 240px') +
         '<div><p class="label">' + esc(a.category) + ' · <time datetime="' + a.date + '">' + fmtDate(a.date) + '</time></p>' +
-        '<h3 class="title-project">' + esc(a.title) + '</h3><p class="body-small">' + esc(a.summary) + '</p>' + sampleTag + '</div></a></li>';
+        '<h3 class="title-project">' + esc(a.title) + '</h3><p class="body-small">' + esc(a.summary) + '</p>' + tagFor(a) + '</div></a></li>';
     };
     var renderNews = function () {
       var cat = readCat();
@@ -499,7 +516,7 @@
       var feat = !cat ? (list.filter(function (a) { return a.featured; })[0] || list[0]) : null;
       $('#news-featured').innerHTML = feat ? '<a class="news-feature" href="' + articleUrl(feat) + '">' + articleFrame(feat, 'ratio-32', '(max-width:900px) 100vw, 58vw', true) +
         '<div><p class="label">Featured · ' + esc(feat.category) + '</p><h2 class="heading-section">' + esc(feat.title) + '</h2>' +
-        '<p class="body-small">' + esc(feat.summary) + '</p><p class="caption"><time datetime="' + feat.date + '">' + fmtDate(feat.date) + '</time> · ' + esc((E.authors[feat.author] || {}).name || '') + '</p>' + sampleTag + '</div></a>' : '';
+        '<p class="body-small">' + esc(feat.summary) + '</p><p class="caption"><time datetime="' + feat.date + '">' + fmtDate(feat.date) + '</time> · ' + esc((E.authors[feat.author] || {}).name || '') + '</p>' + tagFor(feat) + '</div></a>' : '';
       var rest = list.filter(function (a) { return a !== feat; });
       newsList.innerHTML = rest.slice(0, newsShown).map(newsRow).join('');
       $('#news-empty').hidden = list.length > 0;
@@ -518,22 +535,25 @@
 
   /* Article template */
   var art = $('#article');
-  if (art) {
-    var a = articles.filter(function (x) { return x.slug === QS.get('a'); })[0];
-    if (!a) notFound(art, 'news.html', 'News', 'Article not found', 'This article may have moved or is not yet published.', 'View all news');
+  var previewing = QS.get('a') === '__preview';
+  var renderArticle = function () {
+    var a = previewing ? (readDraft() ? draftArticle(readDraft()) : null) : articles.filter(function (x) { return x.slug === QS.get('a'); })[0];
+    if (!a && previewing) notFound(art, 'add-news.html', 'Add a news story', 'Nothing to preview yet', 'Start typing a headline on the editing page and the story appears here.', 'Back to the editing page');
+    else if (!a) notFound(art, 'news.html', 'News', 'Article not found', 'This article may have moved or is not yet published.', 'View all news');
     else {
       setMeta(a.title, a.summary);
       var au = E.authors[a.author] || { name: '', url: 'about.html' };
       var here = location.href.split('#')[0];
       var relP = (a.relatedProjects || []).map(function (s) { return D.projects.filter(function (p) { return p.slug === s; })[0]; }).filter(Boolean);
-      var relA = articles.filter(function (x) { return x !== a && x.category === a.category; })
-        .concat(articles.filter(function (x) { return x !== a && x.category !== a.category; })).slice(0, 3);
+      var others = articles.filter(function (x) { return x !== a && !(a.isDraft && x.isDraft); });
+      var relA = others.filter(function (x) { return x.category === a.category; })
+        .concat(others.filter(function (x) { return x.category !== a.category; })).slice(0, 3);
       art.innerHTML =
         '<div class="wrap article-head"><p class="crumbs"><a href="news.html">News</a> / <a href="' + catUrl(a.category) + '">' + esc(a.category) + '</a></p>' +
           '<h1 class="heading-page">' + esc(a.title) + '</h1><p class="intro">' + esc(a.summary) + '</p>' +
-          '<p class="article-meta"><time datetime="' + a.date + '">' + fmtDate(a.date) + '</time><span>By <a class="inline-link" href="' + au.url + '">' + esc(au.name) + '</a></span>' + sampleTag + '</p></div>' +
+          '<p class="article-meta"><time datetime="' + a.date + '">' + fmtDate(a.date) + '</time><span>By <a class="inline-link" href="' + au.url + '">' + esc(au.name) + '</a></span>' + tagFor(a) + '</p></div>' +
         '<div class="wrap article-hero">' + (a.image
-          ? '<figure>' + articleFrame(a, 'ratio-169', '(max-width:1440px) 100vw, 1312px', true) + '<figcaption class="caption">' + esc(a.image.alt) + '. Image from willishazell.com; credit to confirm.</figcaption></figure>'
+          ? '<figure>' + articleFrame(a, 'ratio-169', '(max-width:1440px) 100vw, 1312px', true) + '<figcaption class="caption">' + esc(a.image.alt) + (a.isDraft ? (a.image.credit ? '. Photo: ' + esc(a.image.credit) : '') : '. Image from willishazell.com; credit to confirm.') + '</figcaption></figure>'
           : '<div class="frame ratio-219 slot-frame"><span>Hero image to be supplied</span></div>') + '</div>' +
         '<div class="wrap article-body"><aside class="article-aside">' +
           '<div class="author-card"><p class="label">Author</p><p><a class="inline-link" href="' + au.url + '">' + esc(au.name) + '</a><br><span class="body-small">' + esc(au.role || '') + '</span></p></div>' +
@@ -555,7 +575,7 @@
           }).join('') + '</ul></section>' : '') +
         (relA.length ? '<section class="wrap sec-compact" style="padding-top:0" aria-labelledby="rela-h"><div class="sec-head rule-top"><h2 class="heading-section" id="rela-h">More news</h2><a class="tl" href="news.html">All news →</a></div>' +
           '<ul class="news-list">' + relA.map(function (x) {
-            return '<li><a class="news-row" href="' + articleUrl(x) + '">' + articleFrame(x, 'ratio-32', '(max-width:620px) 100vw, 240px') + '<div><p class="label">' + esc(x.category) + ' · ' + fmtDate(x.date) + '</p><h3 class="title-project">' + esc(x.title) + '</h3>' + sampleTag + '</div></a></li>';
+            return '<li><a class="news-row" href="' + articleUrl(x) + '">' + articleFrame(x, 'ratio-32', '(max-width:620px) 100vw, 240px') + '<div><p class="label">' + esc(x.category) + ' · ' + fmtDate(x.date) + '</p><h3 class="title-project">' + esc(x.title) + '</h3>' + tagFor(x) + '</div></a></li>';
           }).join('') + '</ul></section>' : '');
       var copyBtn = $('#copy-link'), copyStatus = $('#copy-status');
       copyBtn.addEventListener('click', function () {
@@ -563,9 +583,14 @@
         if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(here).then(function () { done(true); }, function () { done(false); });
         else done(false);
       });
-      jsonLd({ '@context': 'https://schema.org', '@type': 'NewsArticle', headline: a.title, datePublished: a.date, description: a.summary,
+      if (!previewing) jsonLd({ '@context': 'https://schema.org', '@type': 'NewsArticle', headline: a.title, datePublished: a.date, description: a.summary,
         author: { '@type': 'Person', name: au.name }, publisher: { '@type': 'Organization', name: 'Willis Hazell Engineers' } });
     }
+  };
+  if (art) {
+    renderArticle();
+    /* live preview: the editing page saves the draft as staff type; redraw when it changes */
+    if (previewing) window.addEventListener('storage', function (e) { if (e.key === DRAFT_KEY) renderArticle(); });
   }
 
   /* Careers: open vacancies only (published, publication date reached, closing date not passed) */
@@ -800,7 +825,7 @@
       var insight = sv.article && articles.filter(function (x) { return x.slug === sv.article; })[0];
       if (insight) extra.insertAdjacentHTML('beforeend', '<section class="sec-compact wrap" style="padding-top:0" aria-labelledby="svc-ins-h"><div class="sec-head rule-top"><h2 class="heading-section" id="svc-ins-h">Related insight</h2><a class="tl" href="' + catUrl(insight.category) + '">All ' + esc(insight.category.toLowerCase()) + ' →</a></div>' +
         '<ul class="news-list"><li><a class="news-row" href="' + articleUrl(insight) + '">' + articleFrame(insight, 'ratio-32', '(max-width:620px) 100vw, 240px') +
-        '<div><p class="label">' + esc(insight.category) + ' · <time datetime="' + insight.date + '">' + fmtDate(insight.date) + '</time></p><h3 class="title-project">' + esc(insight.title) + '</h3><p class="body-small">' + esc(insight.summary) + '</p>' + sampleTag + '</div></a></li></ul></section>');
+        '<div><p class="label">' + esc(insight.category) + ' · <time datetime="' + insight.date + '">' + fmtDate(insight.date) + '</time></p><h3 class="title-project">' + esc(insight.title) + '</h3><p class="body-small">' + esc(insight.summary) + '</p>' + tagFor(insight) + '</div></a></li></ul></section>');
     }
   }
 
