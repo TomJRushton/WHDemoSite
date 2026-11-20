@@ -589,7 +589,9 @@
           '</div></div></div>' +
         (relP.length ? '<section class="wrap sec-compact" aria-labelledby="relp-h"><div class="sec-head rule-top"><h2 class="heading-section" id="relp-h">Related projects</h2></div>' +
           '<ul class="results" style="padding-top:0">' + relP.map(function (p) {
-            return '<li><a href="' + projectUrl(p) + '"><div class="frame ratio-32">' + img(p.image, p.imageMaxW, '(max-width:620px) 100vw, 33vw', '') + '</div><div class="card-text"><h3 class="title-project">' + esc(p.name) + '</h3>' + creditTag(p) + '</div></a></li>';
+            /* projects without a case-study image (any project can be related from the Add a news story demo) get a plain tile */
+            var thumb = p.image ? img(p.image, p.imageMaxW, '(max-width:620px) 100vw, 33vw', '') : '<span class="rel-noimg">' + esc(p.sector) + (p.location ? '<br>' + esc(p.location) : '') + '</span>';
+            return '<li><a href="' + projectUrl(p) + '"><div class="frame ratio-32' + (p.image ? '' : ' frame-plain') + '">' + thumb + '</div><div class="card-text"><h3 class="title-project">' + esc(p.name) + '</h3>' + creditTag(p) + '</div></a></li>';
           }).join('') + '</ul></section>' : '') +
         (relA.length ? '<section class="wrap sec-compact" style="padding-top:0" aria-labelledby="rela-h"><div class="sec-head rule-top"><h2 class="heading-section" id="rela-h">More news</h2><a class="tl" href="news.html">All news →</a></div>' +
           '<ul class="news-list">' + relA.map(function (x) {

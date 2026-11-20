@@ -24,7 +24,7 @@
       <div class="nav-group"><a class="nav-top" href="projects.html">Projects</a><button class="nav-sub-btn" type="button" aria-expanded="false" aria-controls="nav-projects"><span class="visually-hidden">Projects pages</span><svg aria-hidden="true" width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3.5 5 6.5 8 3.5"/></svg></button><ul class="nav-sub" id="nav-projects"><li><a href="projects.html">Projects</a></li><li><a href="projects-alt.html">Projects (alternative)</a></li></ul></div>
       <div class="nav-group"><a class="nav-top" href="services.html">Services</a><button class="nav-sub-btn" type="button" aria-expanded="false" aria-controls="nav-services"><span class="visually-hidden">Services pages</span><svg aria-hidden="true" width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3.5 5 6.5 8 3.5"/></svg></button><ul class="nav-sub" id="nav-services"><li><a href="services.html">Services</a></li><li><a href="services-alt.html">Services (alternative)</a></li></ul></div>
       <a href="about.html">Who We Are</a>
-      <a href="news.html" aria-current="page">News</a>
+      <div class="nav-group"><a class="nav-top" href="news.html" aria-current="page">News</a><button class="nav-sub-btn" type="button" aria-expanded="false" aria-controls="nav-news"><span class="visually-hidden">News pages</span><svg aria-hidden="true" width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3.5 5 6.5 8 3.5"/></svg></button><ul class="nav-sub" id="nav-news"><li><a href="news.html">News</a></li><li class="nav-sub-label" aria-hidden="true">Staff demo · not on the live site</li><li><a href="add-news.html" aria-current="page">Add a news story<span class="visually-hidden"> (staff demo, not on the live site)</span></a></li></ul></div>
       <a href="careers.html">Careers</a>
       <a class="nav-cta" href="index.html#contact">Contact</a>
     </nav>
@@ -115,11 +115,17 @@
             <input id="f-date" name="date" type="date">
           </div>
         </div>
-        <fieldset class="ed-sub">
-          <legend>Related projects</legend>
-          <p class="ed-hint">Shown as cards at the end of the story.</p>
-          <div class="ed-checks" id="ed-projects"></div>
-        </fieldset>
+        <div class="ed-field ed-related">
+          <label for="f-related" id="f-related-l">Related projects</label>
+          <p class="ed-hint" id="f-related-hint">Shown as cards at the end of the story. Choose as many as you like; type to search by name, client, place or sector.</p>
+          <ul class="ed-chips" id="ed-chips" aria-label="Selected projects"></ul>
+          <div class="ed-combo">
+            <input id="f-related" type="text" role="combobox" aria-expanded="false" aria-controls="ed-proj-list" aria-autocomplete="list" aria-describedby="f-related-hint" placeholder="Choose projects…" autocomplete="off">
+            <button type="button" class="ed-combo-btn" id="ed-combo-btn" tabindex="-1" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3.5 5 6.5 8 3.5"/></svg></button>
+            <ul class="ed-listbox" id="ed-proj-list" role="listbox" aria-multiselectable="true" aria-labelledby="f-related-l" hidden></ul>
+          </div>
+          <p class="visually-hidden" id="ed-rel-live" aria-live="polite"></p>
+        </div>
         <div class="ed-field">
           <label for="f-linkedin">LinkedIn post link</label>
           <input id="f-linkedin" name="linkedin" type="url" inputmode="url" placeholder="https://www.linkedin.com/feed/update/…" aria-describedby="f-linkedin-hint">

@@ -29,9 +29,71 @@
   $('#f-author').innerHTML = Object.keys(E.authors || {}).map(function (k) {
     var a = E.authors[k]; return '<option value="' + esc(k) + '">' + esc(a.name) + (a.role && a.role.charAt(0) !== '[' ? ', ' + esc(a.role) : '') + '</option>';
   }).join('');
-  $('#ed-projects').innerHTML = D.projects.filter(function (p) { return p.caseStudy; }).map(function (p) {
-    return '<label class="ed-check-line"><input type="checkbox" name="related" value="' + esc(p.slug) + '"> ' + esc(p.name) + '</label>';
-  }).join('');
+
+  /* ---------- related projects: multi-select dropdown (combobox + listbox) with removable tags above it ---------- */
+  var related = [];
+  var allProjects = D.projects.slice().sort(function (a, b) { return a.name.localeCompare(b.name); });
+  var bySlug = {}; allProjects.forEach(function (p) { bySlug[p.slug] = p; });
+  var cbInput = $('#f-related'), cbList = $('#ed-proj-list'), chips = $('#ed-chips'), relLive = $('#ed-rel-live');
+  var shown = [], active = -1;
+  var renderChips = function () {
+    chips.innerHTML = related.map(function (slug) {
+      var p = bySlug[slug]; if (!p) return '';
+      return '<li><span>' + esc(p.name) + '</span><button type="button" class="ed-chip-x" data-slug="' + esc(slug) + '" aria-label="Remove ' + esc(p.name) + '">' +
+        '<svg aria-hidden="true" width="10" height="10" viewBox="0 0 10 10" stroke="currentColor" stroke-width="1.6"><path d="M2 2l6 6M8 2 2 8"/></svg></button></li>';
+    }).join('');
+    chips.hidden = !related.length;
+    cbInput.placeholder = related.length ? 'Add another project…' : 'Choose projects…';
+  };
+  var renderList = function () {
+    var q = cbInput.value.trim().toLowerCase();
+    shown = allProjects.filter(function (p) { return !q || [p.name, p.client, p.location, p.sector].join(' ').toLowerCase().indexOf(q) > -1; });
+    if (active >= shown.length) active = shown.length - 1;
+    cbList.innerHTML = shown.length ? shown.map(function (p, i) {
+      var on = related.indexOf(p.slug) > -1;
+      return '<li role="option" id="ed-opt-' + i + '" aria-selected="' + on + '" data-slug="' + esc(p.slug) + '"' + (i === active ? ' class="active"' : '') + '>' +
+        '<span class="ed-tick" aria-hidden="true"></span><span class="ed-opt-text"><span>' + esc(p.name) + '</span><small>' + esc([p.sector, p.location].filter(Boolean).join(' · ')) + '</small></span></li>';
+    }).join('') : '<li class="ed-none" role="presentation">No projects match "' + esc(cbInput.value.trim()) + '"</li>';
+    if (active > -1 && shown[active]) { cbInput.setAttribute('aria-activedescendant', 'ed-opt-' + active); var el = document.getElementById('ed-opt-' + active); if (el && el.scrollIntoView) el.scrollIntoView({ block: 'nearest' }); }
+    else cbInput.removeAttribute('aria-activedescendant');
+  };
+  var openList = function () { if (!cbList.hidden) return; cbList.hidden = false; cbInput.setAttribute('aria-expanded', 'true'); renderList(); };
+  var closeList = function () { if (cbInput.value) cbInput.value = ''; cbList.hidden = true; cbInput.setAttribute('aria-expanded', 'false'); cbInput.removeAttribute('aria-activedescendant'); active = -1; };
+  var toggle = function (slug) {
+    var i = related.indexOf(slug), p = bySlug[slug];
+    if (i > -1) related.splice(i, 1); else related.push(slug);
+    relLive.textContent = (i > -1 ? 'Removed ' : 'Added ') + p.name + '. ' + related.length + ' selected.';
+    renderChips(); renderList(); changed();
+  };
+  cbInput.addEventListener('focus', openList);
+  cbInput.addEventListener('click', openList);
+  cbInput.addEventListener('input', function () { openList(); active = 0; renderList(); });
+  cbInput.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+      e.preventDefault(); openList(); if (!shown.length) return;
+      active = e.key === 'ArrowDown' ? Math.min(shown.length - 1, active + 1) : Math.max(0, active - 1); renderList();
+    } else if (e.key === 'Enter') {
+      e.preventDefault(); /* never submit the form from here */
+      if (!cbList.hidden && shown[active]) toggle(shown[active].slug);
+    } else if (e.key === 'Escape') {
+      if (!cbList.hidden) { e.preventDefault(); closeList(); }
+    } else if (e.key === 'Backspace' && !cbInput.value && related.length) {
+      toggle(related[related.length - 1]);
+    }
+  });
+  /* mousedown, not click, so the input keeps focus and the list stays open for several picks */
+  cbList.addEventListener('mousedown', function (e) {
+    var li = e.target.closest('[role=option]'); if (!li) return;
+    e.preventDefault(); active = shown.indexOf(bySlug[li.getAttribute('data-slug')]); toggle(li.getAttribute('data-slug'));
+  });
+  $('#ed-combo-btn').addEventListener('mousedown', function (e) { e.preventDefault(); if (cbList.hidden) { cbInput.focus(); openList(); } else closeList(); });
+  cbInput.addEventListener('blur', function () { setTimeout(function () { if (document.activeElement !== cbInput) closeList(); }, 0); });
+  chips.addEventListener('click', function (e) {
+    var b = e.target.closest('.ed-chip-x'); if (!b) return;
+    var idx = related.indexOf(b.getAttribute('data-slug'));
+    toggle(b.getAttribute('data-slug'));
+    var btns = $$('.ed-chip-x', chips); (btns[idx] || btns[idx - 1] || cbInput).focus();
+  });
   var thumb = function (p) { return 'assets/img/' + p.image + '-' + Math.min(800, p.imageMaxW) + '.webp'; };
   $('#ed-library').innerHTML = withPhotos.map(function (p, i) {
     return '<label class="ed-pic"><input type="radio" name="libpic" value="' + esc(p.slug) + '"' + '>' +
@@ -76,7 +138,7 @@
     var d = {
       title: $('#f-title').value.trim(), summary: $('#f-summary').value.trim(), body: $('#f-body').value,
       category: $('#f-category').value, author: $('#f-author').value, date: $('#f-date').value || today,
-      relatedProjects: $$('input[name=related]:checked').map(function (i) { return i.value; }),
+      relatedProjects: related.slice(),
       linkedin: $('#f-linkedin').value.trim(), featured: $('#f-featured').checked, published: published
     };
     if (photo) { photo.alt = $('#f-alt').value.trim(); photo.credit = $('#f-credit').value.trim(); d.image = photo; }
@@ -88,7 +150,7 @@
     if (d.category) $('#f-category').value = d.category; else $('#f-category').selectedIndex = 0;
     $('#f-author').value = d.author && E.authors[d.author] ? d.author : Object.keys(E.authors)[0];
     $('#f-date').value = d.date || today;
-    $$('input[name=related]').forEach(function (i) { i.checked = (d.relatedProjects || []).indexOf(i.value) > -1; });
+    related = (d.relatedProjects || []).filter(function (s) { return bySlug[s]; }); renderChips(); if (!cbList.hidden) renderList();
     $('#f-linkedin').value = d.linkedin || ''; $('#f-featured').checked = d.featured !== false;
     photo = d.image && (d.image.src || d.image.name) ? d.image : null;
     $('#f-alt').value = photo ? photo.alt || '' : ''; $('#f-credit').value = photo ? photo.credit || '' : '';
@@ -104,7 +166,7 @@
     }, 250);
   };
   form.addEventListener('input', changed);
-  form.addEventListener('change', function (e) { if (e.target.name !== 'libpic' && e.target.id !== 'f-upload') changed(); });
+  form.addEventListener('change', function (e) { if (e.target.name !== 'libpic' && e.target.id !== 'f-upload' && e.target !== cbInput) changed(); });
 
   /* The preview frame redraws on the browser's storage event; some browsers do not send it to a same-page frame,
      so it is also redrawn directly when the frame's script is reachable. */
