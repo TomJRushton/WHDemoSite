@@ -611,7 +611,7 @@ code{font-size:.92em;background:var(--navy-tint);padding:1px 5px}
 /* Brand refresh: lime headings on navy (guide p.6), lime hero accent, lime 'Contact' button in the header */
 .on-dark .heading-section,.on-dark .heading-page,.on-dark .c-title,.on-dark .display-hero{color:var(--lime)}
 .hero .accent{color:var(--lime)}
-.nav a.nav-cta{background:var(--lime);color:var(--navy);padding:9px 20px 7px;border-radius:999px;font-weight:500;text-decoration:none}
+.nav a.nav-cta{background:var(--lime);color:var(--navy);padding:12.75px 20px 3.25px;border-radius:999px;font-weight:500;text-decoration:none}
 .nav a.nav-cta:hover,.site-header.over-hero .nav a.nav-cta:hover,.site-header.over-hero.scrolled .nav a.nav-cta:hover{color:var(--navy);background:#CFEA3A}
 .site-header.over-hero .nav a.nav-cta{color:var(--navy)}
 @media (max-width:900px){.nav a.nav-cta{background:none;color:inherit;padding:0;border-radius:0}}
