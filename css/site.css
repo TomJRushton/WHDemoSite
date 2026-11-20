@@ -549,6 +549,8 @@ code{font-size:.92em;background:var(--navy-tint);padding:1px 5px}
 }
 /* Services overview — layout A (editorial index, alternative) */
 .svc-alt-note{margin-top:18px}
+/* A11Y-008: small caption over the W collage stays at 4.5:1 or better */
+.w-mark-host .svc-alt-note{color:var(--ink-soft)}
 .a-svc{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:32px clamp(24px,3vw,48px);padding-block:clamp(56px,7vw,104px);border-top:1px solid var(--ink);align-items:start}
 .a-text{grid-column:1 / span 5;display:flex;flex-direction:column;gap:18px}
 .a-text p{margin:0}
