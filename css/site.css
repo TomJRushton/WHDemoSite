@@ -105,6 +105,10 @@ h1,h2,h3{text-wrap:balance}
 .hero::before{content:"";position:absolute;inset:0 0 auto;height:200px;background:linear-gradient(to bottom,rgba(16,17,16,.55),rgba(16,17,16,0));z-index:1}
 .hero::after{content:"";position:absolute;inset:auto 0 0;height:min(640px,82%);background:linear-gradient(to top,rgba(14,22,45,.9),rgba(14,22,45,.72) 45%,rgba(14,22,45,0));z-index:1}
 .hero-inner{position:relative;z-index:2;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px 32px;padding-bottom:clamp(32px,5vw,56px)}
+/* A11Y-007: soft scrim behind the headline block so the lime and white words stay at 3:1+ over every frame */
+.hero-copy{position:relative}
+.hero-copy::before{content:"";position:absolute;inset:-4% -6%;background:rgba(16,17,16,.52);filter:blur(36px);z-index:-1;pointer-events:none}
+@media (max-width:420px){.hero-copy::before{inset:-6% -10%;background:rgba(16,17,16,.64)}}
 .hero-copy{flex:1 1 560px;max-width:920px}
 .hero .display-hero{margin-bottom:28px}
 .hero-actions{display:flex;flex-wrap:wrap;gap:4px 40px}
@@ -549,6 +553,8 @@ code{font-size:.92em;background:var(--navy-tint);padding:1px 5px}
 }
 /* Services overview — layout A (editorial index, alternative) */
 .svc-alt-note{margin-top:18px}
+/* A11Y-008: small caption over the W collage stays at 4.5:1 or better */
+.w-mark-host .svc-alt-note{color:var(--ink-soft)}
 .a-svc{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:32px clamp(24px,3vw,48px);padding-block:clamp(56px,7vw,104px);border-top:1px solid var(--ink);align-items:start}
 .a-text{grid-column:1 / span 5;display:flex;flex-direction:column;gap:18px}
 .a-text p{margin:0}

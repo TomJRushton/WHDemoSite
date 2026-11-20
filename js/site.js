@@ -117,6 +117,12 @@
     g.addEventListener('mouseleave', function () { if (hoverMq.matches) set(false); });
   });
 
+  /* PERF-004: the photo-filled W marks are hidden at 760px and below, and an SVG <image> downloads even when
+     hidden, so their photos are attached only on wider screens (and when a narrow window is widened). */
+  var wMq = window.matchMedia('(min-width:761px)');
+  var loadW = function () { if (!wMq.matches) return; $$('.w-mark image[data-href]').forEach(function (im) { im.setAttribute('href', im.getAttribute('data-href')); im.removeAttribute('data-href'); }); };
+  loadW(); if (wMq.addEventListener) wMq.addEventListener('change', loadW); else if (wMq.addListener) wMq.addListener(loadW);
+
   /* Hero video pause (WCAG 2.2.2) */
   var video = $('.hero video'), pause = $('.pause');
   if (video && pause) {
@@ -157,6 +163,18 @@
       };
       window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(checkCover); } }, { passive: true });
     }
+    /* A11Y-006: when keyboard focus moves into the pinned hero while the page covers it, scroll back so the
+       focused control is visible (hero bottom aligned with the bottom of the viewport). */
+    var heroEl = $('.hero'), heroCover = $('.hero-cover');
+    if (heroEl && heroCover) heroEl.addEventListener('focusin', function (e) {
+      var t = e.target; requestAnimationFrame(function () {
+        var r = t.getBoundingClientRect(), x = r.left + r.width / 2, y = r.top + r.height / 2;
+        var top = (y >= 0 && y <= window.innerHeight) ? document.elementFromPoint(x, y) : null;
+        if (top && (top === t || t.contains(top))) return;
+        /* the hero is sticky, so measure from where the covering content starts, not from the hero itself */
+        window.scrollTo(0, Math.max(0, heroCover.getBoundingClientRect().top + window.scrollY - window.innerHeight));
+      });
+    });
     pause.addEventListener('click', function () { if (video.paused) { userPaused = false; play(); } else { userPaused = true; video.pause(); } });
     video.addEventListener('play', setState); video.addEventListener('pause', setState); setState();
   }
