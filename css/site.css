@@ -107,8 +107,11 @@ h1,h2,h3{text-wrap:balance}
 .hero-inner{position:relative;z-index:2;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px 32px;padding-bottom:clamp(32px,5vw,56px)}
 /* A11Y-007: soft scrim behind the headline block so the lime and white words stay at 3:1+ over every frame */
 .hero-copy{position:relative}
-.hero-copy::before{content:"";position:absolute;inset:-4% -6%;background:rgba(16,17,16,.52);filter:blur(36px);z-index:-1;pointer-events:none}
-@media (max-width:420px){.hero-copy::before{inset:-6% -10%;background:rgba(16,17,16,.64)}}
+/* A11Y-007 scrim: a band behind the headline that runs the full width of the hero (clipped by .hero's overflow)
+   and fades out only at the top and bottom, so it reads as a shade across the footage, not a box around the text */
+.hero-copy::before{content:"";position:absolute;top:-28%;bottom:-28%;left:-100vw;right:-100vw;z-index:-1;pointer-events:none;
+  background:linear-gradient(to bottom,rgba(16,17,16,0),rgba(16,17,16,.52) 19%,rgba(16,17,16,.52) 81%,rgba(16,17,16,0))}
+@media (max-width:420px){.hero-copy::before{top:-30%;bottom:-30%;background:linear-gradient(to bottom,rgba(16,17,16,0),rgba(16,17,16,.64) 18%,rgba(16,17,16,.64) 82%,rgba(16,17,16,0))}}
 .hero-copy{flex:1 1 560px;max-width:920px}
 .hero .display-hero{margin-bottom:28px}
 .hero-actions{display:flex;flex-wrap:wrap;gap:4px 40px}
