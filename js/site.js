@@ -117,6 +117,12 @@
     g.addEventListener('mouseleave', function () { if (hoverMq.matches) set(false); });
   });
 
+  /* PERF-004: the photo-filled W marks are hidden at 760px and below, and an SVG <image> downloads even when
+     hidden, so their photos are attached only on wider screens (and when a narrow window is widened). */
+  var wMq = window.matchMedia('(min-width:761px)');
+  var loadW = function () { if (!wMq.matches) return; $$('.w-mark image[data-href]').forEach(function (im) { im.setAttribute('href', im.getAttribute('data-href')); im.removeAttribute('data-href'); }); };
+  loadW(); if (wMq.addEventListener) wMq.addEventListener('change', loadW); else if (wMq.addListener) wMq.addListener(loadW);
+
   /* Hero video pause (WCAG 2.2.2) */
   var video = $('.hero video'), pause = $('.pause');
   if (video && pause) {
